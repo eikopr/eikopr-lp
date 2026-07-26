@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eiko PR — bE-side you｜あなたの投稿が、紹介・応援・相談につながる。</title>
+<meta name="description" content="Facebookの投稿づくりに伴走する eiko PR。あなたの投稿が紹介・応援・相談につながらない理由がわかるタイプ診断、受付中です。">
+<!-- eikoAI LP mock v0.7.0 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;
+  --gold-deep:#A2823F;
+  --gold-wash:#F7F1E5;
+  --gray:#C1C3C2;
+  --gray-wash:#F0F1F0;
+  --ink:#35312B;
+  --muted:#7C766B;
+  --paper:#FFFFFF;
+  --font-latin:'Futura','Jost',sans-serif;
+  --font-display:'Zen Maru Gothic',sans-serif;
+  --font-head:'Zen Maru Gothic',sans-serif;
+  --font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- 共通 ---------- */
+.inner{max-width:640px;margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--font-latin);
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.22em;
+  color:var(--gold-deep);
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.h2{
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:clamp(21px,5.2vw,28px);
+  letter-spacing:.05em;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.recenter{margin-left:-40px}
+@media (min-width:880px){.recenter{margin-left:-64px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- ボタン ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-body);font-weight:700;font-size:16px;
+  padding:16px 34px;border-radius:999px;text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
+.btn-paper{background:var(--paper);color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.btn-paper:hover{transform:translateY(-2px)}
+.btn svg{flex:none}
+.cta-sub{
+  margin-top:14px;font-size:13px;color:var(--muted);
+}
+.cta-sub a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+.on-gold .cta-sub{color:rgba(255,255,255,.9)}
+.on-gold .cta-sub a{color:var(--paper)}
+
+/* ---------- 1. ヒーロー（名刺Bの再現） ---------- */
+.hero{display:grid;grid-template-columns:1fr;background:var(--paper)}
+.hero-panel{
+  background:var(--gold);color:var(--paper);
+  padding:44px 28px 38px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.hero-mark{
+  font-family:var(--font-latin);font-weight:500;font-style:italic;
+  font-size:clamp(44px,11vw,72px);line-height:1.08;
+  letter-spacing:.02em;
+}
+.hero-mark .you{opacity:.55}
+.hero-names{margin-top:26px;font-family:var(--font-head)}
+.hero-names .brand{font-family:var(--font-latin);font-weight:600;font-size:15px;letter-spacing:.28em}
+.hero-names .name{font-weight:700;font-size:22px;letter-spacing:.34em;margin-top:6px}
+.hero-names .romaji{font-family:var(--font-latin);font-weight:500;font-size:12px;letter-spacing:.3em;opacity:.85;margin-top:4px}
+.hero-names .htitle{
+  display:inline-block;margin-top:18px;padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.55);
+  font-weight:700;font-size:13.5px;letter-spacing:.16em;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.6;object-position:center 12%}
+.hero-lead{padding:30px 0 46px;background:var(--paper)}
+.hero-catch{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(22px,6vw,34px);line-height:1.85;letter-spacing:.04em;
+}
+.hero-catch .u{background:linear-gradient(transparent 68%,var(--gold-wash) 68%)}
+.hero-sub{margin-top:14px;color:var(--muted);font-size:15px}
+.hero-cta{margin-top:28px}
+@media (min-width:880px){
+  .hero{grid-template-columns:11fr 9fr;min-height:64vh}
+  .hero-panel{padding:52px 48px}
+  .hero-photo img{aspect-ratio:auto;height:100%}
+}
+
+/* ---------- 伴走ライン（signature） ---------- */
+.thread{position:relative}
+.thread::before{
+  content:"";position:absolute;top:0;bottom:0;left:24px;width:2px;
+  background:linear-gradient(var(--gold) 0 100%);opacity:.45;
+}
+.thread section{position:relative}
+.node{
+  position:absolute;left:18px;top:8px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);transition:background .5s ease;
+}
+section .in ~ .node,.node.in{background:var(--gold)}
+.thread .inner{padding-left:64px;padding-right:24px;max-width:704px}
+@media (min-width:880px){
+  .thread::before{left:calc(50% - 352px)}
+  .node{left:calc(50% - 358px)}
+  .thread .inner{padding-left:88px}
+}
+
+/* ---------- 2. Problem ---------- */
+.problem{background:var(--gray-wash);padding:54px 0 48px}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+.checklist li{
+  display:flex;gap:12px;align-items:flex-start;
+  background:var(--paper);border-radius:18px;padding:14px 18px;
+  font-weight:500;box-shadow:0 2px 10px rgba(53,49,43,.05);
+}
+.checklist svg{flex:none;margin-top:6px}
+.problem-turn{
+  margin-top:30px;font-family:var(--font-display);font-weight:900;
+  font-size:clamp(18px,4.6vw,21px);letter-spacing:.04em;
+}
+.problem-turn em{font-style:normal;color:var(--gold-deep)}
+
+/* ---------- 3. Affinity ---------- */
+.affinity{padding:60px 0 54px}
+.affinity-grid{display:flex;flex-direction:column;gap:34px}
+.affinity-figure{
+  width:min(52vw,230px);align-self:center;
+  filter:drop-shadow(0 14px 26px rgba(53,49,43,.16));
+}
+@media (min-width:880px){
+  .affinity-grid{flex-direction:row;gap:52px;align-items:flex-end}
+  .affinity-grid .story{flex:1}
+  .affinity-figure{width:230px;align-self:flex-end}
+}
+.story{
+  border-left:3px solid var(--gold);
+  padding:6px 0 6px 22px;margin-top:8px;
+  font-size:15.5px;line-height:2.15;
+}
+.story p+p{margin-top:1.6em}
+.story .beat{color:var(--muted)}
+.engrave{
+  margin-top:36px;text-align:center;
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(26px,7vw,38px);line-height:1.8;color:var(--gold-deep);
+  letter-spacing:.06em;
+}
+.engrave small{
+  display:block;margin-top:10px;
+  font-family:var(--font-head);font-weight:700;font-size:13px;
+  letter-spacing:.18em;color:var(--gold);
+}
+
+/* ---------- 4. Solution ---------- */
+.solution{background:var(--gold-wash);padding:56px 0 54px}
+.method{font-size:15.5px;margin-bottom:34px}
+.method strong{color:var(--gold-deep)}
+.cards{display:grid;grid-template-columns:1fr;gap:14px}
+.card{
+  background:var(--paper);border-radius:22px;padding:24px 22px;
+  box-shadow:0 4px 16px rgba(53,49,43,.06);
+}
+.card h3{font-family:var(--font-head);font-weight:700;font-size:17px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted);line-height:1.9}
+.card .badge{
+  display:inline-block;margin-top:12px;
+  font-size:11.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--gold-deep);background:var(--gold-wash);
+  border:1px solid var(--gold);border-radius:999px;padding:4px 12px;
+}
+.card .stat{
+  margin-top:10px;font-family:var(--font-head);font-weight:700;
+  font-size:13px;color:var(--gold-deep);letter-spacing:.04em;
+}
+@media (min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- 5. Offer ---------- */
+.offer{padding:60px 0 54px}
+.offer-what{
+  background:var(--paper);border:2px solid var(--gold);border-radius:24px;
+  padding:24px 22px;margin-bottom:30px;
+}
+.offer-what p{font-size:15.5px}
+.offer-what .big{
+  font-family:var(--font-head);font-weight:700;font-size:clamp(19px,5vw,23px);
+  line-height:1.8;margin-bottom:10px;
+}
+.steps{list-style:none;display:flex;flex-direction:column;gap:18px;counter-reset:step}
+.steps li{display:flex;gap:16px;align-items:flex-start}
+.step-no{
+  flex:none;width:44px;height:44px;border-radius:50%;
+  background:var(--gold);color:var(--paper);
+  font-family:var(--font-latin);font-weight:600;font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+}
+.steps h3{font-family:var(--font-head);font-weight:700;font-size:16.5px}
+.steps p{font-size:14px;color:var(--muted)}
+.offer-cta{margin-top:36px;text-align:center}
+@media (min-width:880px){
+  .steps{flex-direction:row;gap:24px}
+  .steps li{flex:1;flex-direction:column}
+}
+
+/* ---------- 6. Narrowing ---------- */
+.narrow{background:var(--gray-wash);padding:48px 0}
+.narrow .inner{text-align:center}
+.narrow-num{
+  font-family:var(--font-latin);font-weight:600;
+  font-size:clamp(64px,16vw,96px);line-height:1;color:var(--gold);
+}
+.narrow-num small{font-size:.32em;color:var(--ink);font-family:var(--font-head);font-weight:700;margin-left:6px}
+.narrow-line{margin-top:12px;font-family:var(--font-display);font-weight:900;font-size:clamp(18px,4.8vw,22px);letter-spacing:.04em}
+.narrow-sub{margin-top:8px;font-size:14px;color:var(--muted)}
+
+/* ---------- 7. Action ---------- */
+.action{background:var(--gold);padding:58px 0 52px;color:var(--paper)}
+.action .inner{text-align:center}
+.action-catch{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(21px,5.6vw,32px);line-height:1.9;margin-bottom:30px;letter-spacing:.04em;
+}
+.profile{background:var(--paper);padding:52px 0 36px}
+.profile .inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.profile img{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid var(--gold)}
+.profile .p-name{font-family:var(--font-head);font-weight:700;font-size:20px;letter-spacing:.24em}
+.profile .p-romaji{font-family:var(--font-latin);font-weight:500;font-size:12px;letter-spacing:.28em;color:var(--muted)}
+.profile .p-title{font-family:var(--font-head);font-weight:700;font-size:14px;letter-spacing:.12em;color:var(--gold-deep);margin-top:8px}
+.profile ul{list-style:none;font-size:13.5px;color:var(--muted);line-height:2.1}
+.profile-links{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:10px}
+.btn-sm{padding:13px 26px;font-size:14px}
+.ig-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-latin);font-weight:500;font-size:13.5px;
+  letter-spacing:.08em;color:var(--gold-deep);text-decoration:none;
+}
+.ig-link:hover{text-decoration:underline;text-underline-offset:3px}
+footer{background:var(--paper);padding:26px 0 34px;text-align:center}
+footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
+footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+</style>
+</head>
+<body>
+
+<!-- 1. 入口 -->
+<header class="hero">
+  <div class="hero-panel">
+    <p class="hero-mark">bE-side<br>&nbsp;you</p>
+    <div class="hero-names">
+      <p class="brand">eiko PR</p>
+      <p class="name">やはた えいこ</p>
+      <p class="romaji">YAHATA EIKO</p>
+      <p class="htitle">Facebook発信プロデューサー</p>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/hero.jpg" alt="やはた えいこ">
+  </div>
+</header>
+<div class="hero-lead">
+  <div class="inner">
+    <h1 class="hero-catch"><span class="u">あなたの投稿が、</span><br><span class="u">紹介・応援・相談につながる。</span></h1>
+    <p class="hero-sub">Facebookの投稿づくりに、いちばん近くで伴走します。</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#offer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z"/></svg>
+        タイプ診断を受けてみる
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="thread">
+
+<!-- 2. Problem -->
+<section class="problem">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Problem</p>
+      <h2 class="h2">こんなお悩み、ありませんか？</h2>
+      <ul class="checklist">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>投稿しても、反応がほとんどない</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SNSからの集客につながらない</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>新しいお客さまとの出会いがつくれない</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>告知の書き方が、いつも手探りになる</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>個人アカウントとビジネスアカウントの使い分けに迷う</li>
+      </ul>
+      <p class="problem-turn">原因は、センスや才能ではなく、<br><em>投稿の「書き方」</em>にあります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Affinity -->
+<section class="affinity">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Story</p>
+      <h2 class="h2">わたしも、ひとりでした。</h2>
+      <div class="affinity-grid">
+        <div class="story">
+          <p>19年続けた会社員を辞めて、<br>ひとりで仕事をはじめた。<br><span class="beat">はじめは楽しくて仕方なかった。</span></p>
+          <p>だけど、<br>集客もできない。<br>売り上げも上がらない。<br>全くうまくいかない。</p>
+          <p>変わったのは、<br>仲間と出会ってから。<br><span class="beat">応援して、応援される。<br>投稿は、そのためにある。</span></p>
+        </div>
+        <img class="affinity-figure" src="assets/eiko_cutout.png" alt="やはた えいこ">
+      </div>
+      <p class="engrave recenter">ひとりでやらない。<br>仲間でやる。<small>#応援の経済圏</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Solution -->
+<section class="solution">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Solution</p>
+      <h2 class="h2">伴走のかたち</h2>
+      <p class="method">読まれる投稿には、共通点があります。<strong>自分の物語を見せること。お客さまの目線で書くこと。問いかけで終わること。</strong>この3つを、あなたの言葉のまま整えるのが、えいこ流の伴走です。</p>
+      <div class="cards">
+        <div class="card">
+          <h3>クラウドファンディング<br>サポート</h3>
+          <p>挑戦の立ち上げから達成まで、企画・ページづくり・応援の集め方を一緒に。</p>
+          <p class="stat">総支援額 1億円突破 ／ 成功率 85%超え</p>
+          <span class="badge">CAMPFIRE 公式パートナー</span>
+        </div>
+        <div class="card">
+          <h3>SNS運用<br>伴走サポート</h3>
+          <p>毎日の投稿を、集客と関係づくりにつながる運用へ。</p>
+          <span class="badge">SAPPORO VIEWTIFUL DINING 公式パートナー</span>
+        </div>
+        <div class="card">
+          <h3>ライブコマース<br>運用サポート</h3>
+          <p>配信の企画から当日の運用まで、売れる仕組みを伴走で。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Offer -->
+<section class="offer" id="offer">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Type Check</p>
+      <h2 class="h2">あなたの投稿タイプ、診断します。</h2>
+      <div class="offer-what">
+        <p class="big">あなたの投稿が「紹介・応援・相談」につながらない理由がわかる、タイプ診断。</p>
+        <p>いまの投稿のクセと、良いところ。そして、次の投稿で意識することをひとつ。あなたのタイプに合わせてお届けします。</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-no">1</span>
+          <div><h3>「診断希望」と送る</h3><p>Messengerからひとこと。それだけで大丈夫です。</p></div>
+        </li>
+        <li>
+          <span class="step-no">2</span>
+          <div><h3>いくつかの質問に答える</h3><p>ふだんの投稿のこと、お仕事のこと。数分で終わります。</p></div>
+        </li>
+        <li>
+          <span class="step-no">3</span>
+          <div><h3>あなたのタイプが届く</h3><p>診断結果と、次の一歩をお返しします。</p></div>
+        </li>
+      </ol>
+      <div class="offer-cta recenter">
+        <a class="btn btn-gold" href="#">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z"/></svg>
+          Messengerで診断を申し込む
+        </a>
+        <p class="cta-sub">フォームからのお申し込みは<a href="#">こちら</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Narrowing -->
+<section class="narrow">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal recenter">
+      <p class="narrow-num">19<small>人</small></p>
+      <p class="narrow-line">予告だけで、19人が手を挙げました。</p>
+      <p class="narrow-sub">診断のはじまりを、たくさんの方が待っています。</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /thread -->
+
+<!-- 7. Action -->
+<section class="action on-gold">
+  <div class="inner">
+    <div class="reveal">
+      <p class="action-catch">まずは、<br class="sp">あなたの投稿を見せてください。</p>
+      <a class="btn btn-paper" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z"/></svg>
+        Messengerで診断を申し込む
+      </a>
+      <p class="cta-sub">フォームからのお申し込みは<a href="#">こちら</a></p>
+    </div>
+  </div>
+</section>
+
+<div class="profile">
+  <div class="inner">
+    <img src="assets/profile.jpg" alt="やはた えいこ">
+    <div>
+      <p class="p-name">やはた えいこ</p>
+      <p class="p-romaji">YAHATA EIKO ／ eiko PR</p>
+      <p class="p-title">Facebook発信プロデューサー</p>
+    </div>
+    <ul>
+      <li>クラウドファンディングサポート（CAMPFIRE 公式パートナー・総支援額1億円突破）</li>
+      <li>SNS運用伴走サポート（藻岩山・大倉山 SAPPORO VIEWTIFUL DINING 公式パートナー）</li>
+      <li>ライブコマース運用サポート</li>
+    </ul>
+    <div class="profile-links">
+      <a class="btn btn-gold btn-sm" href="https://utage-system.com/p/ZfJScLAZ9yvB" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+        ファンビジネスセミナーのご案内
+      </a>
+      <a class="ig-link" href="https://www.instagram.com/eikoyahata/" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg>
+        @eikoyahata
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p class="f-mark">bE-side you</p>
+  <p class="f-note">© eiko PR ｜ モック版につき、診断ボタンのリンク先は準備中です。</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      const node = e.target.closest('section')?.querySelector('.node');
+      if(node) node.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0,rootMargin:'0px 0px 140px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
