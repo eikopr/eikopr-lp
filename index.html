@@ -355,6 +355,33 @@ footer .f-ver{
 }
 footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
 footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+/* ── v0.17.0 タイプ診断クイズ（LP内完結・外部送信なし） ── */
+.quiz{margin-top:34px;background:var(--gold-wash);border:1px solid rgba(195,161,92,.35);border-radius:16px;padding:26px 22px}
+.qz-progress{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.qz-count{font-family:var(--font-latin);font-weight:600;font-size:13px;color:var(--gold-deep);letter-spacing:.06em;white-space:nowrap}
+.qz-bar{flex:1;height:6px;border-radius:3px;background:rgba(195,161,92,.25);overflow:hidden}
+.qz-bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s ease}
+.qz-q{font-family:var(--font-head);font-weight:700;font-size:18px;margin-bottom:16px;line-height:1.6}
+.qz-opts{display:flex;flex-direction:column;gap:10px}
+.qz-opt{
+  text-align:left;font-size:15px;line-height:1.5;cursor:pointer;
+  background:var(--paper);color:var(--ink);
+  border:1.5px solid rgba(195,161,92,.4);border-radius:12px;
+  padding:14px 16px;transition:border-color .15s,background .15s;
+  font-family:var(--font-body);
+}
+.qz-opt:hover{border-color:var(--gold);background:#FDFBF6}
+.qz-opt:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
+.qz-back{margin-top:14px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
+.qz-back:hover{color:var(--gold-deep)}
+.qz-result{display:none}
+.qz-result.show{display:block}
+.qz-r-eyebrow{font-family:var(--font-latin);font-weight:600;font-size:12.5px;letter-spacing:.14em;color:var(--gold-deep);margin-bottom:6px}
+.qz-r-name{font-family:var(--font-display);font-weight:900;font-size:26px;margin-bottom:16px}
+.qz-r-body p{font-size:15.5px;line-height:1.9;margin-bottom:12px}
+.qz-r-cta{margin-top:24px;text-align:center}
+.qz-retry{display:block;margin:18px auto 0;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
+@media (min-width:880px){.quiz{padding:34px 38px}.qz-q{font-size:19.5px}}
 </style>
 </head>
 <body>
@@ -502,28 +529,29 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
       <h2 class="h2">あなたの投稿タイプ、診断します。</h2>
       <div class="offer-what">
         <p class="big">あなたの投稿が「紹介・応援・相談」につながらない理由がわかる、タイプ診断。</p>
-        <p>いまの投稿のクセと、良いところ。そして、次の投稿で意識することをひとつ。あなたのタイプに合わせてお届けします。</p>
+        <p>6つの質問に答えるだけ。その場で、あなたのタイプと次の一歩がわかります。</p>
       </div>
-      <ol class="steps">
-        <li>
-          <span class="step-no">1</span>
-          <div><h3>「診断希望」と送る</h3><p>Messengerからひとこと。それだけで大丈夫です。</p></div>
-        </li>
-        <li>
-          <span class="step-no">2</span>
-          <div><h3>いくつかの質問に答える</h3><p>ふだんの投稿のこと、お仕事のこと。数分で終わります。</p></div>
-        </li>
-        <li>
-          <span class="step-no">3</span>
-          <div><h3>あなたのタイプが届く</h3><p>診断結果と、次の一歩をお返しします。</p></div>
-        </li>
-      </ol>
-      <div class="offer-cta recenter">
-        <a class="btn btn-gold" href="#">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z"/></svg>
-          Messengerで診断を申し込む
-        </a>
-        <p class="cta-sub">フォームからのお申し込みは<a href="#">こちら</a></p>
+      <div class="quiz" id="quiz">
+        <div id="qzMain">
+          <div class="qz-progress"><span class="qz-count" id="qzCount">Q1 / 6</span><span class="qz-bar"><i id="qzBarFill"></i></span></div>
+          <p class="qz-q" id="qzQ"></p>
+          <div class="qz-opts" id="qzOpts"></div>
+          <button type="button" class="qz-back" id="qzBack" hidden>ひとつ前にもどる</button>
+        </div>
+        <div class="qz-result" id="qzResult">
+          <p class="qz-r-eyebrow">YOUR TYPE</p>
+          <h3 class="qz-r-name" id="qzRName"></h3>
+          <div class="qz-r-body" id="qzRBody"></div>
+          <div class="qz-r-cta">
+            <a class="btn btn-gold" id="qzRForm" href="#">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              深掘り診断で投稿を見てもらう
+            </a>
+            <p class="cta-sub">Messengerでのご相談は<a id="qzRMsgr" href="#">こちら</a></p>
+            <button type="button" class="qz-retry" id="qzRetry">もう一度診断する</button>
+          </div>
+        </div>
+        <noscript><p>診断は Messenger からも受けられます。「診断希望」とひとことお送りください。</p></noscript>
       </div>
     </div>
   </div>
@@ -596,7 +624,7 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">© eiko PR ｜ モック版につき、診断ボタンのリンク先は準備中です。</p>
-  <p class="f-ver">v0.16.0 ／ 最終更新 2026-08-15</p>
+  <p class="f-ver">v0.17.0 ／ 最終更新 2026-08-23</p>
 </footer>
 
 <script>
@@ -611,6 +639,61 @@ const io = new IntersectionObserver((entries)=>{
   });
 },{threshold:0,rootMargin:'0px 0px 140px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── v0.17.0 タイプ診断（LP内完結・回答は保存も送信もしない） ── */
+(function(){
+  const QS = [
+    {q:'Facebookへの投稿は？', o:[['見るのが中心で、ほとんど投稿しない','A'],['思い立った時にたまに','B'],['お知らせがある時に','C'],['週1回以上している','F']]},
+    {q:'投稿の中身で多いのは？', o:[['投稿自体をしていない','A'],['日記や近況（これでいいのか迷いつつ）','B'],['サービスの案内・告知','C'],['自分の想いや役立つ話','F']]},
+    {q:'コメントのやり取りは？', o:[['ほとんど見るだけ','A'],['もらったら返すけれど、自分からは行かない','D'],['交流より告知を届けたい','C'],['自分から仲間の投稿へ行く','F']]},
+    {q:'投稿する時の気持ちに近いのは？', o:[['何を書けばいいか分からない','B'],['売り込みと思われないか不安','C'],['反応が少なくて心が折れそう','D'],['全部ひとりで決めている','E']]},
+    {q:'集客のいまは？', o:[['紹介・口コミが頼み。SNSはこれから','A'],['何から始めるか迷っている','B'],['告知はしているけれど、成約につながらない','C'],['少しずつ問い合わせや紹介が生まれている','F']]},
+    {q:'発信のことを相談できる相手は？', o:[['いない。ひとりでやっている','E'],['家族や友人に聞くくらい','E'],['同業の仲間に相談できる','F'],['仲間と一緒に発信に取り組んでいる','F']]}
+  ];
+  const RESULTS = {
+    A:{name:'見る専門タイプ', body:['みんなの投稿をちゃんと見ているから、場の空気が分かっています。それは立派な準備期間。','ただ、見ているだけでは、あなたの存在はまだ誰にも届いていません。','まずは自己紹介の投稿をひとつ。あなたがどんな人かを知ってもらうところから。']},
+    B:{name:'投稿迷子タイプ', body:['投稿する勇気はもうあります。それが一番大きな一歩。','迷いの原因は文章力ではなく、「誰に届けたいか」がまだ決まっていないこと。','次の投稿は、あなたのお客さまひとりを思い浮かべて書いてみる。']},
+    C:{name:'宣伝中心タイプ', body:['お知らせをきちんと届けようとする真面目さは、あなたの強みです。','ただ、告知が続くと、会う前に距離ができてしまいます。投稿は売る場所ではなく、信頼を積み重ねる場所。','次は告知ではなく、仕事への想いや失敗談をひとつ。']},
+    D:{name:'交流不足タイプ', body:['投稿を続けられている。それだけで素晴らしいこと。','反応が少ないのは内容のせいではなく、自分から交流しに行っていないから。応援は、先に応援した人に集まります。','明日、仲間の投稿3つにコメントをしに行く。']},
+    E:{name:'一人で頑張りすぎタイプ', body:['ひとりでここまでやってきた行動力は本物です。','でも、発信はひとりで続けるようにはできていません。ひとりでやらない。仲間でやる。','発信のことを話せる仲間をひとりつくる。']},
+    F:{name:'コミュニティ成長タイプ', body:['発信も交流もできていて、応援される土台がもうあります。','次の課題は広げ方。仲間が思わず広げたくなる投稿づくりへ。','深掘り診断で、あなたの投稿を一緒に磨きましょう。']}
+  };
+  const PRIORITY = ['A','B','C','D','E','F'];
+  let idx = 0;
+  const answers = [];
+  const $ = id => document.getElementById(id);
+  function render(){
+    $('qzCount').textContent = 'Q' + (idx+1) + ' / ' + QS.length;
+    $('qzBarFill').style.width = (idx / QS.length * 100) + '%';
+    $('qzQ').textContent = QS[idx].q;
+    const box = $('qzOpts');
+    box.innerHTML = '';
+    QS[idx].o.forEach(([label, type])=>{
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'qz-opt'; b.textContent = label;
+      b.addEventListener('click', ()=>{ answers[idx] = type; idx+1 < QS.length ? (idx++, render(), scrollQuiz()) : finish(); });
+      box.appendChild(b);
+    });
+    $('qzBack').hidden = (idx === 0);
+  }
+  function finish(){
+    const score = {};
+    answers.forEach(t=>{ score[t] = (score[t]||0)+1; });
+    let best = PRIORITY[0];
+    PRIORITY.forEach(t=>{ if((score[t]||0) > (score[best]||0)) best = t; });
+    const r = RESULTS[best];
+    $('qzRName').textContent = r.name;
+    $('qzRBody').innerHTML = '';
+    r.body.forEach(t=>{ const p = document.createElement('p'); p.textContent = t; $('qzRBody').appendChild(p); });
+    $('qzMain').style.display = 'none';
+    $('qzResult').classList.add('show');
+    scrollQuiz();
+  }
+  function scrollQuiz(){ $('quiz').scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  $('qzBack').addEventListener('click', ()=>{ if(idx>0){ idx--; render(); } });
+  $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
+  render();
+})();
 </script>
 </body>
 </html>
