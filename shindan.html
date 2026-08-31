@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://eikopr.com/shindan.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- shindan.html v1.0.0 -->
+<!-- shindan.html v1.1.0 診断完了の姿(金色)+結果文の太字フォーカス -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -115,6 +115,24 @@ a{color:inherit}
 .qz-retry:hover{color:var(--gold-deep)}
 @media (min-width:880px){.quiz{padding:34px 38px}.qz-q{font-size:19.5px}}
 
+/* ── 診断完了の姿(v1.1.0): カードが金色に変わり「終わった」が一目でわかる ── */
+.quiz.done{background:var(--gold);border-color:var(--gold-deep)}
+.qz-r-done{
+  display:inline-block;font-family:var(--font-head);font-weight:700;font-size:12.5px;
+  letter-spacing:.12em;color:var(--gold-deep);background:var(--paper);
+  border-radius:999px;padding:6px 16px;margin-bottom:16px;
+}
+.quiz.done .qz-r-eyebrow{color:rgba(255,255,255,.85)}
+.quiz.done .qz-r-name{color:var(--paper)}
+.quiz.done .qz-r-tag{color:rgba(255,255,255,.92)}
+.qz-r-body .rb p strong{color:var(--gold-deep)}
+.quiz.done .qz-r-cta .btn{background:var(--paper);color:var(--ink);box-shadow:0 6px 18px rgba(53,49,43,.22)}
+.quiz.done .qz-r-cta .btn:hover{background:var(--gold-wash);transform:translateY(-2px)}
+.quiz.done .qz-r-sub{color:rgba(255,255,255,.92)}
+.quiz.done .qz-r-sub a{color:var(--paper)}
+.quiz.done .qz-retry{color:rgba(255,255,255,.85)}
+.quiz.done .qz-retry:hover{color:var(--paper)}
+
 /* ---------- 戻る ---------- */
 .backrow{padding:0 0 46px;text-align:center}
 .backrow a{font-size:13.5px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
@@ -150,6 +168,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
         <p class="qz-note">回答は保存も送信もされません。安心してお試しください。</p>
       </div>
       <div class="qz-result" id="qzResult">
+        <p class="qz-r-done">診断が完了しました</p>
         <p class="qz-r-eyebrow">YOUR TYPE</p>
         <p class="qz-r-name" id="qzRName"></p>
         <p class="qz-r-tag" id="qzRTag"></p>
@@ -172,7 +191,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">shindan v1.0.1 ／ 最終更新 2026-08-31</p>
+  <p class="f-ver">shindan v1.1.0 ／ 最終更新 2026-08-31</p>
 </footer>
 
 <script>
@@ -229,28 +248,28 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       ['気づいたら、場がなごんでいる','E']]}
   ];
 
-  /* 結果5パターン（同点は、あとに選んだ答えのタイプを優先） */
+  /* 結果5パターン（同点は、あとに選んだ答えのタイプを優先。文中の strong はフォーカス強調） */
   const RESULTS = {
     A:{name:'ストーリーで伝えるタイプ', tag:'体験が共感を呼ぶ人',
-      good:'あなたの体験談には、その場にいたような臨場感があります。うまくいった話も、失敗した話も、あなたが語ると「わかる」と共感が集まります。それは信頼の入口になる、大きな魅力です。',
-      advice:'出来事の説明で終わらせず、「その時、どう感じたか」をひとこと添えてみてください。共感はさらに深まります。',
-      next:'特典①「7日間Facebook投稿レシピ」のDAY2「仕事への想いを伝える投稿」から書いてみてください。あなたの得意が、いちばん活きる型です。'},
+      good:'あなたの体験談には、<strong>その場にいたような臨場感</strong>があります。うまくいった話も、失敗した話も、あなたが語ると<strong>「わかる」と共感が集まります</strong>。それは信頼の入口になる、大きな魅力です。',
+      advice:'出来事の説明で終わらせず、<strong>「その時、どう感じたか」をひとこと添える</strong>。それだけで共感はさらに深まります。',
+      next:'特典①「7日間Facebook投稿レシピ」の<strong>DAY2「仕事への想いを伝える投稿」</strong>から書いてみてください。あなたの得意が、いちばん活きる型です。'},
     B:{name:'会話を生むタイプ', tag:'コメント欄がにぎわう人',
-      good:'人の話を受け止めて、会話をつなげられるのがあなたの魅力です。にぎわうコメント欄は、この力から生まれます。応援は、先に応援した人に集まります。',
-      advice:'投稿の最後に、答えやすい問いかけをひとつ置いてみてください。あなたの聞き上手が、画面の向こうでも働きはじめます。',
-      next:'特典①「7日間Facebook投稿レシピ」のDAY6「コメントが生まれる投稿」から書いてみてください。あなたにとって、いちばん自然な型です。'},
+      good:'人の話を受け止めて、<strong>会話をつなげられる</strong>のがあなたの魅力です。にぎわうコメント欄は、この力から生まれます。<strong>応援は、先に応援した人に集まります</strong>。',
+      advice:'投稿の最後に、<strong>答えやすい問いかけをひとつ</strong>置いてみてください。あなたの聞き上手が、画面の向こうでも働きはじめます。',
+      next:'特典①「7日間Facebook投稿レシピ」の<strong>DAY6「コメントが生まれる投稿」</strong>から書いてみてください。あなたにとって、いちばん自然な型です。'},
     C:{name:'頼られる専門家タイプ', tag:'「詳しい人」として信頼される人',
-      good:'あなたにとっての当たり前は、誰かにとって貴重な学びです。役に立つ話を届けるたび、「この分野なら、あの人」という信頼が積み上がっていきます。',
-      advice:'全部を教えようとしなくて大丈夫。「ひとつだけ」に絞ると、かえって深く伝わります。専門用語をふだんの言葉に置き換えるのも効きます。',
-      next:'特典①「7日間Facebook投稿レシピ」のDAY5「専門性が伝わる投稿」から書いてみてください。あなたの知識が、いちばん届く型です。'},
+      good:'<strong>あなたにとっての当たり前は、誰かにとって貴重な学び</strong>です。役に立つ話を届けるたび、「この分野なら、あの人」という信頼が積み上がっていきます。',
+      advice:'全部を教えようとしなくて大丈夫。<strong>「ひとつだけ」に絞る</strong>と、かえって深く伝わります。専門用語をふだんの言葉に置き換えるのも効きます。',
+      next:'特典①「7日間Facebook投稿レシピ」の<strong>DAY5「専門性が伝わる投稿」</strong>から書いてみてください。あなたの知識が、いちばん届く型です。'},
     D:{name:'応援されるチャレンジタイプ', tag:'途中経過が応援を集める人',
-      good:'完成する前の姿を見せられるのは、勇気であり才能です。挑戦の途中経過は、人がいちばん応援したくなる投稿。あなたの前に進む姿が、まわりの力を引き寄せます。',
-      advice:'順調な報告だけでなく、不安や迷いも正直に書いてみてください。応援は「がんばっている人」よりも「正直な人」に集まります。',
-      next:'特典①「7日間Facebook投稿レシピ」のDAY4「応援したくなる投稿」から書いてみてください。あなたの挑戦が、いちばん伝わる型です。'},
+      good:'<strong>完成する前の姿を見せられるのは、勇気であり才能</strong>です。挑戦の途中経過は、人がいちばん応援したくなる投稿。あなたの前に進む姿が、まわりの力を引き寄せます。',
+      advice:'順調な報告だけでなく、<strong>不安や迷いも正直に</strong>書いてみてください。応援は「がんばっている人」よりも「正直な人」に集まります。',
+      next:'特典①「7日間Facebook投稿レシピ」の<strong>DAY4「応援したくなる投稿」</strong>から書いてみてください。あなたの挑戦が、いちばん伝わる型です。'},
     E:{name:'人柄で伝えるタイプ', tag:'「この人なら話せそう」と思われる人',
-      good:'仕事の話だけではない、あなたの素顔がにじむ投稿。「この人なら話せそう」という安心感は、あなたのいちばんの魅力です。人は、情報だけでなく人柄に惹かれます。',
-      advice:'日常のひとコマに、あなたが感じたことをひとこと添えてみてください。親しみが、少しずつ信頼に変わっていきます。',
-      next:'特典①「7日間Facebook投稿レシピ」のDAY3「人柄が伝わる投稿」から書いてみてください。あなたらしさが、いちばん出る型です。'}
+      good:'仕事の話だけではない、あなたの素顔がにじむ投稿。<strong>「この人なら話せそう」という安心感</strong>は、あなたのいちばんの魅力です。人は、情報だけでなく人柄に惹かれます。',
+      advice:'日常のひとコマに、<strong>あなたが感じたことをひとこと</strong>添えてみてください。親しみが、少しずつ信頼に変わっていきます。',
+      next:'特典①「7日間Facebook投稿レシピ」の<strong>DAY3「人柄が伝わる投稿」</strong>から書いてみてください。あなたらしさが、いちばん出る型です。'}
   };
 
   let idx = 0;
@@ -290,16 +309,17 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     [['あなたの良いところ', r.good],['さらに良くなるヒント', r.advice],['次の一歩', r.next]].forEach(([h, t])=>{
       const d = document.createElement('div'); d.className = 'rb';
       const b = document.createElement('b'); b.textContent = h;
-      const p = document.createElement('p'); p.textContent = t;
+      const p = document.createElement('p'); p.innerHTML = t;  // 文言はこのファイル内の固定文のみ
       d.appendChild(b); d.appendChild(p); body.appendChild(d);
     });
     $('qzMain').style.display = 'none';
+    $('quiz').classList.add('done');
     $('qzResult').classList.add('show');
     scrollQuiz();
   }
   function scrollQuiz(){ $('quiz').scrollIntoView({behavior:'smooth', block:'start'}); }
   $('qzBack').addEventListener('click', ()=>{ if(idx>0){ idx--; render(); } });
-  $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
+  $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('quiz').classList.remove('done'); $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
   render();
 })();
 </script>
