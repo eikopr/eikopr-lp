@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://eikopr.com/tss.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- tss.html v1.1.0 ページ内診断(メンバー確認+裏側送信) -->
+<!-- tss.html v1.2.0 受け取り方法を選択式に(Messenger/メール・メールは形式チェック) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -252,8 +252,15 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
         <input type="text" id="fWorryOther" placeholder="気になっていることを、ひとことで" hidden>
       </div>
       <div class="field">
-        <label for="fContact">お返事の受け取り先 <em>必須</em></label>
-        <input type="text" id="fContact" placeholder="Messenger 希望は Facebook のお名前、メール希望はアドレス">
+        <label for="fMethod">お返事の受け取り方法 <em>必須</em></label>
+        <select id="fMethod">
+          <option value="Messenger">Messenger で受け取る</option>
+          <option value="メール">メールで受け取る</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fContact"><span id="fContactLabel">Facebook のお名前</span> <em>必須</em></label>
+        <input type="text" id="fContact" placeholder="Messenger でお探しする時のお名前">
       </div>
       <p class="ferr" id="quizErr" hidden></p>
       <button type="button" class="btn btn-gold mbtn" id="sendBtn">診断をお願いする</button>
@@ -278,7 +285,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">tss v1.1.0 ／ 最終更新 2026-08-31</p>
+  <p class="f-ver">tss v1.2.0 ／ 最終更新 2026-08-31</p>
 </footer>
 
 <script>
@@ -333,12 +340,30 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     $('fWorryOther').hidden = (this.value !== '__other__');
   });
 
+  /* 受け取り方法に合わせて入力欄の案内を切り替え */
+  $('fMethod').addEventListener('change', function(){
+    var mail = (this.value === 'メール');
+    $('fContactLabel').textContent = mail ? 'メールアドレス' : 'Facebook のお名前';
+    var c = $('fContact');
+    c.placeholder = mail ? '例）example@gmail.com' : 'Messenger でお探しする時のお名前';
+    c.type = mail ? 'email' : 'text';
+    c.inputMode = mail ? 'email' : 'text';
+  });
+
   $('sendBtn').addEventListener('click', function(){
     var post = $('fPost').value.trim();
+    var method = $('fMethod').value;
     var contact = $('fContact').value.trim();
     var err = $('quizErr');
     if (!post) { err.textContent = '見てほしい投稿を貼り付けてください。'; err.hidden = false; return; }
-    if (!contact) { err.textContent = 'お返事の受け取り先を書いてください。'; err.hidden = false; return; }
+    if (!contact) {
+      err.textContent = (method === 'メール') ? 'メールアドレスを書いてください。' : 'Facebook のお名前を書いてください。';
+      err.hidden = false; return;
+    }
+    if (method === 'メール' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)) {
+      err.textContent = 'メールアドレスの形が正しくないようです。ご確認ください。';
+      err.hidden = false; return;
+    }
     err.hidden = true;
     var btn = $('sendBtn');
     btn.disabled = true; btn.textContent = 'お送りしています…';
@@ -354,7 +379,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     } else {
       body.append('entry.273701990', worry);
     }
-    body.append('entry.608034455', contact);
+    body.append('entry.608034455', method + ': ' + contact);
 
     fetch(FORM, { method: 'POST', mode: 'no-cors', body: body })
       .then(function(){ show('doneBox'); window.scrollTo({top: $('doneBox').offsetTop - 80, behavior: 'smooth'}); })
