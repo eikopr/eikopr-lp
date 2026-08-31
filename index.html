@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<!-- eikoAI LP v0.19.0 — 告知帯を追従型(sticky)+「出版特典ページ」表記へ -->
+<!-- eikoAI LP v0.20.0 — 6問診断に完了演出(金色)+スマホのホバー色残り修正 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -370,7 +370,7 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
   padding:14px 16px;transition:border-color .15s,background .15s;
   font-family:var(--font-body);
 }
-.qz-opt:hover{border-color:var(--gold);background:#FDFBF6}
+@media (hover:hover){.qz-opt:hover{border-color:var(--gold);background:#FDFBF6}}
 .qz-opt:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
 .qz-back{margin-top:14px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
 .qz-back:hover{color:var(--gold-deep)}
@@ -382,6 +382,22 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 .qz-r-cta{margin-top:24px;text-align:center}
 .qz-retry{display:block;margin:18px auto 0;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
 @media (min-width:880px){.quiz{padding:34px 38px}.qz-q{font-size:19.5px}}
+/* ── v0.20.0 診断完了の姿: カードが金色に変わり「終わった」が一目でわかる ── */
+.quiz.done{background:var(--gold);border:1px solid var(--gold-deep)}
+.qz-r-done{
+  display:inline-block;font-family:var(--font-head);font-weight:700;font-size:12.5px;
+  letter-spacing:.12em;color:var(--gold-deep);background:var(--paper);
+  border-radius:999px;padding:6px 16px;margin-bottom:14px;
+}
+.quiz.done .qz-r-eyebrow{color:rgba(255,255,255,.85)}
+.quiz.done .qz-r-name{color:var(--paper)}
+.quiz.done .qz-r-body{background:var(--paper);border-radius:14px;padding:16px 18px;margin-top:6px}
+.quiz.done .qz-r-cta .btn-gold{background:var(--paper);color:var(--ink);box-shadow:0 6px 18px rgba(53,49,43,.22)}
+.quiz.done .qz-r-cta .btn-gold:hover{background:var(--gold-wash);color:var(--ink)}
+.quiz.done .qz-r-cta .cta-sub{color:rgba(255,255,255,.92)}
+.quiz.done .qz-r-cta .cta-sub a{color:var(--paper)}
+.quiz.done .qz-retry{color:rgba(255,255,255,.85)}
+.quiz.done .qz-retry:hover{color:var(--paper)}
 /* ── v0.18.0 Kindle出版告知帯 + TSSメンバー入口 ── */
 .notice-bar{
   position:sticky;top:0;z-index:50;
@@ -561,6 +577,7 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
           <button type="button" class="qz-back" id="qzBack" hidden>ひとつ前にもどる</button>
         </div>
         <div class="qz-result" id="qzResult">
+          <p class="qz-r-done">診断が完了しました</p>
           <p class="qz-r-eyebrow">YOUR TYPE</p>
           <h3 class="qz-r-name" id="qzRName"></h3>
           <div class="qz-r-body" id="qzRBody"></div>
@@ -658,7 +675,7 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">© eiko PR</p>
-  <p class="f-ver">v0.19.1 ／ 最終更新 2026-08-31</p>
+  <p class="f-ver">v0.20.0 ／ 最終更新 2026-08-31</p>
 </footer>
 
 <script>
@@ -720,12 +737,13 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     $('qzRBody').innerHTML = '';
     r.body.forEach(t=>{ const p = document.createElement('p'); p.textContent = t; $('qzRBody').appendChild(p); });
     $('qzMain').style.display = 'none';
+    $('quiz').classList.add('done');
     $('qzResult').classList.add('show');
     scrollQuiz();
   }
   function scrollQuiz(){ $('quiz').scrollIntoView({behavior:'smooth', block:'nearest'}); }
   $('qzBack').addEventListener('click', ()=>{ if(idx>0){ idx--; render(); } });
-  $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
+  $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('quiz').classList.remove('done'); $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
   render();
 })();
 </script>
