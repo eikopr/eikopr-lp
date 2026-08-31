@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://eikopr.com/shindan.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- shindan.html v1.1.1 スマホのホバー色残り修正(hover:hover 限定) -->
+<!-- shindan.html v1.2.0 特典の時刻ゲート追加(9/6 06:00〜9/8 23:59 JST のみ公開・?phase=で確認可) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -156,6 +156,19 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 
 <div class="quiz-wrap">
   <div class="inner">
+    <!-- 発売前/終了後はこちらを表示(JSが切替) -->
+    <div class="quiz" id="gateCard" hidden>
+      <div style="text-align:center">
+        <p class="qz-r-eyebrow" id="gateEyebrow">COMING SOON</p>
+        <p class="qz-r-name" id="gateTitle">この診断は、発売と同時にひらきます</p>
+        <div class="qz-r-body">
+          <div class="rb"><p id="gateBody">『なぜ今、Facebook集客なのか』の出版特典です。<br>9月6日（日）朝6時から、このページで受けられます。</p></div>
+        </div>
+        <div class="qz-r-cta">
+          <a class="btn btn-gold" href="book.html">出版特典ページへ</a>
+        </div>
+      </div>
+    </div>
     <div class="quiz" id="quiz">
       <div id="qzMain">
         <div class="qz-progress">
@@ -191,10 +204,29 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">shindan v1.1.1 ／ 最終更新 2026-08-31</p>
+  <p class="f-ver">shindan v1.2.0 ／ 最終更新 2026-08-31</p>
 </footer>
 
 <script>
+/* ── v1.2.0 特典の時刻ゲート(book.html と同じ窓・?phase=live|closed|pre で確認可) ── */
+(function(){
+  var START = Date.UTC(2026, 8, 5, 21, 0, 0);   // 2026-09-06 06:00 JST
+  var END   = Date.UTC(2026, 8, 8, 15, 0, 0);   // 2026-09-09 00:00 JST
+  var force = new URLSearchParams(location.search).get('phase');
+  var now = Date.now();
+  var phase = (force === 'live' || force === 'closed' || force === 'pre') ? force
+            : (now < START ? 'pre' : (now < END ? 'live' : 'closed'));
+  if (phase === 'live') return;
+  document.getElementById('quiz').hidden = true;
+  var g = document.getElementById('gateCard');
+  g.hidden = false;
+  if (phase === 'closed') {
+    document.getElementById('gateEyebrow').textContent = 'CLOSED';
+    document.getElementById('gateTitle').textContent = '特典の公開期間は終了しました';
+    document.getElementById('gateBody').innerHTML = 'この診断は『なぜ今、Facebook集客なのか』の出版記念特典として、9月8日（火）まで公開していました。<br>本は引き続き Amazon でお読みいただけます。';
+  }
+})();
+
 /* ── 発信タイプ診断（LP内完結・回答は保存も送信もしない） ── */
 (function(){
   const QS = [
