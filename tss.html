@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://eikopr.com/tss.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- tss.html v1.0.0 -->
+<!-- tss.html v1.1.0 ページ内診断(メンバー確認+裏側送信) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -57,6 +57,8 @@ a{color:inherit}
   transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
 }
 .btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+button.btn{border:none;cursor:pointer}
+button.btn:disabled{opacity:.6;cursor:default;transform:none}
 .btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
 .btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
 .btn svg{flex:none}
@@ -109,11 +111,48 @@ a{color:inherit}
 .howto-note{margin-top:22px;font-size:14px;color:var(--muted);text-align:center}
 .howto-note strong{color:var(--gold-deep)}
 
-/* CTA */
+/* CTA + メンバーフォーム */
 .cta{padding:14px 0 52px;text-align:center}
-.cta .btn{width:100%;max-width:360px}
-.cta-sub{margin-top:16px;font-size:13px;color:var(--muted)}
+.cta-sub{margin-top:20px;font-size:13px;color:var(--muted)}
 .cta-sub a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+.mcard{
+  background:var(--gold-wash);border:1px solid rgba(195,161,92,.35);
+  border-radius:16px;padding:26px 22px;text-align:left;
+}
+.mcard-head{
+  font-family:var(--font-display);font-weight:900;font-size:19px;
+  letter-spacing:.05em;margin-bottom:6px;text-align:center;
+}
+.mcard-sub{font-size:14px;color:var(--muted);margin-bottom:18px;text-align:center}
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-family:var(--font-head);font-weight:700;font-size:13.5px;
+  margin-bottom:6px;letter-spacing:.04em;
+}
+.field label em{
+  font-style:normal;font-size:11px;color:var(--paper);background:var(--gold-deep);
+  border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;
+}
+.field input,.field textarea,.field select{
+  width:100%;font-family:var(--font-body);font-size:16px;color:var(--ink);
+  background:var(--paper);border:1.5px solid rgba(195,161,92,.4);
+  border-radius:12px;padding:12px 14px;line-height:1.7;
+}
+.field textarea{resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{
+  outline:none;border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(195,161,92,.18);
+}
+.field select{
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23A2823F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;
+}
+.field input[hidden]{display:none}
+.mbtn{width:100%;margin-top:4px}
+.ferr{font-size:13px;color:#B4533A;margin:-6px 0 12px;text-align:center}
+.mcard-note{margin-top:14px;font-size:12px;color:var(--muted);line-height:1.9;text-align:center}
+.mcard-note a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+#doneBox .mcard-sub{margin-bottom:22px}
 
 /* 戻る + フッター */
 .backrow{padding:0 0 46px;text-align:center}
@@ -147,7 +186,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     <ol class="steps">
       <li>
         <b>投稿を貼って、送信する</b>
-        <p>下のボタンから診断フォームを開き、見てほしい Facebook 投稿の本文を貼り付けて送ってください。下書きでも大丈夫です。</p>
+        <p>下でお名前と合言葉を入れてメンバー確認をしたら、見てほしい Facebook 投稿の本文を貼り付けて送ってください。下書きでも大丈夫です。</p>
       </li>
       <li>
         <b>お返事が届く</b>
@@ -164,10 +203,70 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 
 <div class="cta">
   <div class="inner">
-    <a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-      投稿診断フォームをひらく
-    </a>
+
+    <!-- メンバー確認(軽いログイン) -->
+    <div class="mcard" id="gateBox">
+      <p class="mcard-head">メンバー確認</p>
+      <p class="mcard-sub">お名前と、コミュニティの合言葉を入れてください。</p>
+      <div class="field">
+        <label for="mName">お名前</label>
+        <input type="text" id="mName" autocomplete="name" placeholder="例）八幡えいこ">
+      </div>
+      <div class="field">
+        <label for="mPass">合言葉</label>
+        <input type="text" id="mPass" autocomplete="off" placeholder="コミュニティでお知らせしている合言葉">
+      </div>
+      <p class="ferr" id="gateErr" hidden>合言葉が違うようです。コミュニティの案内をご確認ください。</p>
+      <button type="button" class="btn btn-gold mbtn" id="gateBtn">診断をひらく</button>
+    </div>
+
+    <!-- 投稿診断(ページ内フォーム) -->
+    <div class="mcard" id="quizBox" hidden>
+      <p class="mcard-head">投稿診断</p>
+      <p class="mcard-sub"><span id="mWho"></span>さん、投稿を見せてください。</p>
+      <div class="field">
+        <label for="fPost">見てほしい投稿 <em>必須</em></label>
+        <textarea id="fPost" rows="8" placeholder="Facebook 投稿の本文を、そのまま貼り付けてください（下書きでも大丈夫です）"></textarea>
+      </div>
+      <div class="field">
+        <label for="fType">タイプ診断の結果</label>
+        <select id="fType">
+          <option>診断していない</option>
+          <option>見る専門タイプ</option>
+          <option>投稿迷子タイプ</option>
+          <option>宣伝中心タイプ</option>
+          <option>交流不足タイプ</option>
+          <option>一人で頑張りすぎタイプ</option>
+          <option>コミュニティ成長タイプ</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fWorry">いま一番気になっていること</label>
+        <select id="fWorry">
+          <option>集客につながらない</option>
+          <option>何を書けばいいか分からない</option>
+          <option>反応が少ない</option>
+          <option>ビジネスと個人の使い分け</option>
+          <option value="__other__">その他（下に書いてください）</option>
+        </select>
+        <input type="text" id="fWorryOther" placeholder="気になっていることを、ひとことで" hidden>
+      </div>
+      <div class="field">
+        <label for="fContact">お返事の受け取り先 <em>必須</em></label>
+        <input type="text" id="fContact" placeholder="Messenger 希望は Facebook のお名前、メール希望はアドレス">
+      </div>
+      <p class="ferr" id="quizErr" hidden></p>
+      <button type="button" class="btn btn-gold mbtn" id="sendBtn">診断をお願いする</button>
+      <p class="mcard-note">送信すると、お返事づくりが始まります。お返事には少しお時間をいただきます。<br>うまく送れないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からも送れます。</p>
+    </div>
+
+    <!-- 送信完了 -->
+    <div class="mcard" id="doneBox" hidden>
+      <p class="mcard-head">お送りしました</p>
+      <p class="mcard-sub">投稿を拝見して、心を込めてお返事します。<br>届いたアドバイスは、次の投稿でひとつだけ試してみてください。</p>
+      <button type="button" class="btn btn-gold mbtn" id="againBtn">もう1本、診断をお願いする</button>
+    </div>
+
     <p class="cta-sub">自分の発信タイプを知りたい方は<a href="shindan.html">発信タイプ診断（全8問）</a>もどうぞ</p>
   </div>
 </div>
@@ -179,8 +278,99 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">tss v1.0.0 ／ 最終更新 2026-08-31</p>
+  <p class="f-ver">tss v1.1.0 ／ 最終更新 2026-08-31</p>
 </footer>
 
+<script>
+/* ── v1.1.0 メンバー確認+ページ内投稿診断 ──
+   合言葉は平文を置かず SHA-256 で照合。送信は既存の受け口(Googleフォーム)へ
+   裏側から届ける方式なので、AI下書き〜通知メールの流れは従来どおり。 */
+(function(){
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/formResponse';
+  var PASS_HASH = 'b440a122f3097efdda9547e0822d02e818e009f774f8b04a832829491ef8b16f';
+  var $ = function(id){ return document.getElementById(id); };
+  var memberName = '';
+
+  function show(id){
+    ['gateBox','quizBox','doneBox'].forEach(function(b){ $(b).hidden = (b !== id); });
+  }
+  function sha256(text){
+    var data = new TextEncoder().encode(text);
+    return crypto.subtle.digest('SHA-256', data).then(function(buf){
+      return Array.prototype.map.call(new Uint8Array(buf), function(b){
+        return ('0' + b.toString(16)).slice(-2);
+      }).join('');
+    });
+  }
+
+  /* 前回のメンバー確認を復元(この端末の中だけに保存) */
+  try {
+    var saved = localStorage.getItem('tss_member');
+    if (saved) { memberName = saved; $('mWho').textContent = memberName; show('quizBox'); }
+  } catch (e) {}
+
+  $('gateBtn').addEventListener('click', function(){
+    var name = $('mName').value.trim();
+    var pass = $('mPass').value.trim().toLowerCase();
+    var err = $('gateErr');
+    if (!name) { err.textContent = 'お名前を入れてください。'; err.hidden = false; return; }
+    if (!pass) { err.textContent = '合言葉を入れてください。'; err.hidden = false; return; }
+    sha256(pass).then(function(hex){
+      if (hex !== PASS_HASH) {
+        err.textContent = '合言葉が違うようです。コミュニティの案内をご確認ください。';
+        err.hidden = false;
+        return;
+      }
+      memberName = name;
+      try { localStorage.setItem('tss_member', name); } catch (e) {}
+      $('mWho').textContent = name;
+      err.hidden = true;
+      show('quizBox');
+    });
+  });
+
+  $('fWorry').addEventListener('change', function(){
+    $('fWorryOther').hidden = (this.value !== '__other__');
+  });
+
+  $('sendBtn').addEventListener('click', function(){
+    var post = $('fPost').value.trim();
+    var contact = $('fContact').value.trim();
+    var err = $('quizErr');
+    if (!post) { err.textContent = '見てほしい投稿を貼り付けてください。'; err.hidden = false; return; }
+    if (!contact) { err.textContent = 'お返事の受け取り先を書いてください。'; err.hidden = false; return; }
+    err.hidden = true;
+    var btn = $('sendBtn');
+    btn.disabled = true; btn.textContent = 'お送りしています…';
+
+    var body = new URLSearchParams();
+    body.append('entry.837633990', memberName + '（TSSメンバー）');
+    body.append('entry.575997668', post);
+    body.append('entry.1670820998', $('fType').value);
+    var worry = $('fWorry').value;
+    if (worry === '__other__') {
+      body.append('entry.273701990', '__other_option__');
+      body.append('entry.273701990.other_option_response', $('fWorryOther').value.trim() || 'その他');
+    } else {
+      body.append('entry.273701990', worry);
+    }
+    body.append('entry.608034455', contact);
+
+    fetch(FORM, { method: 'POST', mode: 'no-cors', body: body })
+      .then(function(){ show('doneBox'); window.scrollTo({top: $('doneBox').offsetTop - 80, behavior: 'smooth'}); })
+      .catch(function(){
+        err.textContent = '送信がうまくいきませんでした。下の「こちらのフォーム」からお送りください。';
+        err.hidden = false;
+      })
+      .finally(function(){ btn.disabled = false; btn.textContent = '診断をお願いする'; });
+  });
+
+  $('againBtn').addEventListener('click', function(){
+    $('fPost').value = '';
+    $('quizErr').hidden = true;
+    show('quizBox');
+  });
+})();
+</script>
 </body>
 </html>
