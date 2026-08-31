@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あなたは何の人？信頼されるFacebook発信タイプ診断｜eiko PR</title>
+<meta name="description" content="直感で選ぶだけの全8問。あなたの強みと魅力が伝わりやすい発信スタイルがわかります。『なぜ今、Facebook集客なのか』Kindle出版記念特典。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="信頼されるFacebook発信タイプ診断">
+<meta property="og:description" content="直感で選ぶだけの全8問。あなたの強みと魅力が伝わりやすい発信スタイルがわかります。">
+<meta property="og:url" content="https://eikopr.com/shindan.html">
+<meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- shindan.html v1.0.0 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;
+  --gold-deep:#A2823F;
+  --gold-wash:#F7F1E5;
+  --gray:#C1C3C2;
+  --gray-wash:#F0F1F0;
+  --ink:#35312B;
+  --muted:#7C766B;
+  --paper:#FFFFFF;
+  --font-latin:'Futura','Jost',sans-serif;
+  --font-display:'Zen Maru Gothic',sans-serif;
+  --font-head:'Zen Maru Gothic',sans-serif;
+  --font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.inner{max-width:640px;margin:0 auto;padding:0 24px}
+
+/* ---------- ボタン ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-body);font-weight:700;font-size:16px;
+  padding:16px 34px;border-radius:999px;text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
+.btn svg{flex:none}
+
+/* ---------- ヘッダー ---------- */
+.head{padding:46px 0 30px;text-align:center}
+.head-badge{
+  display:inline-block;font-family:var(--font-head);font-weight:700;font-size:12.5px;
+  letter-spacing:.12em;color:var(--gold-deep);background:var(--gold-wash);
+  border:1px solid var(--gold);border-radius:999px;padding:6px 16px;margin-bottom:18px;
+}
+.head-catch{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(20px,5.6vw,28px);line-height:1.75;letter-spacing:.04em;
+}
+.head-catch .u{background:linear-gradient(transparent 68%,var(--gold-wash) 68%)}
+.head-sub{margin-top:14px;font-size:14.5px;color:var(--muted)}
+.head-sub strong{color:var(--gold-deep)}
+
+/* ---------- 診断 ---------- */
+.quiz-wrap{padding:8px 0 60px}
+.quiz{background:var(--gold-wash);border:1px solid rgba(195,161,92,.35);border-radius:16px;padding:26px 22px}
+.qz-progress{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.qz-count{font-family:var(--font-latin);font-weight:600;font-size:13px;color:var(--gold-deep);letter-spacing:.06em;white-space:nowrap}
+.qz-bar{flex:1;height:6px;border-radius:3px;background:rgba(195,161,92,.25);overflow:hidden}
+.qz-bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s ease}
+.qz-q{font-family:var(--font-head);font-weight:700;font-size:18px;margin-bottom:16px;line-height:1.6}
+.qz-opts{display:flex;flex-direction:column;gap:10px}
+.qz-opt{
+  text-align:left;font-size:15px;line-height:1.6;cursor:pointer;
+  background:var(--paper);color:var(--ink);
+  border:1.5px solid rgba(195,161,92,.4);border-radius:12px;
+  padding:14px 16px;transition:border-color .15s,background .15s;
+  font-family:var(--font-body);
+}
+.qz-opt:hover{border-color:var(--gold);background:#FDFBF6}
+.qz-opt:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
+.qz-back{margin-top:14px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
+.qz-back:hover{color:var(--gold-deep)}
+.qz-note{margin-top:16px;font-size:12px;color:var(--muted);text-align:center}
+.qz-result{display:none}
+.qz-result.show{display:block}
+.qz-r-eyebrow{font-family:var(--font-latin);font-weight:600;font-size:12.5px;letter-spacing:.14em;color:var(--gold-deep);margin-bottom:6px}
+.qz-r-name{font-family:var(--font-display);font-weight:900;font-size:clamp(22px,6vw,27px);line-height:1.6;margin-bottom:4px}
+.qz-r-tag{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--gold-deep);margin-bottom:16px}
+.qz-r-body{margin-top:6px}
+.qz-r-body .rb{
+  background:var(--paper);border-radius:14px;padding:16px 18px;margin-bottom:12px;
+}
+.qz-r-body .rb b{
+  display:block;font-family:var(--font-head);font-weight:700;font-size:13px;
+  color:var(--gold-deep);margin-bottom:4px;letter-spacing:.06em;
+}
+.qz-r-body .rb p{font-size:15px;line-height:1.9}
+.qz-r-cta{margin-top:26px;text-align:center}
+.qz-r-cta .btn{width:100%;max-width:340px}
+.qz-r-cta .btn+.btn{margin-top:12px}
+.qz-r-sub{margin-top:14px;font-size:13px;color:var(--muted)}
+.qz-r-sub a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+.qz-retry{display:block;margin:18px auto 0;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
+.qz-retry:hover{color:var(--gold-deep)}
+@media (min-width:880px){.quiz{padding:34px 38px}.qz-q{font-size:19.5px}}
+
+/* ---------- 戻る ---------- */
+.backrow{padding:0 0 46px;text-align:center}
+.backrow a{font-size:13.5px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- フッター ---------- */
+footer{background:var(--paper);padding:26px 0 34px;text-align:center;border-top:1px solid var(--gray-wash)}
+footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
+footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="inner">
+    <p class="head-badge">Kindle出版記念・特典2</p>
+    <h1 class="head-catch"><span class="u">あなたは何の人？</span><br><span class="u">信頼されるFacebook発信タイプ診断</span></h1>
+    <p class="head-sub">直感で選ぶだけの全8問。あなたの強みと魅力が伝わりやすい発信スタイルがわかります。<br><strong>正解・不正解はありません。「これが私っぽい！」で選んでください。</strong></p>
+  </div>
+</div>
+
+<div class="quiz-wrap">
+  <div class="inner">
+    <div class="quiz" id="quiz">
+      <div id="qzMain">
+        <div class="qz-progress">
+          <span class="qz-count" id="qzCount">Q1 / 8</span>
+          <span class="qz-bar"><i id="qzBarFill"></i></span>
+        </div>
+        <p class="qz-q" id="qzQ"></p>
+        <div class="qz-opts" id="qzOpts"></div>
+        <button type="button" class="qz-back" id="qzBack" hidden>ひとつ前の質問に戻る</button>
+        <p class="qz-note">回答は保存も送信もされません。安心してお試しください。</p>
+      </div>
+      <div class="qz-result" id="qzResult">
+        <p class="qz-r-eyebrow">YOUR TYPE</p>
+        <p class="qz-r-name" id="qzRName"></p>
+        <p class="qz-r-tag" id="qzRTag"></p>
+        <div class="qz-r-body" id="qzRBody"></div>
+        <div class="qz-r-cta">
+          <a class="btn btn-gold" href="https://ssl.form-mailer.jp/fms/0dd313f5889182" target="_blank" rel="noopener">10月4日(日)の実践会で一緒にやってみる</a>
+          <a class="btn btn-gold" href="https://m.me/yahataeiko" target="_blank" rel="noopener">Messengerで相談してみる</a>
+          <p class="qz-r-sub">特典①「7日間Facebook投稿レシピ」は<a href="book.html#gift">こちらから</a>受け取れます</p>
+        </div>
+        <button type="button" class="qz-retry" id="qzRetry">もう一度診断する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="backrow">
+  <a href="book.html">『なぜ今、Facebook集客なのか』出版記念ページへ戻る</a>
+</div>
+
+<footer>
+  <p class="f-mark">bE-side you</p>
+  <p class="f-note">&copy; eiko PR</p>
+  <p class="f-ver">shindan v1.0.0 ／ 最終更新 2026-08-31</p>
+</footer>
+
+<script>
+/* ── 発信タイプ診断（LP内完結・回答は保存も送信もしない） ── */
+(function(){
+  const QS = [
+    {q:'まわりの人から、よく言われるのは？', o:[
+      ['「その話、おもしろいね」と言われる','A'],
+      ['「聞き上手だね」と言われる','B'],
+      ['「詳しいね、頼りになるね」と言われる','C'],
+      ['「行動力があるね」と言われる','D'],
+      ['「一緒にいると、なんだか和む」と言われる','E']]},
+    {q:'これまでのFacebook、どんな投稿が多かったですか？（まだ少ない方は、書けそうだと思うものを）', o:[
+      ['出来事や体験を、ストーリーで書くことが多い','A'],
+      ['自分の投稿より、仲間の投稿へのコメントが多い','B'],
+      ['仕事の知識や、役に立つ情報を届けることが多い','C'],
+      ['新しい取り組みや、挑戦していることの報告が多い','D'],
+      ['趣味や日常のひとコマが多い','E']]},
+    {q:'これから書いてみたいのは、どんな投稿ですか？', o:[
+      ['自分の歩みや、転機になった出来事のストーリー','A'],
+      ['読んだ人の声を聞いてみる、問いかけの投稿','B'],
+      ['専門分野のコツを、わかりやすく伝える投稿','C'],
+      ['いま挑戦していることの、途中経過の投稿','D'],
+      ['家族や趣味など、日々の小さな幸せの投稿','E']]},
+    {q:'投稿するとき、いちばん大事にしたいのは？', o:[
+      ['心が動いたことを、正直に書くこと','A'],
+      ['読んだ人との会話が生まれること','B'],
+      ['誰かの役に立つこと','C'],
+      ['前に進む姿を見せること','D'],
+      ['自分らしさが伝わること','E']]},
+    {q:'時間ができた休日、あなたに近い過ごし方は？', o:[
+      ['印象に残った出来事を、誰かに話したくなる','A'],
+      ['友人と会って、近況をゆっくり聞く','B'],
+      ['気になっていたことを、調べたり学んだりする','C'],
+      ['新しい場所や、やったことのないことに出かける','D'],
+      ['家族や趣味と、のんびり過ごす','E']]},
+    {q:'投稿へのコメントで、いちばん嬉しいのは？', o:[
+      ['「共感しました」「私もです」','A'],
+      ['コメント欄で、やり取りが続くこと','B'],
+      ['「参考になりました」「勉強になります」','C'],
+      ['「応援しています」「がんばって」','D'],
+      ['「らしいね」「ほっこりしました」','E']]},
+    {q:'筆が進むのは、どんな話を書いている時ですか？', o:[
+      ['自分の気持ちが動いた、出来事の話','A'],
+      ['読む人の顔を思い浮かべながらの、話しかけ','B'],
+      ['得意分野の解説や、コツの紹介','C'],
+      ['目標や、これからやりたいことの宣言','D'],
+      ['日々のなにげない発見','E']]},
+    {q:'初対面の集まりで、あなたに近いのは？', o:[
+      ['自分の体験談で、場をあたためる','A'],
+      ['聞き役にまわって、質問している','B'],
+      ['詳しい話題になると、つい説明役になる','C'],
+      ['新しい企画や挑戦の話で、ワクワクさせる','D'],
+      ['気づいたら、場がなごんでいる','E']]}
+  ];
+
+  /* 結果5パターン（同点は、あとに選んだ答えのタイプを優先） */
+  const RESULTS = {
+    A:{name:'ストーリーで伝えるタイプ', tag:'体験が共感を呼ぶ人',
+      good:'あなたの体験談には、その場にいたような臨場感があります。うまくいった話も、失敗した話も、あなたが語ると「わかる」と共感が集まります。それは信頼の入口になる、大きな魅力です。',
+      advice:'出来事の説明で終わらせず、「その時、どう感じたか」をひとこと添えてみてください。共感はさらに深まります。',
+      next:'特典①「7日間Facebook投稿レシピ」のDAY2「仕事への想いを伝える投稿」から書いてみてください。あなたの得意が、いちばん活きる型です。'},
+    B:{name:'会話を生むタイプ', tag:'コメント欄がにぎわう人',
+      good:'人の話を受け止めて、会話をつなげられるのがあなたの魅力です。にぎわうコメント欄は、この力から生まれます。応援は、先に応援した人に集まります。',
+      advice:'投稿の最後に、答えやすい問いかけをひとつ置いてみてください。あなたの聞き上手が、画面の向こうでも働きはじめます。',
+      next:'特典①「7日間Facebook投稿レシピ」のDAY6「コメントが生まれる投稿」から書いてみてください。あなたにとって、いちばん自然な型です。'},
+    C:{name:'頼られる専門家タイプ', tag:'「詳しい人」として信頼される人',
+      good:'あなたにとっての当たり前は、誰かにとって貴重な学びです。役に立つ話を届けるたび、「この分野なら、あの人」という信頼が積み上がっていきます。',
+      advice:'全部を教えようとしなくて大丈夫。「ひとつだけ」に絞ると、かえって深く伝わります。専門用語をふだんの言葉に置き換えるのも効きます。',
+      next:'特典①「7日間Facebook投稿レシピ」のDAY5「専門性が伝わる投稿」から書いてみてください。あなたの知識が、いちばん届く型です。'},
+    D:{name:'応援されるチャレンジタイプ', tag:'途中経過が応援を集める人',
+      good:'完成する前の姿を見せられるのは、勇気であり才能です。挑戦の途中経過は、人がいちばん応援したくなる投稿。あなたの前に進む姿が、まわりの力を引き寄せます。',
+      advice:'順調な報告だけでなく、不安や迷いも正直に書いてみてください。応援は「がんばっている人」よりも「正直な人」に集まります。',
+      next:'特典①「7日間Facebook投稿レシピ」のDAY4「応援したくなる投稿」から書いてみてください。あなたの挑戦が、いちばん伝わる型です。'},
+    E:{name:'人柄で伝えるタイプ', tag:'「この人なら話せそう」と思われる人',
+      good:'仕事の話だけではない、あなたの素顔がにじむ投稿。「この人なら話せそう」という安心感は、あなたのいちばんの魅力です。人は、情報だけでなく人柄に惹かれます。',
+      advice:'日常のひとコマに、あなたが感じたことをひとこと添えてみてください。親しみが、少しずつ信頼に変わっていきます。',
+      next:'特典①「7日間Facebook投稿レシピ」のDAY3「人柄が伝わる投稿」から書いてみてください。あなたらしさが、いちばん出る型です。'}
+  };
+
+  let idx = 0;
+  const answers = [];
+  const $ = id => document.getElementById(id);
+  function render(){
+    $('qzCount').textContent = 'Q' + (idx+1) + ' / ' + QS.length;
+    $('qzBarFill').style.width = (idx / QS.length * 100) + '%';
+    $('qzQ').textContent = QS[idx].q;
+    const box = $('qzOpts');
+    box.innerHTML = '';
+    QS[idx].o.forEach(([label, type])=>{
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'qz-opt'; b.textContent = label;
+      b.addEventListener('click', ()=>{ answers[idx] = type; idx+1 < QS.length ? (idx++, render(), scrollQuiz()) : finish(); });
+      box.appendChild(b);
+    });
+    $('qzBack').hidden = (idx === 0);
+  }
+  function pick(score, lastIdx){
+    /* 最多回答のタイプ。同点なら、あとに選んだ答えのタイプを優先 */
+    let best = null;
+    Object.keys(score).forEach(t=>{
+      if(best === null || score[t] > score[best] ||
+        (score[t] === score[best] && lastIdx[t] > lastIdx[best])) best = t;
+    });
+    return best;
+  }
+  function finish(){
+    const score = {}, lastIdx = {};
+    answers.forEach((t, i)=>{ score[t] = (score[t]||0)+1; lastIdx[t] = i; });
+    const r = RESULTS[pick(score, lastIdx)];
+    $('qzRName').textContent = r.name;
+    $('qzRTag').textContent = r.tag;
+    const body = $('qzRBody');
+    body.innerHTML = '';
+    [['あなたの良いところ', r.good],['さらに良くなるヒント', r.advice],['次の一歩', r.next]].forEach(([h, t])=>{
+      const d = document.createElement('div'); d.className = 'rb';
+      const b = document.createElement('b'); b.textContent = h;
+      const p = document.createElement('p'); p.textContent = t;
+      d.appendChild(b); d.appendChild(p); body.appendChild(d);
+    });
+    $('qzMain').style.display = 'none';
+    $('qzResult').classList.add('show');
+    scrollQuiz();
+  }
+  function scrollQuiz(){ $('quiz').scrollIntoView({behavior:'smooth', block:'start'}); }
+  $('qzBack').addEventListener('click', ()=>{ if(idx>0){ idx--; render(); } });
+  $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
+  render();
+})();
+</script>
+</body>
+</html>

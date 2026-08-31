@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>『なぜ今、Facebook集客なのか』｜八幡えいこ — Kindle出版記念</title>
+<meta name="description" content="八幡えいこ 初のKindle本『なぜ今、Facebook集客なのか — 売り込まずに相談・紹介につなげる「7回接触」の仕組み』。出版を記念して、7日間Facebook投稿レシピなどの特典をご用意しました。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="『なぜ今、Facebook集客なのか』Kindle出版記念">
+<meta property="og:description" content="売り込まずに相談・紹介につなげる「7回接触」の仕組み。出版記念特典も受け取れます。">
+<meta property="og:url" content="https://eikopr.com/book.html">
+<meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- book.html v1.0.0 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;
+  --gold-deep:#A2823F;
+  --gold-wash:#F7F1E5;
+  --gray:#C1C3C2;
+  --gray-wash:#F0F1F0;
+  --ink:#35312B;
+  --muted:#7C766B;
+  --paper:#FFFFFF;
+  --font-latin:'Futura','Jost',sans-serif;
+  --font-display:'Zen Maru Gothic',sans-serif;
+  --font-head:'Zen Maru Gothic',sans-serif;
+  --font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.nb{white-space:nowrap}
+
+/* ---------- 共通 ---------- */
+.inner{max-width:640px;margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--font-latin);
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.22em;
+  color:var(--gold-deep);
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.h2{
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:clamp(21px,5.2vw,28px);
+  letter-spacing:.05em;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- ボタン ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-body);font-weight:700;font-size:16px;
+  padding:16px 34px;border-radius:999px;text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
+.btn svg{flex:none}
+.btn[aria-disabled="true"]{
+  background:var(--gray-wash);color:var(--muted);box-shadow:none;cursor:default;pointer-events:none;
+}
+.cta-sub{margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* ---------- ヒーロー ---------- */
+.hero-lead{padding:52px 0 46px;background:var(--paper);text-align:center}
+.hero-role{
+  display:inline-block;font-family:var(--font-head);font-weight:700;font-size:12.5px;
+  letter-spacing:.12em;color:var(--gold-deep);background:var(--gold-wash);
+  border:1px solid var(--gold);border-radius:999px;padding:6px 16px;margin-bottom:20px;
+}
+.book-lead{
+  font-family:var(--font-head);font-weight:700;font-size:13.5px;
+  color:var(--muted);letter-spacing:.08em;margin-bottom:10px;
+}
+.book-title{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(26px,7vw,40px);line-height:1.6;letter-spacing:.04em;
+}
+.book-title .u{background:linear-gradient(transparent 68%,var(--gold-wash) 68%)}
+.book-subtitle{
+  margin-top:16px;font-family:var(--font-head);font-weight:700;
+  font-size:clamp(14px,3.8vw,17px);color:var(--gold-deep);letter-spacing:.05em;
+}
+.book-author{margin-top:18px;font-size:14px;color:var(--muted)}
+.book-author strong{color:var(--ink);font-size:16px}
+.hero-cta{margin-top:28px}
+
+/* ---------- 伴走ライン ---------- */
+.thread{position:relative}
+.thread::before{
+  content:"";position:absolute;top:0;bottom:0;left:24px;width:2px;
+  background:linear-gradient(var(--gold) 0 100%);opacity:.45;
+}
+.thread section{position:relative}
+.node{
+  position:absolute;left:18px;top:8px;width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--gold);transition:background .5s ease;
+}
+section .in ~ .node,.node.in{background:var(--gold)}
+.thread .inner{padding-left:64px;padding-right:24px;max-width:704px}
+@media (min-width:880px){
+  .thread::before{left:calc(50% - 352px)}
+  .node{left:calc(50% - 358px)}
+  .thread .inner{padding-left:88px}
+}
+
+/* ---------- 本について ---------- */
+.about{background:var(--gray-wash);padding:54px 0 48px}
+.about-hook{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(19px,5vw,24px);letter-spacing:.04em;line-height:1.8;
+  margin-bottom:18px;
+}
+.about-body{font-size:15.5px}
+.about-body strong{color:var(--gold-deep)}
+.about-body p+p{margin-top:1.4em}
+.flow-head{font-family:var(--font-head);font-weight:700;font-size:14px;margin:34px 0 18px;text-align:center}
+.flowchain{
+  list-style:none;position:relative;max-width:300px;margin:0 auto 10px;
+  display:flex;flex-direction:column;align-items:center;
+}
+.flowchain::before{
+  content:"";position:absolute;top:12px;bottom:12px;left:50%;width:2px;margin-left:-1px;
+  background:var(--gold);opacity:.55;
+}
+.flowchain li{
+  position:relative;z-index:1;background:var(--paper);border:1.5px solid var(--gold);
+  border-radius:999px;padding:9px 26px;min-width:230px;text-align:center;
+  font-family:var(--font-head);font-weight:700;font-size:14.5px;letter-spacing:.05em;
+}
+.flowchain li+li{margin-top:20px}
+.flowchain li.goal{background:var(--gold);border-color:var(--gold);color:var(--paper);box-shadow:0 6px 16px rgba(195,161,92,.4)}
+.credo{
+  margin-top:32px;text-align:center;
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(17px,4.6vw,22px);line-height:2;
+  color:var(--gold-deep);letter-spacing:.05em;
+}
+
+/* ---------- こんな方へ ---------- */
+.foryou{padding:58px 0 54px}
+.checklist{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:6px}
+.checklist li{
+  display:flex;gap:12px;align-items:flex-start;
+  background:var(--gray-wash);border-radius:18px;padding:14px 18px;
+  font-weight:500;
+}
+.checklist svg{flex:none;margin-top:6px}
+
+/* ---------- 特典 ---------- */
+.gift{background:var(--gold-wash);padding:56px 0 54px}
+.gift-lead{font-size:15.5px;margin-bottom:30px}
+.gift-lead strong{color:var(--gold-deep)}
+.gift-card{
+  background:var(--paper);border-radius:22px;padding:28px 22px;
+  box-shadow:0 4px 16px rgba(53,49,43,.06);
+}
+.gift-card+.gift-card{margin-top:22px}
+.gift-no{
+  display:inline-block;font-family:var(--font-head);font-weight:700;font-size:12px;
+  letter-spacing:.14em;color:var(--gold-deep);background:var(--gold-wash);
+  border:1px solid var(--gold);border-radius:999px;padding:4px 14px;margin-bottom:12px;
+}
+.gift-card h3{
+  font-family:var(--font-head);font-weight:700;
+  font-size:clamp(17px,4.6vw,20px);line-height:1.7;margin-bottom:6px;
+}
+.gift-card .g-sub{font-size:13.5px;color:var(--gold-deep);font-weight:700;margin-bottom:12px}
+.gift-card p{font-size:14.5px;color:var(--muted)}
+.gift-shots{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 6px;
+}
+.gift-shots img{
+  border-radius:12px;border:1px solid var(--gray-wash);
+  box-shadow:0 6px 16px rgba(53,49,43,.10);
+}
+.gift-cta{margin-top:20px;text-align:center}
+.gift-note{margin-top:10px;font-size:12.5px;color:var(--muted);text-align:center}
+.event-list{
+  list-style:none;margin:16px 0 4px;display:flex;flex-direction:column;gap:8px;
+  font-size:15px;
+}
+.event-list li{display:flex;gap:12px}
+.event-list .k{
+  flex:none;width:64px;font-family:var(--font-head);font-weight:700;font-size:13px;
+  color:var(--gold-deep);padding-top:2px;
+}
+.event-list .v strong{font-size:16.5px}
+.gift-legal{
+  margin-top:28px;font-size:12px;color:var(--muted);line-height:1.9;
+}
+
+/* ---------- 著者 ---------- */
+.author{padding:58px 0 54px}
+.author-body{font-size:15px}
+.author-body strong{color:var(--gold-deep)}
+.author-body p+p{margin-top:1.3em}
+.author-back{margin-top:30px;text-align:center}
+
+/* ---------- フッター ---------- */
+footer{background:var(--paper);padding:26px 0 34px;text-align:center}
+footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
+footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
+footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- 1. ヒーロー -->
+<div class="hero-lead">
+  <div class="inner">
+    <p class="hero-role">Kindle出版記念</p>
+    <p class="book-lead">八幡えいこ、初のKindle本。</p>
+    <h1 class="book-title"><span class="u">なぜ今、</span><br><span class="u">Facebook集客なのか</span></h1>
+    <p class="book-subtitle">売り込まずに相談・紹介につなげる<br>「7回接触」の仕組み</p>
+    <p class="book-author">著者<br><strong>八幡えいこ</strong><br>応援されるFacebook発信プロデューサー</p>
+    <div class="hero-cta">
+      <!-- TODO: 発売後に Amazon の実URLへ差し替え -->
+      <a class="btn btn-gold" href="#" aria-disabled="true">Amazonで読む（近日発売）</a>
+      <p class="cta-sub">発売のお知らせは <a href="https://www.facebook.com/yahataeiko" target="_blank" rel="noopener">Facebook</a> でお届けします</p>
+    </div>
+  </div>
+</div>
+
+<div class="thread">
+
+<!-- 2. 本について -->
+<section class="about">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">About the Book</p>
+      <p class="about-hook">「Facebookって、<br>もう古くない？」</p>
+      <div class="about-body">
+        <p>InstagramやX、TikTokなど、新しいSNSが次々と注目されるなか、そう感じている方は少なくありません。</p>
+        <p>けれど、もしあなたが<strong>「何を買うか」以上に「誰から買うか」が重要になる仕事</strong>をしているなら、Facebookにはまだ大きな可能性があります。</p>
+        <p>本書でお伝えするのは、「売り込むFacebook集客」ではありません。一度で売ろうとせず、小さな接触を重ねながら信頼を育てる——その中心になる考え方が<strong>「7回接触」</strong>です。</p>
+      </div>
+      <p class="flow-head">本書が届ける、信頼の育ち方</p>
+      <ol class="flowchain">
+        <li>「前にも見たことがある」</li>
+        <li>「考え方、いいな」</li>
+        <li>「安心できそう」</li>
+        <li>「信頼できそう」</li>
+        <li class="goal">「一度、相談してみたい」</li>
+      </ol>
+      <p class="credo">Facebookは「売る場所」ではなく、<br>信頼を育てる場所。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. こんな方へ -->
+<section class="foryou">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">For You</p>
+      <h2 class="h2">こんな方に<br>読んでいただきたい一冊です</h2>
+      <ul class="checklist">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Facebookを毎日見ているけれど、ほとんど発信していない</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>投稿しても「いいね」で終わり、問い合わせにつながらない</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SNSで売り込むことに抵抗がある</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>口コミや紹介だけに頼る集客から一歩進みたい</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C3A15C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>「あなたにお願いしたい」と選ばれる関係をつくりたい</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 出版記念特典 -->
+<section class="gift" id="gift">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Gift</p>
+      <h2 class="h2">出版記念特典</h2>
+      <p class="gift-lead">Kindle出版を記念して、本書の内容を<strong>「読んで終わり」にしないための特典</strong>をご用意しました。</p>
+
+      <!-- 特典① -->
+      <div class="gift-card">
+        <span class="gift-no">特典 1</span>
+        <h3>7日間Facebook投稿レシピ</h3>
+        <p class="g-sub">『今日は何を書けばいいの？』をなくすワークブック（PDF・全10ページ）</p>
+        <p>SNSが苦手でも迷わない、穴埋めテンプレ＋具体例つき。1日1ページ、その日のテーマに沿って書き込むだけで、7日分の投稿ができあがります。</p>
+        <div class="gift-shots">
+          <img src="assets/book/recipe_cover.jpg" alt="7日間Facebook投稿レシピ 表紙" loading="lazy" width="424" height="565">
+          <img src="assets/book/recipe_day1.jpg" alt="DAY1 自分を知ってもらう投稿の穴埋めテンプレページ" loading="lazy" width="424" height="565">
+        </div>
+        <div class="gift-cta">
+          <a class="btn btn-gold" href="assets/book/7days_facebook_recipe.pdf" download="7日間Facebook投稿レシピ.pdf">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            レシピを受け取る
+          </a>
+          <p class="gift-note">PDF（全10ページ・約15MB）を無料でダウンロードできます</p>
+        </div>
+      </div>
+
+      <!-- 特典② -->
+      <div class="gift-card">
+        <span class="gift-no">特典 2</span>
+        <h3>あなたは何の人？<br class="nb">信頼されるFacebook発信タイプ診断</h3>
+        <p class="g-sub">直感で選ぶだけの全8問</p>
+        <p>あなたの強みと魅力が伝わりやすい発信スタイルがわかります。正解・不正解はありません。「これが私っぽい！」で選んでください。</p>
+        <div class="gift-cta">
+          <a class="btn btn-gold" href="shindan.html">診断を受けてみる</a>
+        </div>
+      </div>
+
+      <!-- 特典③ -->
+      <div class="gift-card">
+        <span class="gift-no">特典 3</span>
+        <h3>SNS苦手さんのFacebook実践会</h3>
+        <p class="g-sub">Kindle出版記念・オンライン開催</p>
+        <p>本書の内容を、その場で一緒に実践するオンライン会です。ご購入者さま限定で開催します。</p>
+        <ul class="event-list">
+          <li><span class="k">日時</span><span class="v"><strong>2026年10月4日（日）10:00〜11:00</strong></span></li>
+          <li><span class="k">講師</span><span class="v">八幡えいこ</span></li>
+          <li><span class="k">場所</span><span class="v">ZOOM（お申し込み後に参加URLをお送りします）</span></li>
+          <li><span class="k">参加費</span><span class="v">無料（ご購入者さま限定）</span></li>
+        </ul>
+        <div class="gift-cta">
+          <a class="btn btn-gold" href="https://ssl.form-mailer.jp/fms/0dd313f5889182" target="_blank" rel="noopener">
+            実践会に申し込む
+          </a>
+        </div>
+      </div>
+
+      <p class="gift-legal">※ 特典は著作権法で保護された著作物です。許可なく配布・転載することはご遠慮ください。<br>※ 特典は予告なく終了する場合があります。お早めにお受け取りください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 著者 -->
+<section class="author">
+  <span class="node"></span>
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Author</p>
+      <h2 class="h2">八幡えいこ</h2>
+      <div class="author-body">
+        <p>応援されるFacebook発信プロデューサー。Facebookを単なる集客ツールとしてではなく、<strong>人と人との信頼を育て、相談や紹介につなげる場所</strong>として活用する考え方を伝えています。</p>
+        <p>クラウドファンディングでは約100件以上をサポートし、累計総支援額は1億円超。CAMPFIREパートナーアワード受賞。仲間同士で学び、実践し、応援し合う環境として Team Synergy Stage を運営しています。</p>
+      </div>
+      <div class="author-back">
+        <a class="btn btn-gold" href="./">eiko PR のトップページへ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p class="f-mark">bE-side you</p>
+  <p class="f-note">&copy; eiko PR</p>
+  <p class="f-ver">book v1.0.0 ／ 最終更新 2026-08-31</p>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        var sec=en.target.closest('section');
+        if(sec){var n=sec.querySelector('.node');if(n)n.classList.add('in')}
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.15});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
