@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSSメンバーの eikoAI 投稿診断｜eiko PR</title>
+<meta name="description" content="Team Synergy Stage のメンバーは、eikoAI の投稿診断を無料でご利用いただけます。投稿を貼るだけで、良いところと次の一歩をお返しします。">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TSSメンバーの eikoAI 投稿診断">
+<meta property="og:description" content="投稿は、出しっぱなしにしない。見返して、次に活かす。">
+<meta property="og:url" content="https://eikopr.com/tss.html">
+<meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- tss.html v1.0.0 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;
+  --gold-deep:#A2823F;
+  --gold-wash:#F7F1E5;
+  --gray:#C1C3C2;
+  --gray-wash:#F0F1F0;
+  --ink:#35312B;
+  --muted:#7C766B;
+  --paper:#FFFFFF;
+  --font-latin:'Futura','Jost',sans-serif;
+  --font-display:'Zen Maru Gothic',sans-serif;
+  --font-head:'Zen Maru Gothic',sans-serif;
+  --font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.nb{white-space:nowrap}
+.inner{max-width:640px;margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--font-latin);font-weight:600;font-size:12px;
+  letter-spacing:.22em;color:var(--gold-deep);text-transform:uppercase;
+  margin-bottom:14px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-body);font-weight:700;font-size:16px;
+  padding:16px 34px;border-radius:999px;text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
+.btn svg{flex:none}
+
+/* ヘッダー */
+.head{padding:46px 0 34px;text-align:center}
+.head-badge{
+  display:inline-block;font-family:var(--font-head);font-weight:700;font-size:12.5px;
+  letter-spacing:.12em;color:var(--gold-deep);background:var(--gold-wash);
+  border:1px solid var(--gold);border-radius:999px;padding:6px 16px;margin-bottom:18px;
+}
+.head-catch{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(21px,5.8vw,29px);line-height:1.75;letter-spacing:.04em;
+}
+.head-catch .u{background:linear-gradient(transparent 68%,var(--gold-wash) 68%)}
+.head-sub{margin-top:14px;font-size:14.5px;color:var(--muted)}
+
+/* 想い */
+.credo-wrap{background:var(--gold-wash);padding:36px 0}
+.credo{
+  text-align:center;font-family:var(--font-display);font-weight:900;
+  font-size:clamp(17px,4.8vw,22px);line-height:2;
+  color:var(--gold-deep);letter-spacing:.05em;
+}
+.credo-sub{margin-top:14px;font-size:14.5px;text-align:center}
+
+/* 使い方 */
+.howto{padding:52px 0 40px}
+.h2{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(20px,5vw,26px);letter-spacing:.05em;line-height:1.6;
+  margin-bottom:22px;text-align:center;
+}
+.steps{list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:step}
+.steps li{
+  background:var(--gray-wash);border-radius:18px;padding:18px 20px 16px;
+  counter-increment:step;
+}
+.steps li b{
+  display:block;font-family:var(--font-head);font-weight:700;font-size:15.5px;margin-bottom:4px;
+}
+.steps li b::before{
+  content:counter(step);
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;margin-right:10px;border-radius:50%;
+  background:var(--gold);color:var(--paper);font-size:13px;
+}
+.steps li p{font-size:14px;color:var(--muted)}
+.howto-note{margin-top:22px;font-size:14px;color:var(--muted);text-align:center}
+.howto-note strong{color:var(--gold-deep)}
+
+/* CTA */
+.cta{padding:14px 0 52px;text-align:center}
+.cta .btn{width:100%;max-width:360px}
+.cta-sub{margin-top:16px;font-size:13px;color:var(--muted)}
+.cta-sub a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* 戻る + フッター */
+.backrow{padding:0 0 46px;text-align:center}
+.backrow a{font-size:13.5px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+footer{background:var(--paper);padding:26px 0 34px;text-align:center;border-top:1px solid var(--gray-wash)}
+footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
+footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="inner">
+    <p class="head-badge">TSS MEMBERS</p>
+    <h1 class="head-catch"><span class="u">TSSメンバーの</span><br><span class="u">eikoAI 投稿診断</span></h1>
+    <p class="head-sub">Team Synergy Stage のメンバーは、<span class="nb">無料で・何度でも</span>ご利用いただけます。</p>
+  </div>
+</div>
+
+<div class="credo-wrap">
+  <div class="inner">
+    <p class="credo">投稿は、出しっぱなしにしない。<br>見返して、次に活かす。</p>
+    <p class="credo-sub">学んだとおりに投稿できていても、見返す時間はなかなか取れないもの。eikoAI 診断は、あなたの投稿の<strong>良いところ</strong>と<strong>次の一歩</strong>を言葉にしてお返しします。</p>
+  </div>
+</div>
+
+<section class="howto">
+  <div class="inner">
+    <h2 class="h2">使い方は、3ステップ</h2>
+    <ol class="steps">
+      <li>
+        <b>投稿を貼って、送信する</b>
+        <p>下のボタンから診断フォームを開き、見てほしい Facebook 投稿の本文を貼り付けて送ってください。下書きでも大丈夫です。</p>
+      </li>
+      <li>
+        <b>お返事が届く</b>
+        <p>eikoAI が投稿を拝見し、確認を経て、良いところ・さらに良くなるポイント・次の投稿でやってみることをお返しします。</p>
+      </li>
+      <li>
+        <b>次の投稿で、ひとつだけ試す</b>
+        <p>アドバイスを全部やろうとしなくて大丈夫。ひとつだけ試して、また見せてください。その繰り返しが、あなたの発信を変えていきます。</p>
+      </li>
+    </ol>
+    <p class="howto-note">おすすめは、<strong>週に1本</strong>。ふりかえる投稿を決めて、毎週同じ曜日に送る習慣づくりです。</p>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="inner">
+    <a class="btn btn-gold" href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      投稿診断フォームをひらく
+    </a>
+    <p class="cta-sub">自分の発信タイプを知りたい方は<a href="shindan.html">発信タイプ診断（全8問）</a>もどうぞ</p>
+  </div>
+</div>
+
+<div class="backrow">
+  <a href="./">eiko PR のトップページへ戻る</a>
+</div>
+
+<footer>
+  <p class="f-mark">bE-side you</p>
+  <p class="f-note">&copy; eiko PR</p>
+  <p class="f-ver">tss v1.0.0 ／ 最終更新 2026-08-31</p>
+</footer>
+
+</body>
+</html>

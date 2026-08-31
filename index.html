@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<!-- eikoAI LP mock v0.16.0 -->
+<!-- eikoAI LP v0.18.0 — Kindle出版告知帯 + TSSメンバー入口 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -382,9 +382,29 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 .qz-r-cta{margin-top:24px;text-align:center}
 .qz-retry{display:block;margin:18px auto 0;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body)}
 @media (min-width:880px){.quiz{padding:34px 38px}.qz-q{font-size:19.5px}}
+/* ── v0.18.0 Kindle出版告知帯 + TSSメンバー入口 ── */
+.notice-bar{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  background:var(--gold-wash);border-bottom:1px solid rgba(195,161,92,.4);
+  padding:11px 18px;font-family:var(--font-head);font-weight:700;
+  font-size:12.5px;letter-spacing:.03em;line-height:1.6;
+  color:var(--gold-deep);text-decoration:none;text-align:center;
+  transition:background .2s ease,color .2s ease;
+}
+.notice-bar:hover{background:var(--gold);color:var(--paper)}
+.notice-bar svg{flex:none}
+.tss-entry{background:var(--gray-wash);padding:46px 0 48px;text-align:center}
+.tss-entry .tss-lead{font-size:14.5px;color:var(--muted);margin-bottom:24px}
 </style>
 </head>
 <body>
+
+<!-- 0. Kindle出版 告知帯 (v0.18.0) -->
+<a class="notice-bar" href="book.html">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+  <span>初のKindle本『なぜ今、Facebook集客なのか』<span class="nb">9月6日(日)発売</span> — 出版記念ページへ</span>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+</a>
 
 <!-- 1. 入口 -->
 <header class="hero">
@@ -621,10 +641,22 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
   </div>
 </div>
 
+<!-- 10. TSSメンバー入口 (v0.18.0) -->
+<section class="tss-entry">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">For Members</p>
+      <h2 class="h2">TSSメンバーの方はこちら</h2>
+      <p class="tss-lead">Team Synergy Stage のメンバーは、<span class="nb">eikoAI の投稿診断</span>を無料でご利用いただけます。</p>
+      <a class="btn btn-gold" href="tss.html">メンバー専用ページへ</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">© eiko PR</p>
-  <p class="f-ver">v0.17.0 ／ 最終更新 2026-08-24</p>
+  <p class="f-ver">v0.18.0 ／ 最終更新 2026-08-31</p>
 </footer>
 
 <script>
