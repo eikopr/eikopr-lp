@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="600">
 <meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary">
-<!-- book.html v1.4.2 フッターを版のみ表記に(最終更新日付を撤去)。時刻ゲート(特典CTA: 2026-09-06 06:00 JST 自動有効化 / 09-08 23:59 JST 自動終了)は継続 -->
+<!-- book.html v1.5.0 特典①の画像2枚が縦に伸びる不具合を修正(img height:auto+実寸695×900属性)+スマホ幅(<560px)は縦1列に配置。時刻ゲート(特典CTA: 2026-09-06 06:00 JST 自動有効化 / 09-08 23:59 JST 自動終了)は継続 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@ body{
   font-size:16px;
   -webkit-font-smoothing:antialiased;
 }
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 .nb{white-space:nowrap}
 
@@ -203,7 +203,10 @@ section .in ~ .node,.node.in{background:var(--gold)}
 .gift-card .g-sub{font-size:13.5px;color:var(--gold-deep);font-weight:700;margin-bottom:12px}
 .gift-card p{font-size:14.5px;color:var(--muted)}
 .gift-shots{
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 6px;
+  display:grid;grid-template-columns:1fr;gap:14px;margin:18px 0 6px;
+}
+@media (min-width:560px){
+  .gift-shots{grid-template-columns:1fr 1fr;gap:12px}
 }
 .gift-shots img{
   border-radius:12px;border:1px solid var(--gray-wash);
@@ -321,8 +324,8 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
         <p class="g-sub">『今日は何を書けばいいの？』をなくすワークブック（PDF・全10ページ）</p>
         <p>SNSが苦手でも迷わない、穴埋めテンプレ＋具体例つき。1日1ページ、その日のテーマに沿って書き込むだけで、7日分の投稿ができあがります。</p>
         <div class="gift-shots">
-          <img src="assets/book/recipe_cover.jpg" alt="7日間Facebook投稿レシピ 表紙" loading="lazy" width="424" height="565">
-          <img src="assets/book/recipe_day1.jpg" alt="DAY1 自分を知ってもらう投稿の穴埋めテンプレページ" loading="lazy" width="424" height="565">
+          <img src="assets/book/recipe_cover.jpg" alt="7日間Facebook投稿レシピ 表紙" loading="lazy" width="695" height="900">
+          <img src="assets/book/recipe_day1.jpg" alt="DAY1 自分を知ってもらう投稿の穴埋めテンプレページ" loading="lazy" width="695" height="900">
         </div>
         <div class="gift-cta">
           <a class="btn btn-gold" href="#" aria-disabled="true" id="g1cta">
@@ -389,7 +392,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">book v1.4.2</p>
+  <p class="f-ver">book v1.5.0</p>
 </footer>
 
 <script>
