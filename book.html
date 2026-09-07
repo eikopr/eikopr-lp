@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="600">
 <meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary">
-<!-- book.html v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
+<!-- book.html v1.8.2 THANK YOU の章を左揃えに(SAT「中央揃えはやめましょう」)。v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -134,11 +134,11 @@ a{color:inherit}
 .sp{display:none}
 @media (max-width:560px){.sp{display:inline}}
 .best-cat{margin:-10px 0 18px;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)}
-.thanks{background:var(--gold-wash);padding:50px 0 54px;text-align:center}
+.thanks{background:var(--gold-wash);padding:50px 0 54px;text-align:left}
 .thanks-title{font-family:var(--font-display);font-weight:900;font-size:clamp(25px,7vw,38px);letter-spacing:.04em;line-height:1.5;margin:6px 0 14px;color:var(--ink);text-wrap:balance}
 .thanks-lead{margin:0 0 22px;font-family:var(--font-head);font-weight:700;font-size:clamp(15px,4.2vw,18px);letter-spacing:.06em;color:var(--gold-deep)}
 .thanks-lead strong{font-size:1.35em}
-.thanks-body{display:flex;flex-direction:column;gap:16px;max-width:30em;margin:0 auto}
+.thanks-body{display:flex;flex-direction:column;gap:16px;max-width:30em;margin:0}
 .thanks-body p{font-size:15.5px;line-height:2;margin:0}
 .thanks-body strong{color:var(--gold-deep);font-weight:700}
 .thanks-sign{margin-top:26px;font-family:var(--font-head);font-weight:700;font-size:14px;letter-spacing:.1em;color:var(--gold-deep)}
@@ -440,7 +440,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">book v1.8.1</p>
+  <p class="f-ver">book v1.8.2</p>
 </footer>
 
 <script>
