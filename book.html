@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="600">
 <meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary">
-<!-- book.html v1.8.4 THANK YOU はスマホで実幅 302px(.thread .inner の左余白 64px)なので見出し 5.9vw・本文 14.5px・「一歩に／なりますように」で固定。v1.8.3 スマホ幅の改行を整える(SAT「中央揃えの改行がスマホで見るとバランス悪い」): 祝の札の順位は 1 行 1 順位(語中で折らない)・THANK YOU の見出し/リード/本文は単位で固定。v1.8.2 THANK YOU の章を左揃えに(SAT「中央揃えはやめましょう」)。v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
+<!-- book.html v1.8.5 スマホ用 CSS を基本規則の後ろへ移動(前に置いたため font-size が効いていなかった)。v1.8.4 THANK YOU はスマホで実幅 302px(.thread .inner の左余白 64px)なので見出し 5.9vw・本文 14.5px・「一歩に／なりますように」で固定。v1.8.3 スマホ幅の改行を整える(SAT「中央揃えの改行がスマホで見るとバランス悪い」): 祝の札の順位は 1 行 1 順位(語中で折らない)・THANK YOU の見出し/リード/本文は単位で固定。v1.8.2 THANK YOU の章を左揃えに(SAT「中央揃えはやめましょう」)。v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -133,16 +133,6 @@ a{color:inherit}
 .win-thanks strong{color:var(--gold-deep);font-size:1.12em}
 .sp{display:none}
 .win .nb,.thanks .nb{white-space:nowrap}
-@media (max-width:560px){
-  .sp{display:inline}
-  .pc{display:none}
-  .win-cats .sep{display:none}
-  .win-cats .nb{display:block}
-  .win-thanks{font-size:16.5px}
-  .thanks-title{font-size:clamp(19px,5.9vw,38px);letter-spacing:.03em}
-  .thanks-lead{font-size:15px}
-  .thanks-body p{font-size:14.5px;line-height:1.95}
-}
 .best-cat{margin:-10px 0 18px;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)}
 .thanks{background:var(--gold-wash);padding:50px 0 54px;text-align:left}
 .thanks-title{font-family:var(--font-display);font-weight:900;font-size:clamp(25px,7vw,38px);letter-spacing:.04em;line-height:1.5;margin:6px 0 14px;color:var(--ink);text-wrap:balance}
@@ -275,6 +265,17 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
 footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+/* スマホ用(v1.8.5: 基本規則より後ろに置く=同じ詳細度で後勝ち) */
+@media (max-width:560px){
+  .sp{display:inline}
+  .pc{display:none}
+  .win-cats .sep{display:none}
+  .win-cats .nb{display:block}
+  .win-thanks{font-size:16.5px}
+  .thanks-title{font-size:clamp(19px,5.9vw,38px);letter-spacing:.03em}
+  .thanks-lead{font-size:15px}
+  .thanks-body p{font-size:14.5px;line-height:1.95}
+}
 </style>
 </head>
 <body>
@@ -450,7 +451,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">book v1.8.4</p>
+  <p class="f-ver">book v1.8.5</p>
 </footer>
 
 <script>
