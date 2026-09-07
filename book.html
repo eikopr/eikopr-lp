@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="600">
 <meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary">
-<!-- book.html v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
+<!-- book.html v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -123,8 +123,9 @@ a{color:inherit}
 .win{max-width:560px;margin:0 auto 30px;padding:26px 22px 24px;border:2px solid var(--gold);border-radius:18px;background:linear-gradient(180deg,#FBF7EE,var(--gold-wash));box-shadow:0 14px 34px rgba(195,161,92,.24)}
 .win-eyebrow{margin:0 0 10px;font-family:var(--font-head);font-weight:700;font-size:12.5px;letter-spacing:.14em;color:var(--gold-deep)}
 .win-eyebrow svg{vertical-align:-3px;margin-right:6px}
-.win-title{margin:0;font-family:var(--font-display);font-weight:900;font-size:clamp(25px,7.2vw,40px);line-height:1.35;letter-spacing:.03em;color:var(--ink);text-wrap:balance}
-.win-title .win-amz{font-family:var(--font-latin);font-weight:600;letter-spacing:.02em}
+.win-title{margin:0;font-family:var(--font-display);font-weight:900;font-size:clamp(24px,7vw,40px);line-height:1.3;letter-spacing:.03em;color:var(--ink)}
+.win-title .win-amz{display:block;font-family:var(--font-latin);font-weight:600;font-size:.72em;letter-spacing:.08em;color:var(--gold-deep);margin-bottom:.1em}
+.win-title .win-best{display:block;white-space:nowrap}
 .win-title .win-rank{color:var(--gold-deep);font-size:1.3em;margin:0 .04em}
 .win-title .win-get{display:block;font-size:1.2em;color:var(--gold-deep);letter-spacing:.06em}
 .win-cats{margin:14px 0 0;font-family:var(--font-head);font-weight:700;font-size:12.5px;letter-spacing:.05em;color:var(--muted);line-height:1.8}
@@ -273,7 +274,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
   <div class="inner">
     <div class="win">
       <p class="win-eyebrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>発売翌日 · 2026年9月7日</p>
-      <p class="win-title"><span class="win-amz">Amazon</span> ベストセラー<span class="win-rank">1位</span><span class="win-get">獲得！！</span></p>
+      <p class="win-title"><span class="win-amz">Amazon</span><span class="win-best">ベストセラー<span class="win-rank">1位</span></span><span class="win-get">獲得！！</span></p>
       <p class="win-cats">Kindle本 広告・宣伝 1位 · オンラインマーケティング 1位 · SNS・ブログ 2位<br>2026年9月7日 時点</p>
       <p class="win-thanks">応援してくださった<br class="sp">コミュニティのみなさん、<br><strong>ありがとうございます！！</strong></p>
     </div>
@@ -439,7 +440,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">book v1.8.0</p>
+  <p class="f-ver">book v1.8.1</p>
 </footer>
 
 <script>
