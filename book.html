@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="600">
 <meta property="og:image:height" content="800">
 <meta name="twitter:card" content="summary">
-<!-- book.html v1.8.2 THANK YOU の章を左揃えに(SAT「中央揃えはやめましょう」)。v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
+<!-- book.html v1.8.3 スマホ幅の改行を整える(SAT「中央揃えの改行がスマホで見るとバランス悪い」): 祝の札の順位は 1 行 1 順位(語中で折らない)・THANK YOU の見出し/リード/本文は単位で固定。v1.8.2 THANK YOU の章を左揃えに(SAT「中央揃えはやめましょう」)。v1.8.1 祝の札の改行を三段(Amazon／ベストセラー1位／獲得！！)に固定(語中で折れていた)。v1.8.0 祝と感謝を前面に(9/7 SAT「コミュニティメンバーへの感謝を前面に・もっと目立つ・獲得！！」): ヒーロー先頭に「Amazon ベストセラー1位 獲得！！」の祝の札(.win)+コミュニティへの感謝／THANK YOU の章の見出しを「コミュニティのみなさん ありがとうございます！！」に・本文をコミュニティ主語に／og:title 更新。v1.7.1 順位を商品ページの実測に更新(9/7 朝: 広告・宣伝 1位・オンラインマーケティング 1位・SNS・ブログ 2位・Kindleストア全体 445位)。v1.7.0 感謝のページへ(9/7 SAT): Amazon Kindle本「広告・宣伝」カテゴリ ベストセラー1位(9/7 朝 実測)を札に・ヒーロー直下に THANK YOU の章(文面は叩き台=えいこさんの言葉に差し替え可)・meta/OGP にも一文。Amazon 実URL(v1.6.0)と時刻ゲート(特典CTA: 09-06 06:00〜09-08 23:59 JST)は継続 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -132,7 +132,16 @@ a{color:inherit}
 .win-thanks{margin:18px 0 0;padding-top:16px;border-top:1px dashed rgba(195,161,92,.6);font-family:var(--font-head);font-weight:700;font-size:clamp(15px,4.3vw,19px);line-height:1.7;color:var(--ink)}
 .win-thanks strong{color:var(--gold-deep);font-size:1.12em}
 .sp{display:none}
-@media (max-width:560px){.sp{display:inline}}
+.win .nb,.thanks .nb{white-space:nowrap}
+@media (max-width:560px){
+  .sp{display:inline}
+  .pc{display:none}
+  .win-cats .sep{display:none}
+  .win-cats .nb{display:block}
+  .win-thanks{font-size:16.5px}
+  .thanks-title{font-size:clamp(22px,6.5vw,38px)}
+  .thanks-body p{font-size:15px}
+}
 .best-cat{margin:-10px 0 18px;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--muted)}
 .thanks{background:var(--gold-wash);padding:50px 0 54px;text-align:left}
 .thanks-title{font-family:var(--font-display);font-weight:900;font-size:clamp(25px,7vw,38px);letter-spacing:.04em;line-height:1.5;margin:6px 0 14px;color:var(--ink);text-wrap:balance}
@@ -275,7 +284,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
     <div class="win">
       <p class="win-eyebrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>発売翌日 · 2026年9月7日</p>
       <p class="win-title"><span class="win-amz">Amazon</span><span class="win-best">ベストセラー<span class="win-rank">1位</span></span><span class="win-get">獲得！！</span></p>
-      <p class="win-cats">Kindle本 広告・宣伝 1位 · オンラインマーケティング 1位 · SNS・ブログ 2位<br>2026年9月7日 時点</p>
+      <p class="win-cats"><span class="nb">Kindle本 広告・宣伝 1位</span><span class="sep"> · </span><span class="nb">オンラインマーケティング 1位</span><span class="sep"> · </span><span class="nb">SNS・ブログ 2位</span><br>2026年9月7日 時点</p>
       <p class="win-thanks">応援してくださった<br class="sp">コミュニティのみなさん、<br><strong>ありがとうございます！！</strong></p>
     </div>
     <img class="book-cover" src="assets/book/cover.jpg" alt="『なぜ今、Facebook集客なのか』表紙" width="600" height="800">
@@ -300,9 +309,9 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
     <div class="reveal">
       <p class="eyebrow">Thank You</p>
       <h2 class="thanks-title">コミュニティのみなさん<br>ありがとうございます！！</h2>
-      <p class="thanks-lead">発売翌日、Amazon ベストセラー<strong>1位</strong> 獲得</p>
+      <p class="thanks-lead">発売翌日、<span class="nb">Amazon ベストセラー<strong>1位</strong> 獲得</span></p>
       <div class="thanks-body">
-        <p>Kindle本「広告・宣伝」「オンラインマーケティング」の<br>2つのカテゴリで、1位になりました。</p>
+        <p>Kindle本<span class="nb">「広告・宣伝」</span><span class="nb">「オンラインマーケティング」</span>の<br class="pc">2つのカテゴリで、1位になりました。</p>
         <p>これは、わたしひとりの力ではありません。</p>
         <p>読んでくださった方<br>シェアしてくださった方<br>「読んだよ」と声をかけてくださった方<br><strong>コミュニティのみなさんのおかげです。</strong></p>
         <p>ひとりでやらない。仲間でやる。<br>そのことを、また教えていただきました。</p>
@@ -440,7 +449,7 @@ footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--g
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">book v1.8.2</p>
+  <p class="f-ver">book v1.8.3</p>
 </footer>
 
 <script>
