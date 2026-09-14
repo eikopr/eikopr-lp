@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIKO Table｜Private Event in Sapporo — 八幡えいこ</title>
+<meta name="description" content="EIKO Table — 2026年10月13日（火）11:30〜14:00、THE GARDEN SAPPORO HOKKAIDO GRILLE で開くプライベートイベント。「この人に、自分は何ができるだろう？」と意識しながら人と出会う時間。売り込みや名刺交換ではなく、自然な応援やご縁が生まれる場をつくります。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EIKO Table｜Private Event in Sapporo — 2026年10月13日（火）">
+<meta property="og:description" content="つながることより、応援したくなる人を知ることから。THE GARDEN SAPPORO HOKKAIDO GRILLE にて 11:30〜14:00。">
+<meta property="og:url" content="https://eikopr.com/eiko-table.html">
+<meta property="og:image" content="https://eikopr.com/assets/eiko-table/kv.jpg">
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta name="twitter:card" content="summary_large_image">
+<!-- eiko-table.html v1.0.0 — EIKO Table（えいこさん企画・案内 PDF 2026-09-14 受領。開催日は 10/9→10/13 へ変更の連絡を反映・時間は同じ）。申込みは Facebook Messenger（SAT 裁定 2）。案内 PDF は中身が 10/9 のままなので更新版が届くまで載せない -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;
+  --gold-deep:#A2823F;
+  --gold-wash:#F7F1E5;
+  --gray:#C1C3C2;
+  --gray-wash:#F0F1F0;
+  --ink:#35312B;
+  --muted:#7C766B;
+  --paper:#FFFFFF;
+  --font-latin:'Futura','Jost',sans-serif;
+  --font-display:'Zen Maru Gothic',sans-serif;
+  --font-head:'Zen Maru Gothic',sans-serif;
+  --font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.nb{white-space:nowrap}
+
+/* ---------- 共通 ---------- */
+.inner{max-width:640px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-deep);text-transform:uppercase;margin-bottom:14px}
+.h2{font-family:var(--font-display);font-weight:900;font-size:clamp(21px,5.2vw,28px);letter-spacing:.05em;line-height:1.6;margin-bottom:18px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- ボタン ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-body);font-weight:700;font-size:16px;padding:16px 34px;border-radius:999px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
+.btn svg{flex:none}
+.cta-sub{margin-top:14px;font-size:13px;color:var(--muted)}
+.cta-sub a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- ヒーロー ---------- */
+.hero-lead{padding:40px 0 46px;text-align:center}
+.kv{display:block;width:100%;max-width:560px;margin:0 auto 26px;border-radius:18px;box-shadow:0 18px 40px rgba(53,49,43,.22)}
+.ev-role{display:inline-block;font-family:var(--font-latin);font-weight:600;font-size:12.5px;letter-spacing:.2em;color:var(--gold-deep);background:var(--gold-wash);border:1px solid var(--gold);border-radius:999px;padding:6px 18px;margin-bottom:18px;text-transform:uppercase}
+.ev-title{font-family:var(--font-latin);font-weight:600;font-size:clamp(34px,9vw,52px);line-height:1.15;letter-spacing:.06em;color:var(--gold-deep)}
+.ev-tag{margin-top:18px;font-family:var(--font-head);font-weight:700;font-size:clamp(15px,4.2vw,18px);color:var(--ink);letter-spacing:.04em;line-height:1.8}
+
+/* ---------- 開催情報 ---------- */
+.info{max-width:560px;margin:28px auto 0;padding:24px 22px;border:1.5px solid var(--gold);border-radius:18px;background:linear-gradient(180deg,#FBF7EE,var(--gold-wash));text-align:left}
+.event-list{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.event-list li{display:flex;gap:12px}
+.event-list .k{flex:none;width:64px;font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--gold-deep);padding-top:2px}
+.event-list .v strong{font-size:16.5px}
+.event-list .v a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+.event-list .v .venue{font-family:var(--font-latin);font-weight:600;letter-spacing:.04em;font-size:15.5px}
+.hero-cta{margin-top:26px;text-align:center}
+
+/* ---------- 本文の章 ---------- */
+.chapter{padding:54px 0 50px}
+.chapter+.chapter{border-top:1px solid var(--gray-wash)}
+.chapter.wash{background:var(--gold-wash);border-top:0}
+.lead{font-size:15.5px}
+.lead strong{color:var(--gold-deep)}
+.lead p+p{margin-top:1.1em}
+.center{text-align:center}
+.steps{list-style:none;display:grid;grid-template-columns:1fr;gap:14px;margin-top:8px}
+@media (min-width:560px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--paper);border-radius:18px;padding:22px 18px;box-shadow:0 4px 16px rgba(53,49,43,.06)}
+.step .no{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold-deep)}
+.step h3{font-family:var(--font-head);font-weight:700;font-size:17px;margin:6px 0 8px;line-height:1.6}
+.step p{font-size:14px;color:var(--muted);line-height:1.8}
+.stance{background:var(--gold-wash);border-radius:18px;padding:22px 20px;font-size:15px;line-height:1.95}
+.stance strong{color:var(--gold-deep)}
+.engrave{margin-top:34px;text-align:center;font-family:var(--font-head);font-weight:700;font-size:clamp(15px,4.2vw,18px);letter-spacing:.06em;color:var(--gold-deep);line-height:1.8}
+
+/* ---------- 申込み ---------- */
+.apply{padding:56px 0 54px;background:var(--gold-wash);text-align:center}
+.apply p.lead{margin-bottom:22px}
+
+/* ---------- フッター ---------- */
+footer{background:var(--paper);padding:26px 0 34px;text-align:center}
+footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
+footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
+footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- 1. ヒーロー -->
+<div class="hero-lead">
+  <div class="inner">
+    <img class="kv" src="assets/eiko-table/kv.jpg" alt="EIKO Table — テラスのテーブルを囲む八幡えいこと参加者" width="1254" height="1254">
+    <p class="ev-role">Private Event in Sapporo</p>
+    <h1 class="ev-title">EIKO Table</h1>
+    <p class="ev-tag">つながることより、<br class="nb">応援したくなる人を知ることから。</p>
+
+    <div class="info">
+      <ul class="event-list">
+        <li><span class="k">日時</span><span class="v"><strong><span class="nb">2026年10月13日（火）</span> <span class="nb">11:30〜14:00</span></strong></span></li>
+        <li><span class="k">会場</span><span class="v"><span class="venue">THE GARDEN SAPPORO HOKKAIDO GRILLE</span><br><a href="https://maps.google.com/?q=THE+GARDEN+SAPPORO+HOKKAIDO+GRILLE" target="_blank" rel="noopener">Google マップで開く</a></span></li>
+        <li><span class="k">主催</span><span class="v">八幡えいこ（eiko PR）</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="https://m.me/yahataeiko" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L4 20l1.2-4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        Messengerで参加を申し込む
+      </a>
+      <p class="cta-sub">Facebook Messenger で八幡えいこへ「EIKO Table に参加したい」とお送りください。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2. この時間で大切にしたいこと -->
+<section class="chapter">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Our Table</p>
+      <h2 class="h2">この時間で大切にしたいこと</h2>
+      <div class="lead">
+        <p>「自分を知ってもらう」だけでなく、<br><strong>“この人に、自分は何ができるだろう？”</strong> と意識しながら人と出会う時間。</p>
+        <p>売り込みや名刺交換を目的にするのではなく、互いの想いや目標を知り、自然な応援やご縁が生まれる場をつくります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 当日の流れ -->
+<section class="chapter wash">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Flow</p>
+      <h2 class="h2">当日の流れ</h2>
+      <ol class="steps">
+        <li class="step"><p class="no">01</p><h3>自己紹介</h3><p>今の自分や人柄が伝わるように、自然体で。</p></li>
+        <li class="step"><p class="no">02</p><h3>お仕事内容</h3><p>何をしている人なのか、どんな想いで届けているのか。</p></li>
+        <li class="step"><p class="no">03</p><h3>これからの目標</h3><p>これから叶えたいこと、挑戦したいことを語る。</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 参加するときのスタンス -->
+<section class="chapter">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Stance</p>
+      <h2 class="h2">参加するときのスタンス</h2>
+      <div class="stance">
+        <p><strong>話すことは強制ではありません。</strong><br>安心して、自分のペースでご参加ください。</p>
+        <p>そして、誰かの話を聞きながら「私に何ができるかな？」と、少しだけ意識してみてください。</p>
+      </div>
+      <p class="engrave">つながることより、<br class="nb">応援したくなる人を知ることから。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 申込み -->
+<section class="apply">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Join</p>
+      <h2 class="h2">ご参加はこちらから</h2>
+      <p class="lead"><span class="nb">2026年10月13日（火）</span> <span class="nb">11:30〜14:00</span><br>THE GARDEN SAPPORO HOKKAIDO GRILLE</p>
+      <a class="btn btn-gold" href="https://m.me/yahataeiko" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L4 20l1.2-4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        Messengerで参加を申し込む
+      </a>
+      <p class="cta-sub">Facebook Messenger で八幡えいこへ「EIKO Table に参加したい」とお送りください。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="f-mark">bE-side you</p>
+  <p class="f-note">© eiko PR</p>
+  <a class="f-home" href="./">eiko PR のトップページへ</a>
+  <p class="f-ver">v1.0.0</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
