@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<!-- eikoAI LP v0.22.0 — EIKO Table（10/13 火・札幌）の帯と Event 章を追加（eiko-table.html へ）。v0.21.4 フッターを版のみ表記に(最終更新日付を撤去) -->
+<!-- eikoAI LP v0.23.0 — EIKO Table に「vol.1」（帯・Event 章）・上部の固定帯を EIKO Table に入れ替え・ベストセラーの入口は実績の章の本カード（book.html へ）に移動（SAT 9/14）。v0.22.0 EIKO Table（10/13 火・札幌）の帯と Event 章を追加（eiko-table.html へ）。v0.21.4 フッターを版のみ表記に(最終更新日付を撤去) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -253,6 +253,22 @@ a.badge:hover .badge-arrow{transform:translateX(2px);opacity:1}
 .res-sum-num small{font-size:11px;font-weight:700;margin-left:1px}
 .res-sum-lbl{display:block;font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5}
 .res-link{margin-top:4px;text-align:center}
+/* v0.23.0 本の入口（帯から移動）: 表紙＋6冠＋感謝のページへ */
+.res-book{
+  display:flex;align-items:center;gap:16px;margin:0 0 26px;
+  background:var(--paper);border:1px solid rgba(195,161,92,.45);border-radius:18px;padding:14px 16px;
+  text-decoration:none;color:var(--ink);
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+.res-book:hover{border-color:var(--gold);box-shadow:0 6px 18px rgba(53,49,43,.08);transform:translateY(-1px)}
+.res-book:focus-visible{outline:2px solid var(--gold-deep);outline-offset:3px}
+.res-book img{flex:none;width:64px;height:auto;border-radius:4px;box-shadow:0 6px 14px rgba(53,49,43,.22)}
+.res-book-body{min-width:0;flex:1}
+.res-book-tag{display:block;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;color:var(--gold-deep);line-height:1.5}
+.res-book-title{display:block;margin-top:3px;font-family:var(--font-head);font-weight:700;font-size:15px;line-height:1.55}
+.res-book-note{display:block;margin-top:4px;font-size:12.5px;line-height:1.6;color:var(--muted)}
+.res-book-go{display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-family:var(--font-head);font-weight:700;font-size:12.5px;color:var(--gold-deep)}
+.res-book-go svg{flex:none;color:var(--gold)}
 .res-lead{font-size:15.5px;margin-bottom:8px}
 .res-head{font-family:var(--font-head);font-weight:700;font-size:14px;margin-bottom:12px}
 .res-head b{color:var(--gold-deep)}
@@ -414,22 +430,13 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 .notice-bar:hover{background:var(--gold);color:var(--paper)}
 .notice-bar svg{flex:none}
 .tss-entry{background:var(--gray-wash);padding:46px 0 48px;text-align:center}
-/* ── v0.22.0 EIKO Table: 帯（本の帯の下・sticky にしない）と Event 章 ── */
-.event-bar{
-  display:flex;align-items:center;justify-content:center;gap:9px;
-  background:var(--paper);border-bottom:1px solid rgba(195,161,92,.4);
-  padding:10px 18px;font-family:var(--font-head);font-weight:700;
-  font-size:12.5px;letter-spacing:.03em;line-height:1.6;
-  color:var(--gold-deep);text-decoration:none;text-align:center;
-  transition:background .2s ease,color .2s ease;
-}
-.event-bar:hover{background:var(--gold-wash)}
-.event-bar svg{flex:none}
+/* ── v0.22.0 EIKO Table: Event 章 ── */
 .event{padding:58px 0 54px;background:var(--gold-wash)}
 .event-card{background:var(--paper);border-radius:22px;overflow:hidden;box-shadow:0 8px 28px rgba(53,49,43,.10)}
 .event-card img{width:100%;height:auto;display:block}
 .event-body{padding:24px 22px 26px}
 .event-name{font-family:var(--font-latin);font-weight:600;font-size:clamp(26px,7vw,36px);letter-spacing:.06em;line-height:1.2;color:var(--gold-deep)}
+.event-vol{font-size:.5em;letter-spacing:.14em;vertical-align:.18em;margin-left:.15em}
 .event-sub{margin-top:4px;font-family:var(--font-latin);font-weight:500;font-size:12.5px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
 .event-when{margin-top:14px;font-family:var(--font-head);font-weight:700;font-size:16px;line-height:1.7}
 .event-when .venue{display:block;font-family:var(--font-latin);font-weight:600;font-size:14.5px;letter-spacing:.04em;color:var(--gold-deep)}
@@ -440,16 +447,10 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 </head>
 <body>
 
-<!-- 0. Kindle出版 告知帯 (v0.18.0) -->
-<a class="notice-bar" href="book.html">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-  <span><span class="nb">Amazon ベストセラー1位 6冠達成！！</span> コミュニティのみなさん、ありがとうございます — 『なぜ今、Facebook集客なのか』感謝のページへ</span>
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-</a>
-<!-- 0b. EIKO Table 告知帯 (v0.22.0) -->
-<a class="event-bar" href="eiko-table.html">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-  <span><span class="nb">EIKO Table</span> <span class="nb">10月13日（火）</span> <span class="nb">札幌で開きます</span> — <span class="nb">ご案内はこちら</span></span>
+<!-- 0. EIKO Table 告知帯 (v0.23.0・固定。ベストセラーの入口は実績の章の本カードへ) -->
+<a class="notice-bar" href="eiko-table.html">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+  <span><span class="nb">EIKO Table vol.1</span> <span class="nb">10月13日（火）</span> <span class="nb">札幌で開きます</span> — <span class="nb">ご案内はこちら</span></span>
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
 </a>
 
@@ -562,6 +563,15 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
         <div><span class="res-sum-num">1億円突破</span><span class="res-sum-lbl">クラウドファンディング<br>総支援額</span></div>
         <div><span class="res-sum-num">8,000名超</span><span class="res-sum-lbl">応援してくださった<br>方々</span></div>
       </div>
+      <a class="res-book" href="book.html">
+        <img src="assets/book/cover.jpg" alt="『なぜ今、Facebook集客なのか』表紙" width="600" height="800" loading="lazy">
+        <span class="res-book-body">
+          <span class="res-book-tag"><span class="nb">Amazon ベストセラー1位</span> <span class="nb">6冠達成！！</span></span>
+          <span class="res-book-title">『なぜ今、Facebook集客なのか』</span>
+          <span class="res-book-note">コミュニティのみなさん、ありがとうございます</span>
+          <span class="res-book-go">感謝のページへ<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></span>
+        </span>
+      </a>
       <div class="res-link"><a class="card-link" href="results.html">これまでの挑戦を見る<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </div>
@@ -597,7 +607,7 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
       <div class="event-card">
         <a href="eiko-table.html" aria-label="EIKO Table のご案内ページへ"><img src="assets/eiko-table/kv.jpg" alt="EIKO Table — テラスのテーブルを囲む八幡えいこと参加者" width="1254" height="1254" loading="lazy"></a>
         <div class="event-body">
-          <p class="event-name">EIKO Table</p>
+          <p class="event-name">EIKO Table <span class="event-vol">vol.1</span></p>
           <p class="event-sub">Private Event in Sapporo</p>
           <p class="event-when"><span class="nb">2026年10月13日（火）</span> <span class="nb">11:30〜14:00</span><span class="venue">THE GARDEN SAPPORO HOKKAIDO GRILLE</span></p>
           <p class="event-lead">「自分を知ってもらう」だけでなく、“この人に、自分は何ができるだろう？” と意識しながら人と出会う時間。売り込みや名刺交換ではなく、自然な応援やご縁が生まれる場をつくります。</p>
@@ -725,7 +735,7 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">© eiko PR</p>
-  <p class="f-ver">v0.22.0</p>
+  <p class="f-ver">v0.23.0</p>
 </footer>
 
 <script>
