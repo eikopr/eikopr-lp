@@ -13,7 +13,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<!-- eikoAI LP v0.25.0 — 特別セミナー（10/12 月 14:00〜15:30・2,000円・UTAGE 申込フォーム）の追従フロートを画面下に追加（閉じると同じ訪問中は出ない・開催時刻を過ぎたら自動で消える・?seminar=on/closed で表示確認）。v0.24.0 — えいこさんの指示（9/14）: EIKO Table は個別にお声がけ→帯と Event 章から日程を外し「月一回開催中！」に・vol.1 も外す。v0.23.0 EIKO Table に「vol.1」（帯・Event 章）・上部の固定帯を EIKO Table に入れ替え・ベストセラーの入口は実績の章の本カード（book.html へ）に移動（SAT 9/14）。v0.22.0 EIKO Table（10/13 火・札幌）の帯と Event 章を追加（eiko-table.html へ）。v0.21.4 フッターを版のみ表記に(最終更新日付を撤去) -->
+<!-- eikoAI LP v0.26.0 — お知らせ（News）の章をプロフィールの直後・TSS 入口の前に追加（新しい順・6 件目からは「これまでのお知らせ」で同じ場所に開く・#news で直リンク可）。フロートは「いま」、この章は「記録」（SAT 9/15 承認）。v0.25.0 — 特別セミナー（10/12 月 14:00〜15:30・2,000円・UTAGE 申込フォーム）の追従フロートを画面下に追加（閉じると同じ訪問中は出ない・開催時刻を過ぎたら自動で消える・?seminar=on/closed で表示確認）。v0.24.0 — えいこさんの指示（9/14）: EIKO Table は個別にお声がけ→帯と Event 章から日程を外し「月一回開催中！」に・vol.1 も外す。v0.23.0 EIKO Table に「vol.1」（帯・Event 章）・上部の固定帯を EIKO Table に入れ替え・ベストセラーの入口は実績の章の本カード（book.html へ）に移動（SAT 9/14）。v0.22.0 EIKO Table（10/13 火・札幌）の帯と Event 章を追加（eiko-table.html へ）。v0.21.4 フッターを版のみ表記に(最終更新日付を撤去) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -441,6 +441,28 @@ footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 .event-lead{margin-top:14px;font-size:14.5px;color:var(--muted);line-height:1.9}
 .event-cta{margin-top:20px;text-align:center}
 .tss-entry .tss-lead{font-size:14.5px;color:var(--muted);margin-bottom:24px}
+/* ── v0.26.0 お知らせ（News）: プロフィールの直後・TSS 入口の前。フロートは「いま」、この章は「記録」 ── */
+.news{background:var(--gold-wash);padding:56px 0 54px}
+.news-list{list-style:none;background:var(--paper);border-radius:20px;overflow:hidden;box-shadow:0 8px 28px rgba(53,49,43,.08)}
+.news-list li+li{border-top:1px solid rgba(195,161,92,.28)}
+.news-list li[hidden]{display:none}
+.news-item{display:grid;grid-template-columns:1fr auto;column-gap:14px;row-gap:6px;align-items:center;padding:16px 18px 17px;text-decoration:none;color:var(--ink);transition:background .2s ease}
+@media (hover:hover){.news-item:hover{background:#FDFBF6}}
+.news-item:focus-visible{outline:2px solid var(--gold-deep);outline-offset:-2px}
+.news-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px}
+.news-date{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.1em;color:var(--gold-deep);line-height:1.4}
+.news-tag{display:inline-block;font-family:var(--font-head);font-weight:700;font-size:10.5px;letter-spacing:.08em;line-height:1;padding:4px 9px 3px;border:1px solid var(--gold);border-radius:999px;color:var(--gold-deep)}
+.news-title{font-family:var(--font-head);font-weight:700;font-size:14.5px;line-height:1.6}
+.news-item svg{grid-column:2;grid-row:1/3;color:var(--gold)}
+.news-more{display:block;margin:18px auto 0;padding:12px 26px;border:1.5px solid var(--gold);border-radius:999px;background:transparent;color:var(--gold-deep);font-family:var(--font-head);font-weight:700;font-size:13.5px;letter-spacing:.04em;cursor:pointer;transition:background .2s ease,color .2s ease}
+@media (hover:hover){.news-more:hover{background:var(--gold);color:var(--paper)}}
+.news-more:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.news-more[hidden]{display:none}
+@media (min-width:880px){
+  .news-item{column-gap:18px;padding:18px 24px}
+  .news-meta{gap:12px}
+  .news-title{font-size:15px}
+}
 /* ── v0.25.0 特別セミナー 追従フロート（画面下に固定・閉じると同じ訪問中は出ない・開催時刻を過ぎたら自動で消える） ── */
 .float-cta{
   position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;
@@ -749,7 +771,40 @@ body.float-on{padding-bottom:232px}
   </div>
 </div>
 
-<!-- 10. TSSメンバー入口 (v0.18.0) -->
+<!-- 10. お知らせ (v0.26.0・新しい順・6 件目からは「これまでのお知らせ」で同じ場所に開く・#news) -->
+<section class="news" id="news">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">News</p>
+      <h2 class="h2">お知らせ</h2>
+      <ul class="news-list" id="newsList">
+        <li><a class="news-item" href="https://utage-system.com/p/nYr4dnT64zzF" target="_blank" rel="noopener">
+          <span class="news-meta"><span class="news-date">2026.09.15</span><span class="news-tag">セミナー</span></span>
+          <span class="news-title">特別セミナー「人で選ばれるブランドをつくる」<span class="nb">10月12日（月）開催</span></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a></li>
+        <li><a class="news-item" href="eiko-table.html">
+          <span class="news-meta"><span class="news-date">2026.09.14</span><span class="news-tag">イベント</span></span>
+          <span class="news-title"><span class="nb">EIKO Table</span> のご案内ページを公開<span class="nb">（月一回開催中）</span></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a></li>
+        <li><a class="news-item" href="book.html">
+          <span class="news-meta"><span class="news-date">2026.09.08</span><span class="news-tag">出版</span></span>
+          <span class="news-title"><span class="nb">『なぜ今、Facebook集客なのか』</span>が <span class="nb">Amazon 6部門で1位（6冠）</span></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a></li>
+        <li><a class="news-item" href="book.html">
+          <span class="news-meta"><span class="news-date">2026.09.06</span><span class="news-tag">出版</span></span>
+          <span class="news-title"><span class="nb">『なぜ今、Facebook集客なのか』</span>を <span class="nb">Kindle で発売</span></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </a></li>
+      </ul>
+      <button type="button" class="news-more" id="newsMore" hidden>これまでのお知らせ</button>
+    </div>
+  </div>
+</section>
+
+<!-- 11. TSSメンバー入口 (v0.18.0) -->
 <section class="tss-entry">
   <div class="inner">
     <div class="reveal">
@@ -764,10 +819,10 @@ body.float-on{padding-bottom:232px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">© eiko PR</p>
-  <p class="f-ver">v0.25.0</p>
+  <p class="f-ver">v0.26.0</p>
 </footer>
 
-<!-- 11. 特別セミナー 追従フロート (v0.25.0・画面下に固定・閉じると同じ訪問中は出ない・開催時刻を過ぎたら自動で消える) -->
+<!-- 12. 特別セミナー 追従フロート (v0.25.0・画面下に固定・閉じると同じ訪問中は出ない・開催時刻を過ぎたら自動で消える) -->
 <aside class="float-cta" id="floatCta" hidden aria-label="特別セミナーのご案内">
   <div class="fc-head">
     <p class="fc-eyebrow">Special Seminar</p>
@@ -850,6 +905,17 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   $('qzBack').addEventListener('click', ()=>{ if(idx>0){ idx--; render(); } });
   $('qzRetry').addEventListener('click', ()=>{ idx = 0; answers.length = 0; $('quiz').classList.remove('done'); $('qzResult').classList.remove('show'); $('qzMain').style.display = ''; render(); });
   render();
+})();
+
+/* ── v0.26.0 お知らせ: 6 件目からは畳んでおき「これまでのお知らせ」で同じ場所に開く ── */
+(function(){
+  const LIMIT = 5;
+  const items = document.querySelectorAll('#newsList > li');
+  const more = document.getElementById('newsMore');
+  if(!more || items.length <= LIMIT) return;
+  items.forEach((li,i)=>{ if(i >= LIMIT) li.hidden = true; });
+  more.hidden = false;
+  more.addEventListener('click', ()=>{ items.forEach(li=>{ li.hidden = false; }); more.hidden = true; });
 })();
 
 /* ── v0.25.0 特別セミナー 追従フロート ── */
