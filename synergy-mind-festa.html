@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シナジーマインドフェスタ in 札幌、開催しました！ — 八幡えいこ</title>
+<meta name="description" content="2026年8月29日、Team Synergy Stage 初のリアルイベント「シナジーマインドフェスタ in 札幌」を開催しました。初対面でもすぐに話が弾み、シェアタイムも活発に。札幌を皮切りに、全国で開催していきます。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="シナジーマインドフェスタ in 札幌、開催しました！ — 八幡えいこ">
+<meta property="og:description" content="Team Synergy Stage 初のリアル開催。控えめに言って、最高でした。札幌を皮切りに、次はあなたの街へ。">
+<meta property="og:url" content="https://eikopr.com/synergy-mind-festa.html">
+<meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- synergy-mind-festa.html v1.0.0 — 2026-09-15 開催報告（NEWS）。出所は八幡えいこさんの Facebook 投稿 3 本（8/29 ご案内・8/29 当日の動画・8/31 御礼）。写真は投稿へのリンクで見せる（本人からの提供があれば「当日の写真」の章を足す）。SAT 依頼 9/15 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;
+  --gold-deep:#A2823F;
+  --gold-wash:#F7F1E5;
+  --gray:#C1C3C2;
+  --gray-wash:#F0F1F0;
+  --ink:#35312B;
+  --muted:#7C766B;
+  --paper:#FFFFFF;
+  --font-latin:'Futura','Jost',sans-serif;
+  --font-display:'Zen Maru Gothic',sans-serif;
+  --font-head:'Zen Maru Gothic',sans-serif;
+  --font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.nb{white-space:nowrap}
+
+/* ---------- 共通 ---------- */
+.inner{max-width:640px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-deep);text-transform:uppercase;margin-bottom:14px}
+.h2{font-family:var(--font-display);font-weight:900;font-size:clamp(21px,5.2vw,28px);letter-spacing:.05em;line-height:1.6;margin-bottom:18px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ---------- ボタン ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-body);font-weight:700;font-size:16px;padding:16px 34px;border-radius:999px;text-decoration:none;transition:transform .2s ease,background .2s ease,color .2s ease}
+.btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn-gold:hover{background:var(--gold-deep);color:var(--paper);transform:translateY(-2px)}
+.btn svg{flex:none}
+
+/* ---------- ヒーロー ---------- */
+.hero-lead{padding:44px 0 46px;text-align:center;background:var(--gold-wash)}
+.ev-role{display:inline-block;font-family:var(--font-latin);font-weight:600;font-size:12.5px;letter-spacing:.2em;color:var(--gold-deep);background:var(--paper);border:1px solid var(--gold);border-radius:999px;padding:7px 16px 6px;margin-bottom:22px}
+.ev-date{font-family:var(--font-latin);font-weight:600;font-size:13px;letter-spacing:.18em;color:var(--gold-deep);margin-bottom:14px}
+.ev-title{font-family:var(--font-display);font-weight:900;font-size:clamp(24px,6.6vw,36px);line-height:1.45;letter-spacing:.04em;color:var(--ink)}
+.ev-title .in-sapporo{display:block;font-family:var(--font-latin);font-weight:600;font-size:clamp(15px,4.2vw,19px);letter-spacing:.2em;color:var(--gold-deep);margin-top:6px}
+.ev-done{display:inline-block;margin-top:22px;font-family:var(--font-head);font-weight:900;font-size:clamp(20px,5.6vw,28px);letter-spacing:.08em;color:var(--gold-deep);border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:10px 22px}
+.ev-tag{margin-top:20px;font-family:var(--font-head);font-weight:700;font-size:clamp(15px,4.2vw,18px);color:var(--ink);letter-spacing:.04em;line-height:1.8}
+
+/* ---------- 本文の章 ---------- */
+.chapter{padding:54px 0 50px}
+.chapter+.chapter{border-top:1px solid var(--gray-wash)}
+.chapter.wash{background:var(--gold-wash);border-top:0}
+.lead{font-size:15.5px}
+.lead strong{color:var(--gold-deep)}
+.lead p+p{margin-top:1.1em}
+.quote{margin-top:26px;padding:22px 22px 20px;background:var(--gold-wash);border-left:3px solid var(--gold);border-radius:0 18px 18px 0;font-family:var(--font-head);font-weight:700;font-size:clamp(16px,4.4vw,19px);line-height:1.8;color:var(--ink)}
+.quote small{display:block;margin-top:8px;font-family:var(--font-body);font-weight:400;font-size:12.5px;color:var(--muted)}
+.steps{list-style:none;display:grid;grid-template-columns:1fr;gap:14px;margin-top:8px}
+@media (min-width:560px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--paper);border-radius:18px;padding:22px 18px;box-shadow:0 4px 16px rgba(53,49,43,.06)}
+.step .no{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--gold-deep)}
+.step h3{font-family:var(--font-head);font-weight:700;font-size:17px;margin:6px 0 8px;line-height:1.6}
+.step p{font-size:14px;color:var(--muted);line-height:1.8}
+
+/* ---------- 投稿カード ---------- */
+.posts{list-style:none;display:grid;gap:14px;margin-top:8px}
+.post{display:grid;grid-template-columns:1fr auto;column-gap:14px;row-gap:6px;align-items:center;padding:18px 20px;background:var(--paper);border:1px solid rgba(195,161,92,.35);border-radius:18px;text-decoration:none;box-shadow:0 4px 16px rgba(53,49,43,.05);transition:transform .2s ease,box-shadow .2s ease}
+.post:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(53,49,43,.1)}
+.post:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.post-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px}
+.post-date{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.1em;color:var(--gold-deep)}
+.post-kind{display:inline-block;font-family:var(--font-head);font-weight:700;font-size:10.5px;letter-spacing:.08em;line-height:1;padding:4px 9px 3px;border:1px solid var(--gold);border-radius:999px;color:var(--gold-deep)}
+.post-title{font-family:var(--font-head);font-weight:700;font-size:15px;line-height:1.6}
+.post-sub{font-size:13px;color:var(--muted);line-height:1.7}
+.post svg{grid-column:2;grid-row:1/4;color:var(--gold)}
+.posts-note{margin-top:14px;font-size:12.5px;color:var(--muted)}
+
+/* ---------- 次へ ---------- */
+.next{text-align:center}
+.next .engrave{margin:0 0 22px;font-family:var(--font-head);font-weight:900;font-size:clamp(19px,5.4vw,26px);letter-spacing:.06em;color:var(--gold-deep);line-height:1.7}
+.next .hash{margin-top:18px;font-family:var(--font-latin);font-weight:600;font-size:13px;letter-spacing:.14em;color:var(--muted)}
+
+/* ---------- フッター ---------- */
+footer{background:var(--paper);padding:26px 0 34px;text-align:center}
+footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
+footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
+footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
+footer .f-home{display:inline-block;margin-top:12px;font-size:13px;color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- 1. ヒーロー -->
+<div class="hero-lead">
+  <div class="inner">
+    <p class="ev-role">Report</p>
+    <p class="ev-date">2026.08.29 · SAPPORO</p>
+    <h1 class="ev-title">シナジーマインドフェスタ<span class="in-sapporo">in Sapporo</span></h1>
+    <p class="ev-done">開催しました！</p>
+    <p class="ev-tag">Team Synergy Stage、<br class="nb">初めてのリアル開催。</p>
+  </div>
+</div>
+
+<!-- 2. 当日のこと -->
+<section class="chapter">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Report</p>
+      <h2 class="h2">当日のこと</h2>
+      <div class="lead">
+        <p>2026年8月29日、札幌で「シナジーマインドフェスタ in 札幌」を開催しました。毎月、コンテンツづくりや発信の仕方を学んできた Team Synergy Stage にとって、<strong>初めてのリアルイベント</strong>です。</p>
+        <p>お集まりいただいたのは、登壇者とつながりのあるみなさん。ほぼ初めましての方どうしなのに、すぐに話が盛り上がり、<strong>シェアタイムも活発な時間</strong>になりました。</p>
+        <p>感想はおひとりおひとりがたくさん書き込んでくださり、登壇者が丁寧にお答えしました。参加者のみなさんの温かさに、心から感謝しています。</p>
+      </div>
+      <p class="quote">控えめに言って、最高でした。<small>八幡えいこ（8月31日の投稿より）</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. この日の流れ -->
+<section class="chapter wash">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Flow</p>
+      <h2 class="h2">この日の流れ</h2>
+      <ol class="steps">
+        <li class="step"><p class="no">13:30</p><h3>開会・登壇</h3><p>登壇者が、日ごろ学んできた「発信」と「つながり」の話を。</p></li>
+        <li class="step"><p class="no">SHARE</p><h3>シェアタイム</h3><p>参加者どうしで感じたことを共有。初対面でも、すぐに話が弾みました。</p></li>
+        <li class="step"><p class="no">17:00</p><h3>懇親会</h3><p>さっぽろテレビ塔の下、ビアガーデンのアネックスルームで乾杯。</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Facebook の投稿 -->
+<section class="chapter">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Facebook</p>
+      <h2 class="h2">当日の様子は Facebook で</h2>
+      <ul class="posts">
+        <li><a class="post" href="https://www.facebook.com/share/p/19PJpA7N1z/" target="_blank" rel="noopener">
+          <span class="post-meta"><span class="post-date">2026.08.29</span><span class="post-kind">ご案内</span></span>
+          <span class="post-title">参加者のみなさまへ、開催当日のご案内</span>
+          <span class="post-sub">「本日は皆さんで楽しみましょう」。会場と懇親会のご案内。</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a></li>
+        <li><a class="post" href="https://www.facebook.com/share/v/1BqUM1g5jn/" target="_blank" rel="noopener">
+          <span class="post-meta"><span class="post-date">2026.08.29</span><span class="post-kind">動画</span></span>
+          <span class="post-title">会場の様子（動画）</span>
+          <span class="post-sub">「リアルイベントって、やっぱりいいですね」。登壇の一場面。</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a></li>
+        <li><a class="post" href="https://www.facebook.com/share/p/1CAAM1x3tG/" target="_blank" rel="noopener">
+          <span class="post-meta"><span class="post-date">2026.08.31</span><span class="post-kind">御礼</span></span>
+          <span class="post-title">ご参加のみなさま、ありがとうございました</span>
+          <span class="post-sub">当日の写真と、みなさんへの感謝の言葉。</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a></li>
+      </ul>
+      <p class="posts-note">リンク先は Facebook（別のタブで開きます）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 次はあなたの街へ -->
+<section class="chapter wash next">
+  <div class="inner">
+    <div class="reveal">
+      <p class="eyebrow">Next</p>
+      <p class="engrave">札幌を皮切りに、<br class="nb">全国で開催していきます。<br>次は、あなたの街へ。</p>
+      <a class="btn btn-gold" href="https://www.facebook.com/yahataeiko" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        次回のお知らせは Facebook で
+      </a>
+      <p class="hash">#はいシナジー</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="f-mark">bE-side you</p>
+  <p class="f-note">© eiko PR</p>
+  <a class="f-home" href="./">eiko PR のトップページへ</a>
+  <p class="f-ver">v1.0.0</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
