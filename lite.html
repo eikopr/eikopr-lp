@@ -69,6 +69,7 @@ h1{font-family:var(--font-display);font-weight:900;font-size:26px;letter-spacing
 .copy{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:none;border:1px solid rgba(195,161,92,.5);border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;color:var(--gold-deep);cursor:pointer;min-height:36px}
 .copy svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
 .left{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+.testbar{margin-top:14px;font-size:13px;font-weight:700;color:var(--gold-deep);background:var(--paper);border:1.5px dashed var(--gold);border-radius:12px;padding:10px 12px;text-align:center}
 .more{font-size:13.5px;text-align:center;margin-top:12px}
 .more a,.foot a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
 .foot{text-align:center;font-size:13px;padding:10px 0 24px}
@@ -138,6 +139,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
 
       <p class="err" id="aErr" hidden></p>
       <button type="button" class="btn" id="go">お願いする</button>
+      <p class="testbar" id="testbar" hidden>テストモード：いまは見本の返事です。<br>AI はまだつないでいません。</p>
       <div id="out"></div>
       <p class="left" id="left" hidden></p>
     </div>
@@ -263,7 +265,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
     }).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (j) { return { status: res.status, j: j }; });
     }).then(function (r) {
-      if (r.status === 200) { show(r.j.result); left(r.j.remaining); return; }
+      if (r.status === 200) { $('testbar').hidden = !r.j.test; show(r.j.result); left(r.j.remaining); return; }
       if (r.status === 401) { drop('eikoai_pass'); return openGate('合言葉が変わったようです。もう一度入れてください。'); }
       if (r.status === 429) return fail(MSG[r.j.scope] || MSG.device, false);
       if (r.status === 413) return fail('文字数が多すぎます。少し短くしてください。', true);
