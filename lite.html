@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>eikoAI ライト｜eiko PR</title>
+<meta name="description" content="TSS メンバーのための、毎日の投稿づくりの相棒。添削・ネタ出し・書き出しの手伝いが、その場で返ってきます。">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="lite.webmanifest">
+<link rel="apple-touch-icon" href="assets/lite-icon-192.png">
+<meta name="theme-color" content="#C3A15C">
+<meta name="apple-mobile-web-app-title" content="eikoAI">
+<!-- lite.html v1.0.0 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Zen+Maru+Gothic:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C3A15C;--gold-deep:#A2823F;--gold-wash:#F7F1E5;
+  --gray-wash:#F0F1F0;--ink:#35312B;--muted:#7C766B;--paper:#FFFFFF;--err:#B4533A;
+  --font-latin:'Futura','Jost',sans-serif;--font-display:'Zen Maru Gothic',sans-serif;--font-body:'Zen Kaku Gothic New',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased}
+.inner{max-width:560px;margin:0 auto;padding:0 16px}
+[hidden]{display:none!important}
+.nb{white-space:nowrap}
+header{padding:28px 0 18px;text-align:center}
+.eyebrow{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-deep);text-transform:uppercase}
+h1{font-family:var(--font-display);font-weight:900;font-size:26px;letter-spacing:.04em;margin-top:4px}
+.lead{font-size:13.5px;color:var(--muted);margin-top:6px}
+.card{background:var(--gold-wash);border:1px solid rgba(195,161,92,.35);border-radius:16px;padding:22px 18px;margin-bottom:16px}
+.card-head{font-family:var(--font-display);font-weight:900;font-size:18px;text-align:center;margin-bottom:4px}
+.card-sub{font-size:13.5px;color:var(--muted);text-align:center;margin-bottom:16px}
+.who{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--muted);margin-bottom:12px}
+.who button{background:none;border:none;color:var(--gold-deep);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--paper);border:1px solid rgba(195,161,92,.4);border-radius:14px;padding:5px;margin-bottom:16px}
+.tab{display:flex;flex-direction:column;align-items:center;gap:2px;min-height:56px;justify-content:center;border:none;border-radius:10px;background:none;font-family:var(--font-body);font-weight:700;font-size:13.5px;color:var(--muted);cursor:pointer}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tab[aria-selected="true"]{background:var(--gold);color:var(--ink)}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:700;font-size:13.5px;margin-bottom:6px}
+.field label em{font-style:normal;font-size:11px;color:var(--paper);background:var(--gold-deep);border-radius:999px;padding:2px 8px;margin-left:6px}
+.field input,.field textarea,.field select{width:100%;font-family:var(--font-body);font-size:16px;color:var(--ink);background:var(--paper);border:1.5px solid rgba(195,161,92,.4);border-radius:12px;padding:12px 14px;line-height:1.7}
+.field textarea{resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(195,161,92,.18)}
+.count{display:block;text-align:right;font-size:12px;color:var(--muted);margin-top:4px}
+.count.over{color:var(--err)}
+.seg{display:flex;gap:8px}
+.seg label{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border:1.5px solid rgba(195,161,92,.4);border-radius:12px;background:var(--paper);font-weight:500;font-size:14px;cursor:pointer}
+.seg label{position:relative}
+.seg input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;padding:0;border:0;cursor:pointer}
+.seg input:checked+span{font-weight:700}
+.seg label:has(input:checked){border-color:var(--gold-deep);background:#FBF7EE}
+.btn{display:flex;width:100%;align-items:center;justify-content:center;min-height:52px;border:none;border-radius:999px;background:var(--gold);color:var(--ink);font-family:var(--font-body);font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 6px 18px rgba(195,161,92,.35)}
+.btn:disabled{opacity:.6;cursor:default}
+.btn:focus-visible,.tab:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.btn-line{background:var(--paper);border:1.5px solid var(--gold);box-shadow:none;min-height:46px;font-size:14.5px;margin-top:10px}
+.err{font-size:13px;color:var(--err);text-align:center;margin:-4px 0 12px}
+.note-ai{font-size:12px;color:var(--muted);text-align:center;margin-bottom:12px}
+.res{background:var(--paper);border:1px solid rgba(195,161,92,.35);border-radius:14px;padding:16px;margin-top:12px}
+.res h3{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--gold-deep);margin-bottom:6px}
+.res h3 svg{width:18px;height:18px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.res p,.res li{font-size:15px;word-break:auto-phrase}
+.res ul{padding-left:1.2em}
+.res pre{white-space:pre-wrap;font-family:var(--font-body);font-size:15px;background:var(--gold-wash);border-radius:10px;padding:12px}
+.res mark{background:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
+.res .angle{display:inline-block;font-size:11.5px;font-weight:700;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:1px 10px;margin-bottom:6px}
+.copy{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:none;border:1px solid rgba(195,161,92,.5);border-radius:999px;padding:6px 14px;font:inherit;font-size:13px;color:var(--gold-deep);cursor:pointer;min-height:36px}
+.copy svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
+.left{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+.more{font-size:13.5px;text-align:center;margin-top:12px}
+.more a,.foot a{color:var(--gold-deep);text-decoration:underline;text-underline-offset:3px}
+.foot{text-align:center;font-size:13px;padding:10px 0 24px}
+footer{padding:22px 0 calc(28px + env(safe-area-inset-bottom));text-align:center;border-top:1px solid var(--gray-wash)}
+footer .mark{font-family:var(--font-latin);font-weight:600;letter-spacing:.2em;font-size:12px;color:var(--gold-deep)}
+footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <p class="eyebrow">eikoAI Lite</p>
+    <h1>eikoAI ライト</h1>
+    <p class="lead">毎日の投稿づくりの相棒。<br>えいこさんの型で、<span class="nb">その場でお返しします。</span></p>
+  </div>
+</header>
+
+<main class="inner">
+  <!-- メンバー確認（tss.html と共有） -->
+  <section class="card" id="gate">
+    <p class="card-head">メンバー確認</p>
+    <p class="card-sub">お名前と、コミュニティの合言葉を<span class="nb">入れてください。</span></p>
+    <div class="field"><label for="gName">お名前</label><input type="text" id="gName" autocomplete="name"></div>
+    <div class="field"><label for="gPass">合言葉</label><input type="text" id="gPass" autocomplete="off" placeholder="コミュニティの合言葉"></div>
+    <p class="err" id="gErr" hidden></p>
+    <button type="button" class="btn" id="gBtn">はじめる</button>
+  </section>
+
+  <section id="app" hidden>
+    <div class="who"><span><span id="who"></span>さん</span><button type="button" id="logout">別の人で使う</button></div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-mode="review" aria-selected="true">
+        <svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M13 7l4 4"/></svg>添削</button>
+      <button class="tab" role="tab" data-mode="ideas" aria-selected="false">
+        <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>ネタ出し</button>
+      <button class="tab" role="tab" data-mode="draft" aria-selected="false">
+        <svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>書き出し</button>
+    </div>
+
+    <div class="card">
+      <p class="note-ai">えいこさんの型で AI が返すひとことです。</p>
+
+      <div data-panel="review">
+        <div class="field"><label for="rPost">投稿の本文 <em>必須</em></label>
+          <textarea id="rPost" rows="7" data-max="2000" placeholder="下書きでも大丈夫です"></textarea><span class="count" data-for="rPost"></span></div>
+        <div class="field"><label for="rGoal">この投稿の目的</label>
+          <select id="rGoal"><option value="">選ばない</option><option>集客</option><option>認知を広げる</option><option>ファンづくり</option><option>販売</option></select></div>
+      </div>
+
+      <div data-panel="ideas" hidden>
+        <div class="field"><label for="iWork">あなたの仕事をひとこと</label>
+          <input type="text" id="iWork" data-max="60" placeholder="例）オンラインの整理収納アドバイザー"><span class="count" data-for="iWork"></span></div>
+        <div class="field"><label for="iToday">今日あったこと・気分</label>
+          <textarea id="iToday" rows="3" data-max="300" placeholder="なくても大丈夫です"></textarea><span class="count" data-for="iToday"></span></div>
+      </div>
+
+      <div data-panel="draft" hidden>
+        <div class="field"><label for="dMemo">書きたいことのメモ <em>必須</em></label>
+          <textarea id="dMemo" rows="6" data-max="1000" placeholder="箇条書きで大丈夫です"></textarea><span class="count" data-for="dMemo"></span></div>
+        <div class="field"><label>長さ</label>
+          <div class="seg">
+            <label><input type="radio" name="dLen" value="short"><span>短め</span></label>
+            <label><input type="radio" name="dLen" value="normal" checked><span>ふつう</span></label>
+          </div></div>
+      </div>
+
+      <p class="err" id="aErr" hidden></p>
+      <button type="button" class="btn" id="go">お願いする</button>
+      <div id="out"></div>
+      <p class="left" id="left" hidden></p>
+    </div>
+
+    <div class="card">
+      <p class="card-head">型を自分の AI で使う</p>
+      <p class="card-sub">Gemini の Gem や Claude のプロジェクトに貼ると、<span class="nb">同じ型で相談できます。</span></p>
+      <button type="button" class="btn btn-line" id="kataBtn">型をコピー</button>
+      <p class="err" id="kErr" hidden></p>
+    </div>
+
+    <p class="foot">じっくり見てほしい投稿は<a href="tss.html">深掘り診断</a>へ。<br>えいこさんがお返事します。</p>
+  </section>
+</main>
+
+<footer>
+  <p class="mark">bE-side you</p>
+  <p class="ver">lite v1.0.0</p>
+</footer>
+
+<script>
+(function () {
+  var API = 'https://api.eikopr.com';
+  var PASS_HASH = 'b440a122f3097efdda9547e0822d02e818e009f774f8b04a832829491ef8b16f';
+  var ICON = {
+    good: '<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6C19 16.5 12 21 12 21z"/></svg>',
+    point: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>',
+    pen: '<svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4z"/></svg>',
+    next: '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    copy: '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>'
+  };
+  var $ = function (id) { return document.getElementById(id); };
+  var mem = {};
+  function load(k) { try { var v = localStorage.getItem(k); return v === null ? mem[k] || null : v; } catch (e) { return mem[k] || null; } }
+  function save(k, v) { mem[k] = v; try { localStorage.setItem(k, v); } catch (e) {} }
+  function drop(k) { delete mem[k]; try { localStorage.removeItem(k); } catch (e) {} }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function len(s) { return Array.from(s).length; }
+
+  function sha256(text) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+    });
+  }
+  function device() {
+    var d = load('eikoai_device');
+    if (!d || !/^[A-Za-z0-9-]{8,64}$/.test(d)) { d = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + '-' + Math.random().toString(36).slice(2)).replace(/[^A-Za-z0-9-]/g, ''); save('eikoai_device', d); }
+    return d;
+  }
+
+  /* ── メンバー確認 ── */
+  function openApp() { $('who').textContent = load('tss_member') || ''; $('gate').hidden = true; $('app').hidden = false; }
+  function openGate(msg) {
+    $('app').hidden = true; $('gate').hidden = false;
+    $('gName').value = load('tss_member') || '';
+    $('gErr').textContent = msg || ''; $('gErr').hidden = !msg;
+  }
+  if (load('tss_member') && load('eikoai_pass')) openApp(); else openGate();
+
+  $('gBtn').addEventListener('click', function () {
+    var name = $('gName').value.trim(), pass = $('gPass').value.trim().toLowerCase();
+    if (!name) return openGate('お名前を入れてください。');
+    if (!pass) return openGate('合言葉を入れてください。');
+    sha256(pass).then(function (hex) {
+      if (hex !== PASS_HASH) return openGate('合言葉が違うようです。コミュニティの案内をご確認ください。');
+      save('tss_member', name); save('eikoai_pass', pass); $('gPass').value = ''; openApp();
+    });
+  });
+  $('logout').addEventListener('click', function () { drop('tss_member'); drop('eikoai_pass'); openGate(); });
+
+  /* ── 機能の切り替え ── */
+  var mode = ['review', 'ideas', 'draft'].indexOf(load('eikoai_mode')) >= 0 ? load('eikoai_mode') : 'review';
+  var lastIdeas = [];
+  function setMode(m) {
+    mode = m; save('eikoai_mode', m);
+    document.querySelectorAll('.tab').forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.mode === m)); });
+    document.querySelectorAll('[data-panel]').forEach(function (p) { p.hidden = p.dataset.panel !== m; });
+    $('out').innerHTML = ''; $('aErr').hidden = true;
+    $('go').textContent = 'お願いする';
+  }
+  document.querySelectorAll('.tab').forEach(function (t) { t.addEventListener('click', function () { setMode(t.dataset.mode); }); });
+  setMode(mode);
+  $('iWork').value = load('eikoai_work') || '';
+
+  /* ── 文字数 ── */
+  document.querySelectorAll('[data-max]').forEach(function (el) {
+    var c = document.querySelector('[data-for="' + el.id + '"]');
+    function upd() { var n = len(el.value), max = +el.dataset.max; c.textContent = n + ' / ' + max; c.classList.toggle('over', n > max); }
+    el.addEventListener('input', upd); upd();
+  });
+
+  /* ── 送る ── */
+  function input() {
+    if (mode === 'review') return { post: $('rPost').value, goal: $('rGoal').value };
+    if (mode === 'ideas') { save('eikoai_work', $('iWork').value.trim()); return { work: $('iWork').value, today: $('iToday').value, avoid: lastIdeas }; }
+    return { memo: $('dMemo').value, length: document.querySelector('input[name="dLen"]:checked').value };
+  }
+  function precheck(inp) {
+    if (mode === 'review' && !inp.post.trim()) return '投稿の本文を貼り付けてください。';
+    if (mode === 'draft' && !inp.memo.trim()) return 'メモを書いてください。';
+    var over = Array.prototype.some.call(document.querySelectorAll('[data-panel="' + mode + '"] [data-max]'), function (el) { return len(el.value) > +el.dataset.max; });
+    return over ? '文字数が多すぎます。少し短くしてください。' : '';
+  }
+  var MSG = {
+    device: '今日はここまで。また明日どうぞ。',
+    ip: 'この場所からの今日の回数が上限になりました。また明日どうぞ。',
+    global: '今日はたくさん使っていただき、上限になりました。また明日どうぞ。'
+  };
+  function fail(msg, retry) {
+    $('aErr').innerHTML = esc(msg) + (retry ? '' : '<br><a href="tss.html">深掘り診断</a>でえいこさんに見てもらうこともできます。');
+    $('aErr').hidden = false;
+  }
+
+  $('go').addEventListener('click', function () {
+    var inp = input(), pre = precheck(inp);
+    if (pre) return fail(pre, true);
+    $('aErr').hidden = true;
+    var btn = $('go'); btn.disabled = true; btn.textContent = '考えています…';
+    var ctrl = new AbortController(); var timer = setTimeout(function () { ctrl.abort(); }, 30000);
+    fetch(API + '/v1/' + mode, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctrl.signal,
+      body: JSON.stringify({ pass: load('eikoai_pass'), device: device(), input: inp })
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (j) { return { status: res.status, j: j }; });
+    }).then(function (r) {
+      if (r.status === 200) { show(r.j.result); left(r.j.remaining); return; }
+      if (r.status === 401) { drop('eikoai_pass'); return openGate('合言葉が変わったようです。もう一度入れてください。'); }
+      if (r.status === 429) return fail(MSG[r.j.scope] || MSG.device, false);
+      if (r.status === 413) return fail('文字数が多すぎます。少し短くしてください。', true);
+      if (r.status === 400) return fail('入力の形が正しくないようです。もう一度お試しください。', true);
+      fail('うまく返せませんでした。もう一度お願いします。（回数には数えていません）', true);
+    }).catch(function (e) {
+      fail(e && e.name === 'AbortError' ? '時間がかかりすぎました。もう一度お願いします。（回数には数えていません）' : '電波の良いところで、もう一度お願いします。', true);
+    }).finally(function () {
+      clearTimeout(timer); btn.disabled = false;
+      btn.textContent = (mode === 'ideas' && lastIdeas.length) ? '別の 3 案' : 'お願いする';
+    });
+  });
+
+  function left(n) { if (typeof n === 'number') { $('left').textContent = '今日あと ' + n + ' 回'; $('left').hidden = false; } }
+
+  /* ── 返事を組む ── */
+  function block(icon, title, html, plain) {
+    return '<div class="res"><h3>' + ICON[icon] + esc(title) + '</h3>' + html +
+      '<button type="button" class="copy" data-copy="' + esc(plain) + '">' + ICON.copy + 'コピー</button></div>';
+  }
+  function show(r) {
+    var h = '';
+    if (r.offtopic) h = '<div class="res"><p>' + esc(r.offtopic) + '</p></div>';
+    else if (mode === 'review') {
+      h = block('good', 'この投稿の素敵なところ', '<ul>' + r.good.map(function (g) { return '<li>' + esc(g) + '</li>'; }).join('') + '</ul>', r.good.join('\n')) +
+          block('point', 'さらに良くなるポイント', '<p>' + esc(r.point) + '</p>', r.point) +
+          block('pen', '例えばこんな書き出し', '<pre>' + esc(r.rewrite) + '</pre>', r.rewrite) +
+          block('next', '次の投稿でやってみること', '<p>' + esc(r.next) + '</p>', r.next) +
+          '<p class="more">じっくり見てほしい時は<a href="tss.html">深掘り診断</a>へ</p>';
+    } else if (mode === 'ideas') {
+      lastIdeas = r.ideas.map(function (i) { return i.what; });
+      h = r.ideas.map(function (i, k) {
+        var plain = i.opening + '\n\n' + i.question;
+        return block('pen', '案 ' + (k + 1), '<span class="angle">' + esc(i.angle) + '</span><p>' + esc(i.what) + '</p><pre>' + esc(i.opening) + '\n…\n' + esc(i.question) + '</pre>', plain);
+      }).join('');
+    } else {
+      var marked = esc(r.draft);
+      r.yours.forEach(function (y) { var p = esc(y.part); if (p && marked.indexOf(p) >= 0) marked = marked.split(p).join('<mark>' + p + '</mark>'); });
+      h = block('pen', '下書き', '<pre>' + marked + '</pre>', r.draft) +
+          block('point', 'ここはあなたの言葉に', '<ul>' + r.yours.map(function (y) { return '<li>「' + esc(y.part) + '」— ' + esc(y.why) + '</li>'; }).join('') + '</ul>', r.yours.map(function (y) { return y.part + ' — ' + y.why; }).join('\n')) +
+          (r.note ? '<div class="res"><p>' + esc(r.note) + '</p></div>' : '');
+    }
+    $('out').innerHTML = h;
+    $('out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ── コピー ── */
+  function copyText(text, btn) {
+    var done = function () { var t = btn.innerHTML; btn.textContent = 'コピーしました'; setTimeout(function () { btn.innerHTML = t; }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text).then(done, function () { legacy(text); done(); });
+    legacy(text); done();
+  }
+  function legacy(text) { var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} ta.remove(); }
+  $('out').addEventListener('click', function (e) { var b = e.target.closest('.copy'); if (b) copyText(b.dataset.copy, b); });
+
+  $('kataBtn').addEventListener('click', function () {
+    var btn = $('kataBtn'); btn.disabled = true; $('kErr').hidden = true;
+    fetch(API + '/v1/kata', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pass: load('eikoai_pass'), device: device() }) })
+      .then(function (res) {
+        if (res.status === 401) { drop('eikoai_pass'); openGate('合言葉が変わったようです。もう一度入れてください。'); return null; }
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json();
+      })
+      .then(function (j) { if (j) copyText(j.text, btn); })
+      .catch(function () { $('kErr').textContent = 'うまく取り出せませんでした。もう一度お願いします。'; $('kErr').hidden = false; })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
