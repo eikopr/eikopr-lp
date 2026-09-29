@@ -38,6 +38,8 @@ h1{font-family:var(--font-display);font-weight:900;font-size:26px;letter-spacing
 .tab{display:flex;flex-direction:column;align-items:center;gap:2px;min-height:56px;justify-content:center;border:none;border-radius:10px;background:none;font-family:var(--font-body);font-weight:700;font-size:13.5px;color:var(--muted);cursor:pointer}
 .tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tab[aria-selected="true"]{background:var(--gold);color:var(--ink)}
+.tab:disabled{opacity:.55;cursor:default}
+#kataText{width:100%;margin-top:12px;font-family:var(--font-body);font-size:14px;line-height:1.7;color:var(--ink);background:var(--paper);border:1.5px solid rgba(195,161,92,.4);border-radius:12px;padding:12px}
 .field{margin-bottom:14px}
 .field label{display:block;font-weight:700;font-size:13.5px;margin-bottom:6px}
 .field label em{font-style:normal;font-size:11px;color:var(--paper);background:var(--gold-deep);border-radius:999px;padding:2px 8px;margin-left:6px}
@@ -148,6 +150,8 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
       <p class="card-head">型を自分の AI で使う</p>
       <p class="card-sub">Gemini の Gem や Claude のプロジェクトに貼ると、<span class="nb">同じ型で相談できます。</span></p>
       <button type="button" class="btn btn-line" id="kataBtn">型をコピー</button>
+      <p class="card-sub" id="kataHint" style="margin:12px 0 0" hidden>自動でコピーできませんでした。下の枠を長押しして、<span class="nb">「すべてを選択」→「コピー」</span>してください。</p>
+      <textarea id="kataText" rows="8" readonly hidden></textarea>
       <p class="err" id="kErr" hidden></p>
     </div>
 
@@ -191,7 +195,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
   }
 
   /* ── メンバー確認 ── */
-  function openApp() { $('who').textContent = load('tss_member') || ''; $('gate').hidden = true; $('app').hidden = false; }
+  function openApp() { $('who').textContent = load('tss_member') || ''; $('gate').hidden = true; $('app').hidden = false; fetchKata(); }
   function openGate(msg) {
     $('app').hidden = true; $('gate').hidden = false;
     $('gName').value = load('tss_member') || '';
@@ -245,7 +249,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
   }
   var MSG = {
     device: '今日はここまで。また明日どうぞ。',
-    ip: 'この場所からの今日の回数が上限になりました。また明日どうぞ。',
+    ip: 'この場所（Wi-Fi）からの今日の回数が上限になりました。モバイル回線に切り替えると使えます。',
     global: '今日はたくさん使っていただき、上限になりました。また明日どうぞ。'
   };
   function fail(msg, retry) {
@@ -257,15 +261,17 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
     var inp = input(), pre = precheck(inp);
     if (pre) return fail(pre, true);
     $('aErr').hidden = true;
+    var sent = mode, tabs = document.querySelectorAll('.tab');
     var btn = $('go'); btn.disabled = true; btn.textContent = '考えています…';
+    tabs.forEach(function (t) { t.disabled = true; });
     var ctrl = new AbortController(); var timer = setTimeout(function () { ctrl.abort(); }, 30000);
-    fetch(API + '/v1/' + mode, {
+    fetch(API + '/v1/' + sent, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctrl.signal,
       body: JSON.stringify({ pass: load('eikoai_pass'), device: device(), input: inp })
     }).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (j) { return { status: res.status, j: j }; });
     }).then(function (r) {
-      if (r.status === 200) { $('testbar').hidden = !r.j.test; show(r.j.result); left(r.j.remaining); return; }
+      if (r.status === 200) { $('testbar').hidden = !r.j.test; show(r.j.result, sent); left(r.j.remaining); return; }
       if (r.status === 401) { drop('eikoai_pass'); return openGate('合言葉が変わったようです。もう一度入れてください。'); }
       if (r.status === 429) return fail(MSG[r.j.scope] || MSG.device, false);
       if (r.status === 413) return fail('文字数が多すぎます。少し短くしてください。', true);
@@ -275,6 +281,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
       fail(e && e.name === 'AbortError' ? '時間がかかりすぎました。もう一度お願いします。（回数には数えていません）' : '電波の良いところで、もう一度お願いします。', true);
     }).finally(function () {
       clearTimeout(timer); btn.disabled = false;
+      tabs.forEach(function (t) { t.disabled = false; });
       btn.textContent = (mode === 'ideas' && lastIdeas.length) ? '別の 3 案' : 'お願いする';
     });
   });
@@ -286,16 +293,16 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
     return '<div class="res"><h3>' + ICON[icon] + esc(title) + '</h3>' + html +
       '<button type="button" class="copy" data-copy="' + esc(plain) + '">' + ICON.copy + 'コピー</button></div>';
   }
-  function show(r) {
+  function show(r, m) {
     var h = '';
     if (r.offtopic) h = '<div class="res"><p>' + esc(r.offtopic) + '</p></div>';
-    else if (mode === 'review') {
+    else if (m === 'review') {
       h = block('good', 'この投稿の素敵なところ', '<ul>' + r.good.map(function (g) { return '<li>' + esc(g) + '</li>'; }).join('') + '</ul>', r.good.join('\n')) +
           block('point', 'さらに良くなるポイント', '<p>' + esc(r.point) + '</p>', r.point) +
           block('pen', '例えばこんな書き出し', '<pre>' + esc(r.rewrite) + '</pre>', r.rewrite) +
           block('next', '次の投稿でやってみること', '<p>' + esc(r.next) + '</p>', r.next) +
           '<p class="more">じっくり見てほしい時は<a href="tss.html">深掘り診断</a>へ</p>';
-    } else if (mode === 'ideas') {
+    } else if (m === 'ideas') {
       lastIdeas = r.ideas.map(function (i) { return i.what; });
       h = r.ideas.map(function (i, k) {
         var plain = i.opening + '\n\n' + i.question;
@@ -313,25 +320,47 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
   }
 
   /* ── コピー ── */
-  function copyText(text, btn) {
-    var done = function () { var t = btn.innerHTML; btn.textContent = 'コピーしました'; setTimeout(function () { btn.innerHTML = t; }, 1600); };
-    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text).then(done, function () { legacy(text); done(); });
-    legacy(text); done();
+  // 成功した時だけ「コピーしました」。拒否されたら onFail（無ければ「できませんでした」）
+  function flash(btn, text, ms) { var t = btn.innerHTML; btn.textContent = text; setTimeout(function () { btn.innerHTML = t; }, ms); }
+  function legacy(text) {
+    var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove(); return ok;
   }
-  function legacy(text) { var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} ta.remove(); }
+  function copyText(text, btn, onFail) {
+    var ok = function () { flash(btn, 'コピーしました', 1600); };
+    var ng = function () { if (onFail) onFail(text); else flash(btn, 'コピーできませんでした', 2000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).then(ok, function () { if (legacy(text)) ok(); else ng(); });
+    }
+    if (legacy(text)) ok(); else ng();
+  }
   $('out').addEventListener('click', function (e) { var b = e.target.closest('.copy'); if (b) copyText(b.dataset.copy, b); });
 
-  $('kataBtn').addEventListener('click', function () {
-    var btn = $('kataBtn'); btn.disabled = true; $('kErr').hidden = true;
-    fetch(API + '/v1/kata', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pass: load('eikoai_pass'), device: device() }) })
+  /* ── 型のコピー: 面を開いた時に先に取っておき、押したその場でコピーする（iPhone の Safari 対策） ── */
+  var kataText = null;
+  function fetchKata() {
+    return fetch(API + '/v1/kata', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pass: load('eikoai_pass'), device: device() }) })
       .then(function (res) {
         if (res.status === 401) { drop('eikoai_pass'); openGate('合言葉が変わったようです。もう一度入れてください。'); return null; }
-        if (!res.ok) throw new Error(String(res.status));
-        return res.json();
+        if (!res.ok) return null;
+        return res.json().then(function (j) { kataText = j.text; return kataText; });
       })
-      .then(function (j) { if (j) copyText(j.text, btn); })
-      .catch(function () { $('kErr').textContent = 'うまく取り出せませんでした。もう一度お願いします。'; $('kErr').hidden = false; })
-      .finally(function () { btn.disabled = false; });
+      .catch(function () { return null; });
+  }
+  function showManual(text) {
+    $('kataText').value = text; $('kataText').hidden = false; $('kataHint').hidden = false;
+    $('kataText').focus(); $('kataText').select();
+  }
+  $('kataBtn').addEventListener('click', function () {
+    var btn = $('kataBtn'); $('kErr').hidden = true;
+    if (kataText) return copyText(kataText, btn, showManual);
+    btn.disabled = true;
+    fetchKata().then(function (t) {
+      if (t) showManual(t);
+      else if (!$('app').hidden) { $('kErr').textContent = 'うまく取り出せませんでした。もう一度お願いします。'; $('kErr').hidden = false; }
+    }).finally(function () { btn.disabled = false; });
   });
 })();
 </script>
