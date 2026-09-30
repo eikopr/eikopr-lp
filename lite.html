@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>eikoAI ライト｜eiko PR</title>
-<meta name="description" content="TSS メンバーのための、毎日の投稿づくりの相棒。添削・ネタ出し・書き出しの手伝いが、その場で返ってきます。">
+<meta name="description" content="TSS メンバーのための、毎日の投稿づくりのパートナー。添削・ネタ出し・書き出しの手伝いが、その場で返ってきます。">
 <meta name="robots" content="noindex">
 <link rel="manifest" href="lite.webmanifest">
 <link rel="apple-touch-icon" href="assets/lite-icon-192.png">
 <meta name="theme-color" content="#C3A15C">
 <meta name="apple-mobile-web-app-title" content="eikoAI">
-<!-- lite.html v1.0.0 -->
+<!-- lite.html v1.1.0 エンジンの表示（GPT-6 luna・えいこさんの希望 9/30）。v1.0.0 初版 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Zen+Maru+Gothic:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@ header{padding:28px 0 18px;text-align:center}
 .eyebrow{font-family:var(--font-latin);font-weight:600;font-size:12px;letter-spacing:.22em;color:var(--gold-deep);text-transform:uppercase}
 h1{font-family:var(--font-display);font-weight:900;font-size:26px;letter-spacing:.04em;margin-top:4px}
 .lead{font-size:13.5px;color:var(--muted);margin-top:6px}
+.engine{display:inline-block;font-size:12px;color:var(--gold-deep);background:var(--gold-wash);border:1px solid rgba(195,161,92,.35);border-radius:999px;padding:4px 12px;margin-top:10px}
 .card{background:var(--gold-wash);border:1px solid rgba(195,161,92,.35);border-radius:16px;padding:22px 18px;margin-bottom:16px}
 .card-head{font-family:var(--font-display);font-weight:900;font-size:18px;text-align:center;margin-bottom:4px}
 .card-sub{font-size:13.5px;color:var(--muted);text-align:center;margin-bottom:16px}
@@ -85,7 +86,8 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
   <div class="inner">
     <p class="eyebrow">eikoAI Lite</p>
     <h1>eikoAI ライト</h1>
-    <p class="lead">毎日の投稿づくりの相棒。<br>えいこさんの型で、<span class="nb">その場でお返しします。</span></p>
+    <p class="lead">毎日の投稿づくりのパートナー。<br>えいこさんの型で、<span class="nb">その場でお返しします。</span></p>
+    <p class="engine">こちらのエンジンは<span class="nb">最新の GPT-6 luna で</span><span class="nb">現在動いています。</span></p>
   </div>
 </header>
 
@@ -161,7 +163,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
 
 <footer>
   <p class="mark">bE-side you</p>
-  <p class="ver">lite v1.0.0</p>
+  <p class="ver">lite v1.1.0</p>
 </footer>
 
 <script>
