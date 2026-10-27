@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://eikopr.com/tss.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- tss.html v1.3.0 eikoAI ライトへの入口・合言葉をライト版と共有 -->
+<!-- tss.html v1.4.0 eikoAI ライトへの入口・合言葉をライト版と共有・深掘り診断はフォームを別タブで開く形 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -169,7 +169,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
   <div class="inner">
     <p class="head-badge">TSS MEMBERS</p>
     <h1 class="head-catch"><span class="u">TSSメンバーの</span><br><span class="u">eikoAI 投稿診断</span></h1>
-    <p class="head-sub">Team Synergy Stage のメンバーは、<span class="nb">無料で・何度でも</span>ご利用いただけます。</p>
+    <p class="head-sub">Team Synergy Stage のメンバーは、<span class="nb">無料で、1 日 3 回まで</span>ご利用いただけます。</p>
   </div>
 </div>
 
@@ -190,7 +190,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       </li>
       <li>
         <b>お返事が届く</b>
-        <p>eikoAI が投稿を拝見し、確認を経て、良いところ・さらに良くなるポイント・次の投稿でやってみることをお返しします。</p>
+        <p>eikoAI がえいこさんの型で投稿を拝見し、良いところ・さらに良くなるポイント・次の投稿でやってみることをメールでお返しします。</p>
       </li>
       <li>
         <b>次の投稿で、ひとつだけ試す</b>
@@ -226,10 +226,6 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       <p class="mcard-sub"><span id="mWho"></span>さん、投稿を見せてください。</p>
       <p class="mcard-note" style="margin:-8px 0 16px"><a href="lite.html">毎日の投稿づくりは「eikoAI ライト」へ</a>（その場でお返しします）</p>
       <div class="field">
-        <label for="fPost">見てほしい投稿 <em>必須</em></label>
-        <textarea id="fPost" rows="8" placeholder="Facebook 投稿の本文を、そのまま貼り付けてください（下書きでも大丈夫です）"></textarea>
-      </div>
-      <div class="field">
         <label for="fType">タイプ診断の結果</label>
         <select id="fType">
           <option>診断していない</option>
@@ -252,27 +248,16 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
         </select>
         <input type="text" id="fWorryOther" placeholder="気になっていることを、ひとことで" hidden>
       </div>
-      <div class="field">
-        <label for="fMethod">お返事の受け取り方法 <em>必須</em></label>
-        <select id="fMethod">
-          <option value="Messenger">Messenger で受け取る</option>
-          <option value="メール">メールで受け取る</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="fContact"><span id="fContactLabel">Facebook のお名前</span> <em>必須</em></label>
-        <input type="text" id="fContact" placeholder="Messenger でお探しする時のお名前">
-      </div>
       <p class="ferr" id="quizErr" hidden></p>
-      <button type="button" class="btn btn-gold mbtn" id="sendBtn">診断をお願いする</button>
-      <p class="mcard-note">送信すると、お返事づくりが始まります。お返事には少しお時間をいただきます。<br>うまく送れないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からも送れます。</p>
+      <button type="button" class="btn btn-gold mbtn" id="sendBtn">フォームを開いて投稿を送る</button>
+      <p class="mcard-note">Google のフォームが別のタブで開きます。Google のアカウントでのログインが必要です。<br>お返事は Google でログインしたメールアドレスに届きます（1 時間ほどで届きます）。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。</p>
     </div>
 
     <!-- 送信完了 -->
     <div class="mcard" id="doneBox" hidden>
-      <p class="mcard-head">お送りしました</p>
-      <p class="mcard-sub">投稿を拝見して、心を込めてお返事します。<br>届いたアドバイスは、次の投稿でひとつだけ試してみてください。</p>
-      <button type="button" class="btn btn-gold mbtn" id="againBtn">もう1本、診断をお願いする</button>
+      <p class="mcard-head">フォームを開きました</p>
+      <p class="mcard-sub">Google のフォームが開きました。投稿を貼って送信してください。お返事は 1 時間ほどでメールに届きます。お返事は 1 日 3 回までです。<br>届いたアドバイスは、次の投稿でひとつだけ試してみてください。</p>
+      <button type="button" class="btn btn-gold mbtn" id="againBtn">もう1本、フォームを開く</button>
     </div>
 
   </div>
@@ -285,15 +270,15 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">tss v1.3.0</p>
+  <p class="f-ver">tss v1.4.0</p>
 </footer>
 
 <script>
-/* ── v1.1.0 メンバー確認+ページ内投稿診断 ──
-   合言葉は平文を置かず SHA-256 で照合。送信は既存の受け口(Googleフォーム)へ
-   裏側から届ける方式なので、AI下書き〜通知メールの流れは従来どおり。 */
+/* ── v1.4.0 メンバー確認+フォームを別タブで開く ──
+   合言葉は平文を置かず SHA-256 で照合。診断の受付は Google ログイン必須の
+   フォームで行うため、名前・タイプ・気になることを入れた状態で別タブに開く。 */
 (function(){
-  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/formResponse';
+  var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform';
   var PASS_HASH = 'b440a122f3097efdda9547e0822d02e818e009f774f8b04a832829491ef8b16f';
   var $ = function(id){ return document.getElementById(id); };
   var memberName = '';
@@ -340,58 +325,24 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     $('fWorryOther').hidden = (this.value !== '__other__');
   });
 
-  /* 受け取り方法に合わせて入力欄の案内を切り替え */
-  $('fMethod').addEventListener('change', function(){
-    var mail = (this.value === 'メール');
-    $('fContactLabel').textContent = mail ? 'メールアドレス' : 'Facebook のお名前';
-    var c = $('fContact');
-    c.placeholder = mail ? '例）example@gmail.com' : 'Messenger でお探しする時のお名前';
-    c.type = mail ? 'email' : 'text';
-    c.inputMode = mail ? 'email' : 'text';
-  });
-
   $('sendBtn').addEventListener('click', function(){
-    var post = $('fPost').value.trim();
-    var method = $('fMethod').value;
-    var contact = $('fContact').value.trim();
-    var err = $('quizErr');
-    if (!post) { err.textContent = '見てほしい投稿を貼り付けてください。'; err.hidden = false; return; }
-    if (!contact) {
-      err.textContent = (method === 'メール') ? 'メールアドレスを書いてください。' : 'Facebook のお名前を書いてください。';
-      err.hidden = false; return;
-    }
-    if (method === 'メール' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)) {
-      err.textContent = 'メールアドレスの形が正しくないようです。ご確認ください。';
-      err.hidden = false; return;
-    }
-    err.hidden = true;
-    var btn = $('sendBtn');
-    btn.disabled = true; btn.textContent = 'お送りしています…';
-
-    var body = new URLSearchParams();
-    body.append('entry.837633990', memberName + '（TSSメンバー）');
-    body.append('entry.575997668', post);
-    body.append('entry.1670820998', $('fType').value);
+    var q = ['usp=pp_url',
+      'entry.837633990=' + encodeURIComponent(memberName + '（TSSメンバー）'),
+      'entry.1670820998=' + encodeURIComponent($('fType').value)];
     var worry = $('fWorry').value;
     if (worry === '__other__') {
-      body.append('entry.273701990', '__other_option__');
-      body.append('entry.273701990.other_option_response', $('fWorryOther').value.trim() || 'その他');
+      q.push('entry.273701990=__other_option__');
+      q.push('entry.273701990.other_option_response=' + encodeURIComponent($('fWorryOther').value.trim() || 'その他'));
     } else {
-      body.append('entry.273701990', worry);
+      q.push('entry.273701990=' + encodeURIComponent(worry));
     }
-    body.append('entry.608034455', method + ': ' + contact);
-
-    fetch(FORM, { method: 'POST', mode: 'no-cors', body: body })
-      .then(function(){ show('doneBox'); window.scrollTo({top: $('doneBox').offsetTop - 80, behavior: 'smooth'}); })
-      .catch(function(){
-        err.textContent = '送信がうまくいきませんでした。下の「こちらのフォーム」からお送りください。';
-        err.hidden = false;
-      })
-      .finally(function(){ btn.disabled = false; btn.textContent = '診断をお願いする'; });
+    window.open(FORM + '?' + q.join('&'), '_blank', 'noopener');
+    $('quizErr').hidden = true;
+    show('doneBox');
+    window.scrollTo({top: $('doneBox').offsetTop - 80, behavior: 'smooth'});
   });
 
   $('againBtn').addEventListener('click', function(){
-    $('fPost').value = '';
     $('quizErr').hidden = true;
     show('quizBox');
   });

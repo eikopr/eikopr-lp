@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="assets/lite-icon-192.png">
 <meta name="theme-color" content="#C3A15C">
 <meta name="apple-mobile-web-app-title" content="eikoAI">
-<!-- lite.html v1.1.0 エンジンの表示（GPT-6 luna・えいこさんの希望 9/30）。v1.0.0 初版 -->
+<!-- lite.html v1.2.0 深掘り診断の説明を全自動化に合わせて修正。v1.1.0 エンジンの表示（GPT-6 luna・えいこさんの希望 9/30）。v1.0.0 初版 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Zen+Maru+Gothic:wght@700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -157,13 +157,13 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
       <p class="err" id="kErr" hidden></p>
     </div>
 
-    <p class="foot">じっくり見てほしい投稿は<a href="tss.html">深掘り診断</a>へ。<br>えいこさんがお返事します。</p>
+    <p class="foot">じっくり見てほしい投稿は<a href="tss.html">深掘り診断</a>へ。<br>えいこさんの型で、じっくりお返事します。</p>
   </section>
 </main>
 
 <footer>
   <p class="mark">bE-side you</p>
-  <p class="ver">lite v1.1.0</p>
+  <p class="ver">lite v1.2.0</p>
 </footer>
 
 <script>
@@ -255,7 +255,7 @@ footer .ver{font-size:11px;color:var(--muted);margin-top:4px}
     global: '今日はたくさん使っていただき、上限になりました。また明日どうぞ。'
   };
   function fail(msg, retry) {
-    $('aErr').innerHTML = esc(msg) + (retry ? '' : '<br><a href="tss.html">深掘り診断</a>でえいこさんに見てもらうこともできます。');
+    $('aErr').innerHTML = esc(msg) + (retry ? '' : '<br><a href="tss.html">深掘り診断</a>でじっくり見てもらうこともできます。');
     $('aErr').hidden = false;
   }
 
