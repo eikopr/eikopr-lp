@@ -250,7 +250,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       </div>
       <p class="ferr" id="quizErr" hidden></p>
       <button type="button" class="btn btn-gold mbtn" id="sendBtn">フォームを開いて投稿を送る</button>
-      <p class="mcard-note">Google のフォームが別のタブで開きます。Google のアカウントでのログインが必要です。<br>お返事は Google でログインしたメールアドレスに届きます（1 時間ほどで届きます）。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。</p>
+      <p class="mcard-note">Google のフォームが別のタブで開きます。Google のアカウントでのログインが必要です。<br>お返事は、Google でログインしたメールアドレスに 1 時間ほどで届きます。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。<br><span class="inapp-hint" hidden>Facebook などのアプリの中で開いている時は、右上のメニューから「ブラウザで開く」を選ぶとログインできます。</span></p>
     </div>
 
     <!-- 送信完了 -->
@@ -258,6 +258,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       <p class="mcard-head">フォームを開きました</p>
       <p class="mcard-sub">Google のフォームが開きました。投稿を貼って送信してください。お返事は 1 時間ほどでメールに届きます。お返事は 1 日 3 回までです。<br>届いたアドバイスは、次の投稿でひとつだけ試してみてください。</p>
       <button type="button" class="btn btn-gold mbtn" id="againBtn">もう1本、フォームを開く</button>
+      <p class="mcard-note">フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。</p>
     </div>
 
   </div>
@@ -278,6 +279,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
    合言葉は平文を置かず SHA-256 で照合。診断の受付は Google ログイン必須の
    フォームで行うため、名前・タイプ・気になることを入れた状態で別タブに開く。 */
 (function(){
+  document.querySelectorAll('.inapp-hint').forEach(function(e){ if (/FBAN|FBAV|FB_IAB|Instagram|Line\//.test(navigator.userAgent)) e.hidden = false; });
   var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform';
   var PASS_HASH = 'b440a122f3097efdda9547e0822d02e818e009f774f8b04a832829491ef8b16f';
   var $ = function(id){ return document.getElementById(id); };
