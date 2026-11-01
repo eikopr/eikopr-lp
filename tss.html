@@ -268,7 +268,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       </div>
       <p class="ferr" id="quizErr" hidden></p>
       <button type="button" class="btn btn-gold mbtn" id="sendBtn">フォームを開いて投稿を送る</button>
-      <p class="mcard-note">Google のフォームが別のタブで開きます。Google のアカウントでのログインが必要です。<br>お返事は、Google でログインしたメールアドレスに 1 時間ほどで届きます。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。<br><span class="inapp-hint" hidden>Facebook などのアプリの中で開いている時は、右上のメニューから「ブラウザで開く」を選ぶとログインできます。</span></p>
+      <p class="mcard-note">Google のフォームが別のタブで開きます。Google のアカウントでのログインが必要です。<br>お返事は、Google でログインしたメールアドレスに 1 時間ほどで届きます。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。<br><span class="inapp-hint" hidden>Facebook などのアプリの中で開いている時は、右上の「…」（Android は「⋮」）から「ブラウザで開く」を選ぶとログインできます。</span></p>
     </div>
 
     <!-- 送信完了 -->
@@ -380,7 +380,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 (function(){
   var UA = navigator.userAgent;
   var IN_APP = /FBAN|FBAV|FB_IAB|Instagram|Line\//.test(UA);
-  window.eikoInApp = { active: IN_APP, ask: function(url, go){ go(); } };
+  window.eikoInApp = { active: IN_APP, ask: function(url, go){ go(url); } };
   if (!IN_APP) return;
   var IS_LINE = /Line\//.test(UA);
   var APP = /Instagram/.test(UA) ? 'Instagram' : (IS_LINE ? 'LINE' : 'Facebook');
@@ -389,6 +389,8 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
   var OEB = /[?&]openExternalBrowser=/.test(location.search);
   /* LINE で openExternalBrowser=1 が付いたまま、まだ LINE の中にいる＝外に出られなかった */
   var STUCK = !IS_LINE || OEB;
+  /* ページを開いた直後に案内を自動で出すか。既定は false（フォームのボタンを押した時だけ出す） */
+  var AUTO_SHOW_ON_LOAD = false;
 
   function withOEB(url){
     if (!IS_LINE || /[?&]openExternalBrowser=/.test(url)) return url;
@@ -397,7 +399,8 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'openExternalBrowser=1' + h;
   }
   function pageUrl(){
-    return location.href.replace(/([?&])openExternalBrowser=1&?/, '$1').replace(/[?&]$/, '');
+    try { var u = new URL(location.href); u.searchParams.delete('openExternalBrowser'); return u.toString(); }
+    catch (e) { return location.href; }
   }
   function formLinks(){ return document.querySelectorAll('a[href^="' + FORM_PREFIX + '"]'); }
   if (IS_LINE) formLinks().forEach(function(a){ a.href = withOEB(a.href); });
@@ -415,7 +418,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       '<div class="inapp-card" role="dialog" aria-modal="true" aria-labelledby="inappTtl">' +
         '<button type="button" class="inapp-x" aria-label="閉じる">' + X_SVG + '</button>' +
         '<p class="inapp-ttl" id="inappTtl">いつものブラウザで開いてください</p>' +
-        '<p class="inapp-txt">' + APP + ' などのアプリの中では Google にログインできないため、フォームがメールアドレスの入力から始まります。</p>' +
+        '<p class="inapp-txt">' + APP + ' などのアプリの中のブラウザは Google にログインしていない状態で開くため、メールアドレスの入力から始まります。</p>' +
         '<p class="inapp-txt">' + menu + 'から「ブラウザで開く」または「外部ブラウザで開く」を選ぶと、いつものアカウントを選ぶだけで入れます。</p>' +
         '<button type="button" class="btn btn-gold" data-act="copy">' + COPY_SVG + 'このページのアドレスをコピー</button>' +
         '<p class="inapp-copied" role="status" aria-live="polite"></p>' +
@@ -482,7 +485,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
   /* ページを開いた時にも 1 回だけ出す（同じ訪問中は繰り返さない） */
   var seen = false;
   try { seen = sessionStorage.getItem('inappSeen') === '1'; } catch (e) {}
-  if (STUCK && !seen) setTimeout(function(){ if (modal && !modal.hidden) return; open(null); }, IS_LINE ? 1200 : 400);
+  if (AUTO_SHOW_ON_LOAD && STUCK && !seen) setTimeout(function(){ if (modal && !modal.hidden) return; open(null); }, IS_LINE ? 1200 : 400);
 })();
 </script>
 </body>
