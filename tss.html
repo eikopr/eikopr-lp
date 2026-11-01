@@ -2,6 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<script>
+/* LINE の中で開いた時は、外のブラウザへ 1 回だけ移る（openExternalBrowser=1 が付いていれば何もしない） */
+(function(){try{var l=location;if(/Line\//.test(navigator.userAgent)&&!/[?&]openExternalBrowser=/.test(l.search)){l.replace(l.pathname+(l.search?l.search+'&':'?')+'openExternalBrowser=1'+l.hash);}}catch(e){}})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TSSメンバーの eikoAI 投稿診断｜eiko PR</title>
 <meta name="description" content="Team Synergy Stage のメンバーは、eikoAI の投稿診断を無料でご利用いただけます。投稿を貼るだけで、良いところと次の一歩をお返しします。">
@@ -12,7 +16,7 @@
 <meta property="og:url" content="https://eikopr.com/tss.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- tss.html v1.4.0 eikoAI ライトへの入口・合言葉をライト版と共有・深掘り診断はフォームを別タブで開く形 -->
+<!-- tss.html v1.5.0 アプリ内ブラウザ（Facebook・Instagram・LINE）で開いた時だけ「いつものブラウザで開く」案内を画面の中央に出す・LINE は外のブラウザへ自動で移る。v1.4.0 eikoAI ライトへの入口・合言葉をライト版と共有・深掘り診断はフォームを別タブで開く形 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -161,6 +165,20 @@ footer{background:var(--paper);padding:26px 0 34px;text-align:center;border-top:
 footer .f-mark{font-family:var(--font-latin);font-weight:500;font-style:italic;font-size:14px;letter-spacing:.14em;color:var(--gold-deep)}
 footer .f-note{margin-top:6px;font-size:11px;color:var(--gray)}
 footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
+/* ── アプリ内ブラウザの案内（Facebook・Instagram・LINE の中で開いた時だけ出る） ── */
+.inapp-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(53,49,43,.6)}
+.inapp-modal[hidden]{display:none}
+.inapp-card{position:relative;box-sizing:border-box;width:100%;max-width:440px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;background:var(--paper);color:var(--ink);border-radius:20px;padding:30px 22px 22px;box-shadow:0 18px 48px rgba(0,0,0,.28);font-family:var(--font-body);text-align:center}
+.inapp-x{position:absolute;top:6px;right:6px;width:44px;height:44px;border:none;background:none;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.inapp-x:focus-visible,.inapp-card .btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px}
+.inapp-ttl{font-family:var(--font-head);font-weight:700;font-size:20px;line-height:1.5;margin:6px 28px 14px}
+.inapp-txt{font-size:15px;line-height:1.9;text-align:left;margin:0 0 10px}
+.inapp-card .btn{box-sizing:border-box;width:100%;padding:14px 16px;font-size:15px;margin-top:10px;border:none;cursor:pointer;line-height:1.4}
+.inapp-card .btn-ghost{background:var(--paper);color:var(--ink);border:2px solid var(--gold-deep);padding:12px 16px}
+.inapp-card .btn-ghost:hover{background:var(--gold-wash)}
+.inapp-copied{min-height:1.6em;margin:8px 0 0;font-size:13px;color:var(--gold-deep);font-weight:700}
+.inapp-url{box-sizing:border-box;width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--gray);border-radius:10px;font-size:13px;font-family:var(--font-body);color:var(--ink);background:var(--gray-wash)}
+.inapp-close{display:block;margin:14px auto 0;background:none;border:none;cursor:pointer;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-family:var(--font-body);padding:8px}
 </style>
 </head>
 <body>
@@ -271,7 +289,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">tss v1.4.0</p>
+  <p class="f-ver">tss v1.5.0</p>
 </footer>
 
 <script>
@@ -338,16 +356,133 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
     } else {
       q.push('entry.273701990=' + encodeURIComponent(worry));
     }
-    window.open(FORM + '?' + q.join('&'), '_blank', 'noopener');
-    $('quizErr').hidden = true;
-    show('doneBox');
-    window.scrollTo({top: $('doneBox').offsetTop - 80, behavior: 'smooth'});
+    var url = FORM + '?' + q.join('&');
+    var go = function(u){
+      window.open(u, '_blank', 'noopener');
+      $('quizErr').hidden = true;
+      show('doneBox');
+      window.scrollTo({top: $('doneBox').offsetTop - 80, behavior: 'smooth'});
+    };
+    /* Facebook・Instagram・LINE の中なら、先に「いつものブラウザで開く」案内を出す（v1.5.0） */
+    if (window.eikoInApp) window.eikoInApp.ask(url, go); else go(url);
   });
 
   $('againBtn').addEventListener('click', function(){
     $('quizErr').hidden = true;
     show('quizBox');
   });
+})();
+</script>
+<script>
+/* ── アプリ内ブラウザの案内 ──
+   Facebook・Instagram・LINE の中のブラウザは Google にログインしておらず、フォームがメールアドレスの入力から始まる。
+   その時だけ「いつものブラウザで開く」案内を出す。LINE ではフォームのリンクに openExternalBrowser=1 を付けて外へ出す。 */
+(function(){
+  var UA = navigator.userAgent;
+  var IN_APP = /FBAN|FBAV|FB_IAB|Instagram|Line\//.test(UA);
+  window.eikoInApp = { active: IN_APP, ask: function(url, go){ go(); } };
+  if (!IN_APP) return;
+  var IS_LINE = /Line\//.test(UA);
+  var APP = /Instagram/.test(UA) ? 'Instagram' : (IS_LINE ? 'LINE' : 'Facebook');
+  var IS_ANDROID = /Android/.test(UA);
+  var FORM_PREFIX = 'https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/';
+  var OEB = /[?&]openExternalBrowser=/.test(location.search);
+  /* LINE で openExternalBrowser=1 が付いたまま、まだ LINE の中にいる＝外に出られなかった */
+  var STUCK = !IS_LINE || OEB;
+
+  function withOEB(url){
+    if (!IS_LINE || /[?&]openExternalBrowser=/.test(url)) return url;
+    var h = '', i = url.indexOf('#');
+    if (i >= 0) { h = url.slice(i); url = url.slice(0, i); }
+    return url + (url.indexOf('?') >= 0 ? '&' : '?') + 'openExternalBrowser=1' + h;
+  }
+  function pageUrl(){
+    return location.href.replace(/([?&])openExternalBrowser=1&?/, '$1').replace(/[?&]$/, '');
+  }
+  function formLinks(){ return document.querySelectorAll('a[href^="' + FORM_PREFIX + '"]'); }
+  if (IS_LINE) formLinks().forEach(function(a){ a.href = withOEB(a.href); });
+
+  var modal = null, pending = null, lastFocus = null;
+  var X_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  var COPY_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>';
+
+  function build(){
+    var menu = IS_ANDROID ? '右上の「⋮」' : '右上の「…」';
+    modal = document.createElement('div');
+    modal.className = 'inapp-modal';
+    modal.hidden = true;
+    modal.innerHTML =
+      '<div class="inapp-card" role="dialog" aria-modal="true" aria-labelledby="inappTtl">' +
+        '<button type="button" class="inapp-x" aria-label="閉じる">' + X_SVG + '</button>' +
+        '<p class="inapp-ttl" id="inappTtl">いつものブラウザで開いてください</p>' +
+        '<p class="inapp-txt">' + APP + ' などのアプリの中では Google にログインできないため、フォームがメールアドレスの入力から始まります。</p>' +
+        '<p class="inapp-txt">' + menu + 'から「ブラウザで開く」または「外部ブラウザで開く」を選ぶと、いつものアカウントを選ぶだけで入れます。</p>' +
+        '<button type="button" class="btn btn-gold" data-act="copy">' + COPY_SVG + 'このページのアドレスをコピー</button>' +
+        '<p class="inapp-copied" role="status" aria-live="polite"></p>' +
+        '<input type="text" class="inapp-url" readonly hidden aria-label="このページのアドレス">' +
+        '<button type="button" class="btn btn-ghost" data-act="go" hidden>このまま開く</button>' +
+        '<button type="button" class="inapp-close" data-act="close">閉じる</button>' +
+      '</div>';
+    document.body.appendChild(modal);
+    modal.addEventListener('click', function(e){
+      var t = e.target;
+      if (t === modal) { close(); return; }
+      var b = t.closest('[data-act],.inapp-x');
+      if (!b) return;
+      if (b.classList.contains('inapp-x') || b.dataset.act === 'close') { close(); return; }
+      if (b.dataset.act === 'copy') copy();
+      if (b.dataset.act === 'go') { var f = pending; close(); if (f) f(); }
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
+  }
+  function copy(){
+    var url = pageUrl(), msg = modal.querySelector('.inapp-copied'), box = modal.querySelector('.inapp-url');
+    function fallback(){
+      box.value = url; box.hidden = false; box.focus(); box.select();
+      msg.textContent = 'コピーできませんでした。下のアドレスを長押しでコピーしてください。';
+    }
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) { fallback(); return; }
+      navigator.clipboard.writeText(url).then(function(){
+        box.hidden = true; msg.textContent = 'コピーしました。いつものブラウザに貼り付けて開いてください。';
+      }, fallback);
+    } catch (e) { fallback(); }
+  }
+  function open(go){
+    if (!modal) build();
+    pending = go || null;
+    lastFocus = document.activeElement;
+    modal.querySelector('[data-act="go"]').hidden = !go;
+    modal.querySelector('.inapp-copied').textContent = '';
+    modal.querySelector('.inapp-url').hidden = true;
+    modal.hidden = false;
+    modal.querySelector('[data-act="copy"]').focus();
+  }
+  function close(){
+    modal.hidden = true; pending = null;
+    try { sessionStorage.setItem('inappSeen', '1'); } catch (e) {}
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+  }
+
+  /* フォームへのリンク: LINE で外へ出る途中でなければ、先に案内を開く */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="' + FORM_PREFIX + '"]');
+    if (!a || !STUCK) return;
+    e.preventDefault();
+    var href = withOEB(a.href);
+    open(function(){ window.open(href, '_blank', 'noopener'); });
+  }, true);
+
+  /* tss.html などの JS が開くフォーム */
+  window.eikoInApp.ask = function(url, go){
+    if (!STUCK) { go(withOEB(url)); return; }
+    open(function(){ go(withOEB(url)); });
+  };
+
+  /* ページを開いた時にも 1 回だけ出す（同じ訪問中は繰り返さない） */
+  var seen = false;
+  try { seen = sessionStorage.getItem('inappSeen') === '1'; } catch (e) {}
+  if (STUCK && !seen) setTimeout(function(){ if (modal && !modal.hidden) return; open(null); }, IS_LINE ? 1200 : 400);
 })();
 </script>
 </body>
