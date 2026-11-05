@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://eikopr.com/tss.html">
 <meta property="og:image" content="https://eikopr.com/assets/ogp.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<!-- tss.html v1.6.0 深掘り診断の申し込みから Google ログインをなくし、確認メールのボタンに置き換えた（ログインの案内文を外し、アプリ内ブラウザの案内と LINE の外ブラウザへの自動移動を撤去）。v1.5.0 アプリ内ブラウザ（Facebook・Instagram・LINE）で開いた時だけ「いつものブラウザで開く」案内を画面の中央に出す・LINE は外のブラウザへ自動で移る。v1.4.0 eikoAI ライトへの入口・合言葉をライト版と共有・深掘り診断はフォームを別タブで開く形 -->
+<!-- tss.html v1.7.0 深掘り診断の待ち時間をなくし、案内を「10 分ほどで」に直した。v1.6.0 深掘り診断の申し込みから Google ログインをなくし、確認メールのボタンに置き換えた（ログインの案内文を外し、アプリ内ブラウザの案内と LINE の外ブラウザへの自動移動を撤去）。v1.5.0 アプリ内ブラウザ（Facebook・Instagram・LINE）で開いた時だけ「いつものブラウザで開く」案内を画面の中央に出す・LINE は外のブラウザへ自動で移る。v1.4.0 eikoAI ライトへの入口・合言葉をライト版と共有・深掘り診断はフォームを別タブで開く形 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,500;0,600;1,500;1,600&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -250,13 +250,13 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
       </div>
       <p class="ferr" id="quizErr" hidden></p>
       <button type="button" class="btn btn-gold mbtn" id="sendBtn">フォームを開いて投稿を送る</button>
-      <p class="mcard-note">Google のフォームが別のタブで開きます。<br>お申し込みのあと確認のメールが届きます。ボタンを押すと診断が始まり、1 時間ほどでお返事が届きます。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。<br></p>
+      <p class="mcard-note">Google のフォームが別のタブで開きます。<br>お申し込みのあと確認のメールが届きます。ボタンを押すと診断が始まり、10 分ほどでお返事が届きます。<br>お返事は 1 日 3 回までです。<br>フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。<br></p>
     </div>
 
     <!-- 送信完了 -->
     <div class="mcard" id="doneBox" hidden>
       <p class="mcard-head">フォームを開きました</p>
-      <p class="mcard-sub">Google のフォームが開きました。投稿を貼って送信してください。送信のあと確認のメールが届きます。メールのボタンを押すと診断が始まり、1 時間ほどでお返事が届きます。お返事は 1 日 3 回までです。<br>届いたアドバイスは、次の投稿でひとつだけ試してみてください。</p>
+      <p class="mcard-sub">Google のフォームが開きました。投稿を貼って送信してください。送信のあと確認のメールが届きます。メールのボタンを押すと診断が始まり、10 分ほどでお返事が届きます。お返事は 1 日 3 回までです。<br>届いたアドバイスは、次の投稿でひとつだけ試してみてください。</p>
       <button type="button" class="btn btn-gold mbtn" id="againBtn">もう1本、フォームを開く</button>
       <p class="mcard-note">フォームが開かないときは<a href="https://docs.google.com/forms/d/e/1FAIpQLScBDaakXjy1IY6JisOXWwue6LqIb8xsP39F4aQSumBOopYQ0Q/viewform" target="_blank" rel="noopener">こちらのフォーム</a>からお送りください。</p>
     </div>
@@ -271,7 +271,7 @@ footer .f-ver{font-size:11px;color:var(--gray);margin-top:8px}
 <footer>
   <p class="f-mark">bE-side you</p>
   <p class="f-note">&copy; eiko PR</p>
-  <p class="f-ver">tss v1.6.0</p>
+  <p class="f-ver">tss v1.7.0</p>
 </footer>
 
 <script>
